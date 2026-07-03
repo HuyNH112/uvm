@@ -1,0 +1,39 @@
+D:/HCMUS/UVM/tb/hpdcache_base_test.sv {0 {vlog -work work -vopt -sv -stats=none D:/HCMUS/UVM/tb/hpdcache_base_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/HCMUS/UVM/tb/hpdcache_base_test.sv(5): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: D:/HCMUS/UVM/tb/hpdcache_base_test.sv(8): Cannot find `include file "hpdcache_agent/hpdcache_seq_item.sv" in directories:
+    C:/intelFPGA/23.1std/questa_fse/ovm-2.1.2/../verilog_src/ovm-2.1.2/src, C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src
+** Error: (vlog-13069) D:/HCMUS/UVM/tb/hpdcache_base_test.sv(21): near ";": syntax error, unexpected ';', expecting '('.
+** Error: D:/HCMUS/UVM/tb/hpdcache_base_test.sv(29): (vlog-2730) Undefined variable: 'req'.
+** Error: D:/HCMUS/UVM/tb/hpdcache_base_test.sv(29): (vlog-2164) Class or package 'hpdcache_seq_item' not found.
+** Error: D:/HCMUS/UVM/tb/hpdcache_base_test.sv(29): (vlog-2730) Undefined variable: 'hpdcache_seq_item'.
+** Error: (vlog-13069) D:/HCMUS/UVM/tb/hpdcache_base_test.sv(29): near "::": syntax error, unexpected ::, expecting ';'.
+
+} {4.0 5.0 6.0 11.0} {}} D:/HCMUS/UVM/tb/hpdcache_if.sv {1 {vlog -work work -vopt -sv -stats=none D:/HCMUS/UVM/tb/hpdcache_if.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling interface hpdcache_if
+
+Top level modules:
+	--none--
+
+} {} {}} D:/HCMUS/UVM/sv/hpdcache_agent/hpdcache_seq_item.sv {1 {vlog -work work -vopt -sv -stats=none D:/HCMUS/UVM/sv/hpdcache_agent/hpdcache_seq_item.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+
+} {} {}} D:/HCMUS/UVM/tb/tb_top.sv {0 {vlog -work work -vopt -sv -stats=none D:/HCMUS/UVM/tb/tb_top.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/HCMUS/UVM/tb/tb_top.sv(2): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(8): Cannot find `include file "hpdcache_agent/hpdcache_seq_item.sv" in directories:
+    C:/intelFPGA/23.1std/questa_fse/ovm-2.1.2/../verilog_src/ovm-2.1.2/src, C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src
+** Error: (vlog-13069) ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(21): near ";": syntax error, unexpected ';', expecting '('.
+** Error: ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(29): (vlog-2730) Undefined variable: 'req'.
+** Error: ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(29): (vlog-2164) Class or package 'hpdcache_seq_item' not found.
+** Error: ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(29): (vlog-2730) Undefined variable: 'hpdcache_seq_item'.
+** Error: (vlog-13069) ** while parsing file included at D:/HCMUS/UVM/tb/tb_top.sv(5)
+** at tb/hpdcache_base_test.sv(29): near "::": syntax error, unexpected ::, expecting ';'.
+
+} {4.0 5.0 7.0 8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0 16.0} {}}
