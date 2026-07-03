@@ -1,0 +1,235 @@
+do run_uvm.do
+# Compile of hpdcache_config.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of domino_pkg.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_lfsr.sv was successful.
+# Compile of hpdcache_sync_buffer.sv was successful.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg_initialized.sv was successful.
+# Compile of hpdcache_fxarb.sv was successful.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_prio_1hot_encoder.sv was successful.
+# Compile of hpdcache_prio_bin_encoder.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable.sv was successful with warnings.
+# Compile of hpdcache_sram_wmask.sv was successful with warnings.
+# Compile of hpdcache_regbank_wbyteenable_1rw.sv was successful.
+# Compile of hpdcache_regbank_wmask_1rw.sv was successful.
+# Compile of hpdcache_data_downsize.sv was successful.
+# Compile of hpdcache_data_upsize.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hwpf_stride_pkg.sv was successful.
+# Compile of hwpf_stride.sv was successful with warnings.
+# Compile of hwpf_stride_arb.sv was successful.
+# Compile of hwpf_stride_wrapper.sv was successful with warnings.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of hpdcache.sv was successful with warnings.
+# Compile of hpdcache_amo.sv was successful with warnings.
+# Compile of hpdcache_cmo.sv was successful with warnings.
+# Compile of hpdcache_core_arbiter.sv was successful with warnings.
+# Compile of hpdcache_ctrl.sv was successful with warnings.
+# Compile of hpdcache_ctrl_pe.sv was successful.
+# Compile of hpdcache_memctrl.sv was successful with warnings.
+# Compile of hpdcache_cbuf.sv was successful.
+# Compile of hpdcache_miss_handler.sv was successful with warnings.
+# Compile of hpdcache_mshr.sv was successful with warnings.
+# Compile of hpdcache_rtab.sv was successful with warnings.
+# Compile of hpdcache_uncached.sv was successful with warnings.
+# Compile of hpdcache_victim_plru.sv was successful.
+# Compile of hpdcache_victim_random.sv was successful.
+# Compile of hpdcache_victim_sel.sv was successful.
+# Compile of hpdcache_wbuf.sv was successful with warnings.
+# Compile of hpdcache_flush.sv was successful.
+# Compile of hpdcache_wrapper.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wmask_1rw.sv was successful with warnings.
+# Compile of tb_hpdcache_prefetch.sv was successful.
+# 57 compiles, 0 failed with no errors.
+# D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 09:38:27 on Jul 03,2026
+# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/hpdcache_if.sv 
+# -- Compiling interface hpdcache_if
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 09:38:27 on Jul 03,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 09:38:27 on Jul 03,2026
+# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" sv/hpdcache_uvm_pkg.sv 
+# -- Compiling package hpdcache_uvm_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) sv/hpdcache_uvm_pkg.sv(7): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 09:38:28 on Jul 03,2026
+# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/hw_top.sv 
+# -- Compiling module hw_top
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	hw_top
+# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 09:38:28 on Jul 03,2026
+# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/tb_top.sv 
+# ** Note: (vlog-2286) tb/tb_top.sv(4): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package tb_top_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package hpdcache_pkg
+# -- Importing package hpdcache_uvm_pkg
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -L mtiUvm work.tb_top "+UVM_TESTNAME=hpdcache_base_test" "+UVM_VERBOSITY=UVM_LOW" 
+# Start time: 09:38:28 on Jul 03,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_amo.sv(34): (vopt-13314) Defaulting port 'op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(28): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(32): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wmask.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wmask.sv(28): (vopt-13314) Defaulting port 'wmask' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wmask.sv(32): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(31): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(27): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv(27): (vopt-13314) Defaulting port 'wmask' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_miss_handler(fast)".
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(65): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv(55): (vopt-13314) Defaulting port 'alloc_deps_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_rtab(fast)".
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(54): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_uncached(fast)".
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(66): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(70): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(72): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_cmo.sv(66): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_cmo(fast)".
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(48): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(52): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(54): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_flush(fast)".
+# ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv(115): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=26.
+# Loading sv_std.std
+# Loading work.hpdcache_pkg(fast)
+# Loading work.hpdcache_if(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.hpdcache_uvm_pkg(fast)
+# Loading work.tb_top_sv_unit(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.tb_top(fast)
+# Loading work.hpdcache_if(fast__7)
+# Loading work.hw_top(fast)
+# Loading work.hpdcache_wrapper(fast)
+# Loading work.hpdcache(fast)
+# Loading work.hpdcache_core_arbiter(fast)
+# Loading work.hpdcache_fxarb(fast)
+# Loading work.hpdcache_prio_1hot_encoder(fast)
+# Loading work.hpdcache_mux(fast)
+# Loading work.hpdcache_mux(fast__1)
+# Loading work.hpdcache_mux(fast__2)
+# Loading work.hpdcache_mux(fast__3)
+# Loading work.hpdcache_ctrl(fast)
+# Loading work.hpdcache_ctrl_pe(fast)
+# Loading work.hpdcache_1hot_to_binary(fast)
+# Loading work.hpdcache_rtab(fast)
+# Loading work.hpdcache_prio_1hot_encoder(fast__1)
+# Loading work.hpdcache_rrarb(fast)
+# Loading work.hpdcache_fxarb(fast__1)
+# Loading work.hpdcache_prio_1hot_encoder(fast__2)
+# Loading work.hpdcache_mux(fast__4)
+# Loading work.hpdcache_mux(fast__5)
+# Loading work.hpdcache_mux(fast__6)
+# Loading work.hpdcache_memctrl(fast)
+# Loading work.hpdcache_sram(fast)
+# Loading work.hpdcache_sram_1rw(fast)
+# Loading work.hpdcache_sram_wbyteenable(fast)
+# Loading work.hpdcache_sram_wbyteenable_1rw(fast)
+# Loading work.hpdcache_victim_sel(fast)
+# Loading work.hpdcache_victim_random(fast)
+# Loading work.hpdcache_lfsr(fast)
+# Loading work.hpdcache_decoder(fast)
+# Loading work.hpdcache_demux(fast)
+# Loading work.hpdcache_mux(fast__7)
+# Loading work.hpdcache_mux(fast__8)
+# Loading work.hpdcache_mux(fast__9)
+# Loading work.hpdcache_mux(fast__10)
+# Loading work.hpdcache_wbuf(fast)
+# Loading work.hpdcache_fxarb(fast__2)
+# Loading work.hpdcache_1hot_to_binary(fast__1)
+# Loading work.hpdcache_mux(fast__11)
+# Loading work.hpdcache_mux(fast__12)
+# Loading work.hpdcache_fifo_reg(fast)
+# Loading work.hpdcache_fifo_reg(fast__1)
+# Loading work.hpdcache_demux(fast__1)
+# Loading work.hpdcache_miss_handler(fast)
+# Loading work.hpdcache_fifo_reg(fast__2)
+# Loading work.hpdcache_sync_buffer(fast)
+# Loading work.hpdcache_mux(fast__13)
+# Loading work.hpdcache_fifo_reg(fast__3)
+# Loading work.hpdcache_data_resize(fast)
+# Loading work.hpdcache_fifo_reg(fast__4)
+# Loading work.hpdcache_mshr(fast)
+# Loading work.hpdcache_sram_wmask(fast)
+# Loading work.hpdcache_sram_wmask_1rw(fast)
+# Loading work.hpdcache_cbuf(fast)
+# Loading work.hpdcache_prio_bin_encoder(fast)
+# Loading work.hpdcache_uncached(fast)
+# Loading work.hpdcache_mux(fast__14)
+# Loading work.hpdcache_amo(fast)
+# Loading work.hpdcache_cmo(fast)
+# Loading work.hpdcache_sync_buffer(fast__1)
+# Loading work.hpdcache_fifo_reg(fast__5)
+# Loading work.hpdcache_flush(fast)
+# Loading work.hpdcache_decoder(fast__1)
+# Loading work.hpdcache_fifo_reg(fast__6)
+# Loading work.hpdcache_mem_req_read_arbiter(fast)
+# Loading work.hpdcache_mux(fast__15)
+# Loading work.hpdcache_1hot_to_binary(fast__2)
+# Loading work.hpdcache_mem_req_write_arbiter(fast)
+# Loading work.hpdcache_fxarb(fast__3)
+# Loading work.hpdcache_prio_1hot_encoder(fast__3)
+# Loading work.hpdcache_fifo_reg(fast__7)
+# Loading work.hpdcache_sync_buffer(fast__2)
+# Loading work.hpdcache_fifo_reg(fast__8)
+# Loading work.hpdcache_mux(fast__16)
+# Loading work.hpdcache_mux(fast__17)
+# Loading C:/intelFPGA/23.1std/questa_fse/uvm-1.1d\win64\uvm_dpi.dll
+# ** Error: Failure to checkout svverification license feature.
+# ** Error: (vsim-1) Unable to checkout verification license - required for testbench features (randomize, randcase, randsequence, covergroup).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_top File: tb/tb_top.sv
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run_uvm.do PAUSED at line 55
+# End time: 10:15:41 on Jul 03,2026, Elapsed time: 0:37:13
+# Errors: 2, Warnings: 28
