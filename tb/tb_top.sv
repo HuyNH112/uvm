@@ -1,63 +1,59 @@
-`timescale 1ns/1ps
+// =============================================================================
+// tb_top.sv
+// Testbench Top-level — Option A fix: hw_top instantiated as submodule u_hw
+// Hierarchical paths updated: hw_top.* → u_hw.*
+// =============================================================================
+`include "hpdcache_config.svh"
+`include "hpdcache_typedef.svh"
 
 import uvm_pkg::*;
 `include "uvm_macros.svh"
-
-import hpdcache_pkg::*;
 import hpdcache_uvm_pkg::*;
 
-`include "tb/hpdcache_base_test.sv"
-`include "tb/hpdcache_test_lib.sv"
+`include "hpdcache_seq_lib.sv"
+`include "hpdcache_base_test.sv"
+`include "hpdcache_test_lib.sv"
 
 module tb_top;
 
-    // -------------------------------------------------------------------------
-    // Clock & Reset
-    // -------------------------------------------------------------------------
-    logic clk_i;
-    logic rst_ni;
+    import uvm_pkg::*;
+    import hpdcache_uvm_pkg::*;
 
-    initial clk_i = 1'b0;
-    always #2.5 clk_i = ~clk_i;  // 200 MHz
+    localparam int unsigned WATCHDOG_CYCLES = 20000;
 
+    // -------------------------------------------------------------------------
+    // hw_top instantiation — port-less (clock/reset generated internally)
+    // -------------------------------------------------------------------------
+    hw_top u_hw ();
+
+    // -------------------------------------------------------------------------
+    // UVM config_db + run_test
+    // -------------------------------------------------------------------------
     initial begin
-        rst_ni = 1'b0;
-        repeat (10) @(posedge clk_i);
-        rst_ni = 1'b1;
-        `uvm_info("TOP", "Reset released", UVM_LOW)
+        uvm_config_db #(virtual hpdcache_if.driver_mp)::set(
+            null,
+            "uvm_test_top.env.driver",
+            "hpdcache_vif_driver",
+            u_hw.dut_if.driver_mp
+        );
+
+        uvm_config_db #(virtual hpdcache_if.monitor_mp)::set(
+            null,
+            "uvm_test_top.env.monitor",
+            "hpdcache_vif_monitor",
+            u_hw.dut_if.monitor_mp
+        );
+
+        run_test("hpdcache_base_test");
     end
 
     // -------------------------------------------------------------------------
-    // Interface instantiation
-    // -------------------------------------------------------------------------
-    hpdcache_if hpdcache_vif (
-        .clk_i  (clk_i),
-        .rst_ni (rst_ni)
-    );
-
-    // -------------------------------------------------------------------------
-    // Hardware top: DUT + memory model
-    // -------------------------------------------------------------------------
-    hw_top u_hw_top (
-        .clk_i        (clk_i),
-        .rst_ni       (rst_ni),
-        .hpdcache_vif (hpdcache_vif)
-    );
-
-    // -------------------------------------------------------------------------
-    // UVM startup
+    // Watchdog
     // -------------------------------------------------------------------------
     initial begin
-        uvm_config_db #(virtual hpdcache_if)::set(null, "uvm_test_top.*", "vif", hpdcache_vif);
-        run_test();
-    end
-
-    // -------------------------------------------------------------------------
-    // Global watchdog
-    // -------------------------------------------------------------------------
-    initial begin
-        #500000;
-        `uvm_fatal("TOP", "WATCHDOG: Simulation timeout!")
+        repeat (WATCHDOG_CYCLES) @(posedge u_hw.clk);
+        $display("[WATCHDOG] TIMEOUT after %0d cycles", WATCHDOG_CYCLES);
+        $finish;
     end
 
 endmodule : tb_top

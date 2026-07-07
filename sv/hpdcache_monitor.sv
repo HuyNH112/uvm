@@ -1,174 +1,127 @@
+// =============================================================================
+// hpdcache_monitor.sv
+// Monitor: sample posedge, fork collect_reqs + collect_resps + perf_events
+// Dùng UVM_HPDCACHE_* localparam và hpdcache_pkg:: types từ package
+// UVM 1.1d: chỉ run_phase
+// =============================================================================
 `ifndef HPDCACHE_MONITOR_SV
 `define HPDCACHE_MONITOR_SV
 
 class hpdcache_monitor extends uvm_monitor;
+
     `uvm_component_utils(hpdcache_monitor)
 
-    protected uvm_active_passive_enum is_active = UVM_PASSIVE;
+    virtual hpdcache_if.monitor_mp vif;
 
-    virtual hpdcache_if vif;
+    // Analysis ports → scoreboard
+    uvm_analysis_port #(hpdcache_seq_item) ap_req;
+    uvm_analysis_port #(hpdcache_seq_item) ap_rsp;
 
-    hpdcache_sequencer m_sequencer;
+    // Width shortcuts từ pkg localparam
+    localparam int unsigned PA_W     = UVM_HPDCACHE_PA_WIDTH;
+    localparam int unsigned TAG_W    = UVM_TAG_WIDTH;
+    localparam int unsigned OFF_W    = UVM_REQ_OFFSET_WIDTH;
 
-    int num_req_pkts;
-    int num_req_no_resp_pkts;
-    int num_resp_pkts;
+    // Performance event counters
+    int unsigned cnt_read_miss;
+    int unsigned cnt_write_miss;
+    int unsigned cnt_prefetch;
+    int unsigned cnt_stall;
 
-    uvm_analysis_port #(hpdcache_req_mon_t) ap_hpdcache_req;
-    uvm_analysis_port #(hpdcache_rsp_t)     ap_hpdcache_rsp;
-
-    hpdcache_req_mon_t m_req_packet;
-    hpdcache_rsp_t     m_rsp_packet;
-
-    event reset_asserted;
-    event reset_deasserted;
-
-    function new(string name = "hpdcache_monitor", uvm_component parent = null);
+    function new(string name, uvm_component parent);
         super.new(name, parent);
+        cnt_read_miss = 0; cnt_write_miss = 0;
+        cnt_prefetch  = 0; cnt_stall      = 0;
     endfunction
 
-    virtual function void build_phase(uvm_phase phase);
+    function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        ap_hpdcache_req      = new("ap_hpdcache_req", this);
-        ap_hpdcache_rsp      = new("ap_hpdcache_rsp", this);
-        num_req_pkts         = 0;
-        num_req_no_resp_pkts = 0;
-        num_resp_pkts        = 0;
-        `uvm_info(get_full_name(), "Build phase complete.", UVM_HIGH)
+        ap_req = new("ap_req", this);
+        ap_rsp = new("ap_rsp", this);
+        if (!uvm_config_db #(virtual hpdcache_if.monitor_mp)::get(
+                this, "", "hpdcache_vif_monitor", vif))
+            `uvm_fatal("NOVIF", "Monitor: hpdcache_vif_monitor not found")
     endfunction
 
-    virtual task pre_reset_phase(uvm_phase phase);
-        super.pre_reset_phase(phase);
-        -> reset_asserted;
-    endtask
-
-    virtual task reset_phase(uvm_phase phase);
-        super.reset_phase(phase);
-        num_req_pkts         = 0;
-        num_req_no_resp_pkts = 0;
-        num_resp_pkts        = 0;
-    endtask
-
-    virtual task post_reset_phase(uvm_phase phase);
-        super.post_reset_phase(phase);
-        -> reset_deasserted;
-    endtask
-
-    virtual task main_phase(uvm_phase phase);
-        super.main_phase(phase);
-        `uvm_info("MON", "Entering main_phase", UVM_HIGH)
+    task run_phase(uvm_phase phase);
+        @(posedge vif.rst_ni);
+        repeat (2) @(posedge vif.clk_i);
         fork
-            collect_reqs(phase);
-            collect_resps(phase);
+            collect_reqs();
+            collect_resps();
+            collect_perf_events();
         join_none
-        `uvm_info("MON", "Leaving main_phase", UVM_HIGH)
     endtask
 
-    virtual task collect_reqs(uvm_phase phase);
-        hpdcache_req_mon_t req_mon;
-
+    // -------------------------------------------------------------------------
+    // collect_reqs: sample accepted request (valid & ready posedge)
+    // -------------------------------------------------------------------------
+    task collect_reqs();
+        hpdcache_seq_item item;
         forever begin
             @(posedge vif.clk_i);
-
             if (vif.core_req_valid_i && vif.core_req_ready_o) begin
-                req_mon.addr_offset  = vif.core_req_i.addr_offset;
-                req_mon.wdata        = vif.core_req_i.wdata;
-                req_mon.op           = vif.core_req_i.op;
-                req_mon.be           = vif.core_req_i.be;
-                req_mon.size         = vif.core_req_i.size;
-                req_mon.sid          = vif.core_req_i.sid;
-                req_mon.tid          = vif.core_req_i.tid;
-                req_mon.need_rsp     = vif.core_req_i.need_rsp;
-                req_mon.phys_indexed = vif.core_req_i.phys_indexed;
-                req_mon.pma          = vif.core_req_i.pma;
-                req_mon.addr_tag     = vif.core_req_tag_i;
-                req_mon.addr         = {req_mon.addr_tag, req_mon.addr_offset};
-                req_mon.abort        = vif.core_req_abort_i;
-                req_mon.second_cycle = 1'b0;
-
-                m_req_packet = req_mon;
-
-                if (!req_mon.need_rsp)
-                    num_req_no_resp_pkts++;
-
-                #0 ap_hpdcache_req.write(req_mon);
-
-                if (!req_mon.phys_indexed) begin
-                    @(posedge vif.clk_i);
-                    req_mon.abort        = vif.core_req_abort_i;
-                    req_mon.addr_tag     = vif.core_req_tag_i;
-                    req_mon.pma          = vif.core_req_pma_i;
-                    req_mon.addr         = {req_mon.addr_tag, req_mon.addr_offset};
-                    req_mon.second_cycle = 1'b1;
-                    #0 ap_hpdcache_req.write(req_mon);
-                end
-
-                num_req_pkts++;
-                `uvm_info("MON",
-                    $sformatf("REQ #%0d: OP=%s PA=0x%08h TID=%0d SID=%0d NEED_RSP=%0b",
-                              num_req_pkts, req_mon.op.name(), req_mon.addr,
-                              req_mon.tid, req_mon.sid, req_mon.need_rsp),
-                    UVM_MEDIUM)
+                item = hpdcache_seq_item::type_id::create("mon_req");
+                // op, size, pma: dùng pkg types trực tiếp từ interface
+                item.op           = vif.core_req_i.op;
+                item.addr_tag     = vif.core_req_i.addr_tag;
+                item.addr_offset  = vif.core_req_i.addr_offset;
+                item.wdata        = vif.core_req_i.wdata;
+                item.be           = vif.core_req_i.be;
+                item.size         = vif.core_req_i.size;
+                item.tid          = vif.core_req_i.tid;
+                item.sid          = vif.core_req_i.sid;
+                item.need_rsp     = vif.core_req_i.need_rsp;
+                item.phys_indexed = vif.core_req_i.phys_indexed;
+                item.pma          = vif.core_req_pma_i;
+                `uvm_info("MON", {"REQ: ", item.convert2string()}, UVM_HIGH)
+                ap_req.write(item);
             end
         end
-    endtask : collect_reqs
-
-    virtual task collect_resps(uvm_phase phase);
-        hpdcache_rsp_t rsp;
-
-        forever begin
-            @(posedge vif.clk_i);
-
-            if (vif.core_rsp_valid_o) begin
-                rsp.rdata   = vif.core_rsp_o.rdata;
-                rsp.sid     = vif.core_rsp_o.sid;
-                rsp.tid     = vif.core_rsp_o.tid;
-                rsp.error   = vif.core_rsp_o.error;
-                rsp.aborted = vif.core_rsp_o.aborted;
-
-                m_rsp_packet = rsp;
-
-                if (is_active == UVM_ACTIVE)
-                    m_sequencer.q_inflight_tid.delete(rsp.tid);
-
-                #0 ap_hpdcache_rsp.write(rsp);
-
-                num_resp_pkts++;
-                `uvm_info("MON",
-                    $sformatf("RSP #%0d: TID=%0d SID=%0d ERR=%0b ABORTED=%0b RDATA=0x%016h",
-                              num_resp_pkts, rsp.tid, rsp.sid,
-                              rsp.error, rsp.aborted, rsp.rdata),
-                    UVM_MEDIUM)
-            end
-        end
-    endtask : collect_resps
-
-    virtual task post_shutdown_phase(uvm_phase phase);
-        super.post_shutdown_phase(phase);
-        phase.raise_objection(this, "Waiting for all responses");
-        do begin
-            #10;
-            `uvm_info("MON",
-                $sformatf("REQ=%0d RSP=%0d NO_RSP=%0d",
-                          num_req_pkts, num_resp_pkts, num_req_no_resp_pkts),
-                UVM_HIGH)
-        end while (num_req_pkts != (num_resp_pkts + num_req_no_resp_pkts));
-        phase.drop_objection(this, "All responses received");
     endtask
 
-    virtual function void report_phase(uvm_phase phase);
-        `uvm_info(get_type_name(),
-            $sformatf("REPORT: REQ=%0d RSP=%0d NO_RSP=%0d",
-                      num_req_pkts, num_resp_pkts, num_req_no_resp_pkts),
-            UVM_LOW)
-    endfunction
+    // -------------------------------------------------------------------------
+    // collect_resps: sample core_rsp_valid_o posedge
+    // -------------------------------------------------------------------------
+    task collect_resps();
+        hpdcache_seq_item rsp;
+        forever begin
+            @(posedge vif.clk_i);
+            if (vif.core_rsp_valid_o) begin
+                rsp = hpdcache_seq_item::type_id::create("mon_rsp");
+                // Dùng LOAD op làm placeholder cho response item
+                rsp.op    = HPDCACHE_REQ_LOAD;
+                rsp.tid   = vif.core_rsp_o.tid;
+                rsp.sid   = vif.core_rsp_o.sid;
+                rsp.wdata = vif.core_rsp_o.rdata;
+                `uvm_info("MON",
+                    $sformatf("RSP: TID=%0d SID=%0d ERR=%0b RDATA=0x%032h",
+                              rsp.tid, rsp.sid,
+                              vif.core_rsp_o.error, rsp.wdata),
+                    UVM_HIGH)
+                ap_rsp.write(rsp);
+            end
+        end
+    endtask
 
-    function void set_is_active();
-        is_active = UVM_ACTIVE;
-    endfunction
+    // -------------------------------------------------------------------------
+    // collect_perf_events
+    // -------------------------------------------------------------------------
+    task collect_perf_events();
+        forever begin
+            @(posedge vif.clk_i);
+            if (vif.evt_cache_read_miss_o)  cnt_read_miss++;
+            if (vif.evt_cache_write_miss_o) cnt_write_miss++;
+            if (vif.evt_prefetch_req_o)     cnt_prefetch++;
+            if (vif.evt_stall_o)            cnt_stall++;
+        end
+    endtask
 
-    function void set_hpdcache_vif(virtual hpdcache_if I);
-        vif = I;
+    function void report_phase(uvm_phase phase);
+        `uvm_info("MON", $sformatf(
+            "\n=== Performance Events ===\n  Read Miss : %0d\n  Write Miss: %0d\n  Prefetch  : %0d\n  Stall     : %0d\n==========================",
+            cnt_read_miss, cnt_write_miss, cnt_prefetch, cnt_stall),
+            UVM_MEDIUM)
     endfunction
 
 endclass : hpdcache_monitor

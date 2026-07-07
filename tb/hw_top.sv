@@ -1,343 +1,390 @@
-`timescale 1ns/1ps
-`include "hpdcache_typedef.svh"
+// =============================================================================
+// hw_top.sv
+// Hardware top: DUT (hpdcache_wrapper) + Behavioral AXI Memory Model
+//
+// CRITICAL FIXES vs. bug report:
+//   FIX-1: mem_resp_read_ready_o là OUTPUT của DUT — memory model POLL sẵn
+//           Không drive vào DUT, chỉ sample. Serve beat CHỈ KHI DUT assert.
+//   FIX-2: FIFO depth = MSHR_SETS × MSHR_WAYS = 4 × 4 = 16 outstanding misses
+//   FIX-3: shadow_mem[addr] indexed bằng cacheline address (addr[55:6])
+//          để lookup đúng 64 bytes per cacheline cho 512-bit AXI burst
+//   FIX-4: Write response ACK: chờ mem_resp_write_ready_o trước khi assert valid
+//
+// AXI Read Protocol:
+//   DUT → mem_req_read_valid_o + addr/id → ENQ vào rd_fifo[]
+//   Memory → DEQ khi idle → serve N beats (512-bit × len) → DUT
+//   Mỗi beat: assert valid, đợi DUT ready (mem_resp_read_ready_o=1), deassert
+//
+// AXI Write Protocol:
+//   DUT → mem_req_write_valid_o + data valid → capture + ACK
+// =============================================================================
 `include "hpdcache_config.svh"
+`include "hpdcache_typedef.svh"
 
-module hw_top
-import hpdcache_pkg::*;
-(
-    input  bit clk_i,
-    input  bit rst_ni,
-    hpdcache_if hpdcache_vif
-);
+module hw_top;
 
-    // =========================================================================
-    // Config
-    // =========================================================================
-    localparam hpdcache_user_cfg_t UserCfg = '{
-        nRequesters              : (4'b1 << `CONF_HPDCACHE_REQ_SRC_ID_WIDTH),
-        paWidth                  : `CONF_HPDCACHE_PA_WIDTH,
-        wordWidth                : `CONF_HPDCACHE_WORD_WIDTH,
-        sets                     : `CONF_HPDCACHE_SETS,
-        ways                     : `CONF_HPDCACHE_WAYS,
-        clWords                  : `CONF_HPDCACHE_CL_WORDS,
-        reqWords                 : `CONF_HPDCACHE_REQ_WORDS,
-        reqTransIdWidth          : `CONF_HPDCACHE_REQ_TRANS_ID_WIDTH,
-        reqSrcIdWidth            : `CONF_HPDCACHE_REQ_SRC_ID_WIDTH,
-        victimSel                : `CONF_HPDCACHE_VICTIM_SEL,
-        dataWaysPerRamWord       : `CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD,
-        dataSetsPerRam           : `CONF_HPDCACHE_DATA_SETS_PER_RAM,
-        dataRamByteEnable        : `CONF_HPDCACHE_DATA_RAM_WBYTEENABLE,
-        accessWords              : `CONF_HPDCACHE_ACCESS_WORDS,
-        mshrSets                 : `CONF_HPDCACHE_MSHR_SETS,
-        mshrWays                 : `CONF_HPDCACHE_MSHR_WAYS,
-        mshrWaysPerRamWord       : `CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD,
-        mshrSetsPerRam           : `CONF_HPDCACHE_MSHR_SETS_PER_RAM,
-        mshrRamByteEnable        : `CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE,
-        mshrUseRegbank           : `CONF_HPDCACHE_MSHR_USE_REGBANK,
-        cbufEntries              : `CONF_HPDCACHE_CBUF_ENTRIES,
-        refillCoreRspFeedthrough : `CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH,
-        refillFifoDepth          : `CONF_HPDCACHE_REFILL_FIFO_DEPTH,
-        wbufDirEntries           : `CONF_HPDCACHE_WBUF_DIR_ENTRIES,
-        wbufDataEntries          : `CONF_HPDCACHE_WBUF_DATA_ENTRIES,
-        wbufWords                : `CONF_HPDCACHE_WBUF_WORDS,
-        wbufTimecntWidth         : `CONF_HPDCACHE_WBUF_TIMECNT_WIDTH,
-        rtabEntries              : `CONF_HPDCACHE_RTAB_ENTRIES,
-        flushEntries             : `CONF_HPDCACHE_FLUSH_ENTRIES,
-        flushFifoDepth           : `CONF_HPDCACHE_FLUSH_FIFO_DEPTH,
-        memAddrWidth             : `CONF_HPDCACHE_MEM_ADDR_WIDTH,
-        memIdWidth               : `CONF_HPDCACHE_MEM_ID_WIDTH,
-        memDataWidth             : `CONF_HPDCACHE_MEM_DATA_WIDTH,
-        wtEn                     : `CONF_HPDCACHE_WT_ENABLE,
-        wbEn                     : `CONF_HPDCACHE_WB_ENABLE,
-        lowLatency               : `CONF_HPDCACHE_LOW_LATENCY,
-        eccEn                    : `CONF_HPDCACHE_ECC_ENABLE,
-        eccScrubberEn            : `CONF_HPDCACHE_ECC_SCRUBBER_ENABLE
-    };
+    // -------------------------------------------------------------------------
+    // Parameters
+    // -------------------------------------------------------------------------
+    localparam int unsigned MEM_AW       = `CONF_HPDCACHE_MEM_ADDR_WIDTH;  // 56
+    localparam int unsigned MEM_DW       = `CONF_HPDCACHE_MEM_DATA_WIDTH;  // 512
+    localparam int unsigned MEM_IDW      = `CONF_HPDCACHE_MEM_ID_WIDTH;    // 8
+    localparam int unsigned CL_WORDS     = `CONF_HPDCACHE_CL_WORDS;        // 8
+    localparam int unsigned WORD_W       = `CONF_HPDCACHE_WORD_WIDTH;       // 64
+    localparam int unsigned CL_BYTES     = CL_WORDS * (WORD_W / 8);        // 64
+    localparam int unsigned AXI_BYTES    = MEM_DW / 8;                     // 64
+    // Number of AXI beats per cacheline refill
+    localparam int unsigned BEATS_PER_CL = CL_BYTES / AXI_BYTES;           // 1
+    // MSHR: max outstanding misses
+    localparam int unsigned RD_FIFO_DEPTH = `CONF_HPDCACHE_MSHR_SETS
+                                          * `CONF_HPDCACHE_MSHR_WAYS;      // 16
+    localparam int unsigned WBUF_TCW     = `CONF_HPDCACHE_WBUF_TIMECNT_WIDTH;
 
-    localparam hpdcache_cfg_t Cfg = hpdcacheBuildConfig(UserCfg);
+    // Clock / Reset
+    localparam real CLK_PERIOD = 10.0; // ns
 
-    // =========================================================================
-    // Local typedefs
-    // =========================================================================
-    localparam int unsigned MEM_ADDR_W = Cfg.u.memAddrWidth;
-    localparam int unsigned MEM_ID_W   = Cfg.u.memIdWidth;
-    localparam int unsigned MEM_DATA_W = Cfg.u.memDataWidth;
-    localparam int unsigned MEM_BE_W   = Cfg.u.memDataWidth/8;
+    // -------------------------------------------------------------------------
+    // Clock & Reset
+    // -------------------------------------------------------------------------
+    logic clk;
+    logic rst_n;
 
-    typedef logic [MEM_ADDR_W-1:0] lc_mem_addr_t;
-    typedef logic [MEM_ID_W-1:0]   lc_mem_id_t;
-    typedef logic [MEM_DATA_W-1:0] lc_mem_data_t;
-    typedef logic [MEM_BE_W-1:0]   lc_mem_be_t;
-
-    // =========================================================================
-    // Memory interface wires
-    // =========================================================================
-
-    // Read channel
-    logic              mem_req_read_ready_i;
-    logic              mem_req_read_valid_o;
-    lc_mem_addr_t      mem_req_read_addr_o;
-    hpdcache_mem_len_t     mem_req_read_len_o;
-    hpdcache_mem_size_t    mem_req_read_size_o;
-    lc_mem_id_t        mem_req_read_id_o;
-    hpdcache_mem_command_e mem_req_read_command_o;
-    hpdcache_mem_atomic_e  mem_req_read_atomic_o;
-    logic              mem_req_read_cacheable_o;
-
-    logic              mem_resp_read_ready_o;
-    logic              mem_resp_read_valid_i;
-    hpdcache_mem_error_e   mem_resp_read_error_i;
-    lc_mem_id_t        mem_resp_read_id_i;
-    lc_mem_data_t      mem_resp_read_data_i;
-    logic              mem_resp_read_last_i;
-
-    // Write channel
-    logic              mem_req_write_ready_i;
-    logic              mem_req_write_valid_o;
-    lc_mem_addr_t      mem_req_write_addr_o;
-    hpdcache_mem_len_t     mem_req_write_len_o;
-    hpdcache_mem_size_t    mem_req_write_size_o;
-    lc_mem_id_t        mem_req_write_id_o;
-    hpdcache_mem_command_e mem_req_write_command_o;
-    hpdcache_mem_atomic_e  mem_req_write_atomic_o;
-    logic              mem_req_write_cacheable_o;
-
-    logic              mem_req_write_data_ready_i;
-    logic              mem_req_write_data_valid_o;
-    lc_mem_data_t      mem_req_write_data_o;
-    lc_mem_be_t        mem_req_write_be_o;
-    logic              mem_req_write_last_o;
-
-    logic              mem_resp_write_ready_o;
-    logic              mem_resp_write_valid_i;
-    logic              mem_resp_write_is_atomic_i;
-    hpdcache_mem_error_e   mem_resp_write_error_i;
-    lc_mem_id_t        mem_resp_write_id_i;
-
-    // =========================================================================
-    // DUT: hpdcache_wrapper
-    // =========================================================================
-    hpdcache_wrapper u_hpdcache (
-        .clk_i                      (clk_i),
-        .rst_ni                     (rst_ni),
-        .wbuf_flush_i               (hpdcache_vif.wbuf_flush_i),
-        .core_req_valid_i           (hpdcache_vif.core_req_valid_i),
-        .core_req_ready_o           (hpdcache_vif.core_req_ready_o),
-        .core_req_i                 (hpdcache_vif.core_req_i),
-        .core_req_abort_i           (hpdcache_vif.core_req_abort_i),
-        .core_req_tag_i             (hpdcache_vif.core_req_tag_i),
-        .core_req_pma_i             (hpdcache_vif.core_req_pma_i),
-        .core_rsp_valid_o           (hpdcache_vif.core_rsp_valid_o),
-        .core_rsp_o                 (hpdcache_vif.core_rsp_o),
-        
-        .mem_req_read_ready_i       (mem_req_read_ready_i),
-        .mem_req_read_valid_o       (mem_req_read_valid_o),
-        .mem_req_read_addr_o        (mem_req_read_addr_o),
-        .mem_req_read_len_o         (mem_req_read_len_o),
-        .mem_req_read_size_o        (mem_req_read_size_o),
-        .mem_req_read_id_o          (mem_req_read_id_o),
-        .mem_req_read_command_o     (mem_req_read_command_o),
-        .mem_req_read_atomic_o      (mem_req_read_atomic_o),
-        .mem_req_read_cacheable_o   (mem_req_read_cacheable_o),
-        
-        .mem_resp_read_ready_o      (mem_resp_read_ready_o),
-        .mem_resp_read_valid_i      (mem_resp_read_valid_i),
-        .mem_resp_read_error_i      (mem_resp_read_error_i),
-        .mem_resp_read_id_i         (mem_resp_read_id_i),
-        .mem_resp_read_data_i       (mem_resp_read_data_i),
-        .mem_resp_read_last_i       (mem_resp_read_last_i),
-        
-        .mem_req_write_ready_i      (mem_req_write_ready_i),
-        .mem_req_write_valid_o      (mem_req_write_valid_o),
-        .mem_req_write_addr_o       (mem_req_write_addr_o),
-        .mem_req_write_len_o        (mem_req_write_len_o),
-        .mem_req_write_size_o       (mem_req_write_size_o),
-        .mem_req_write_id_o         (mem_req_write_id_o),
-        .mem_req_write_command_o    (mem_req_write_command_o),
-        .mem_req_write_atomic_o     (mem_req_write_atomic_o),
-        .mem_req_write_cacheable_o  (mem_req_write_cacheable_o),
-        
-        .mem_req_write_data_ready_i (mem_req_write_data_ready_i),
-        .mem_req_write_data_valid_o (mem_req_write_data_valid_o),
-        .mem_req_write_data_o       (mem_req_write_data_o),
-        .mem_req_write_be_o         (mem_req_write_be_o),
-        .mem_req_write_last_o       (mem_req_write_last_o),
-        
-        .mem_resp_write_ready_o     (mem_resp_write_ready_o),
-        .mem_resp_write_valid_i     (mem_resp_write_valid_i),
-        .mem_resp_write_is_atomic_i (mem_resp_write_is_atomic_i),
-        .mem_resp_write_error_i     (mem_resp_write_error_i),
-        .mem_resp_write_id_i        (mem_resp_write_id_i),
-
-        // ---------------------------------------------------------------------
-        // Configuration tie-offs (Fix Lỗi 1)
-        // ---------------------------------------------------------------------
-        .cfg_enable_i                        (1'b1),
-        .cfg_wbuf_threshold_i                ('0),
-        .cfg_wbuf_reset_timecnt_on_write_i   (1'b0),
-        .cfg_wbuf_sequential_waw_i           (1'b0),
-        .cfg_wbuf_inhibit_write_coalescing_i (1'b0),
-        .cfg_prefetch_updt_plru_i            (1'b0),
-        .cfg_error_on_cacheable_amo_i        (1'b0),
-        .cfg_rtab_single_entry_i             (1'b0),
-        .cfg_default_wb_i                    (1'b0),
-        .cfg_scrub_enable_i                  (1'b0),
-        .cfg_scrub_period_i                  ('0),
-        .cfg_scrub_restart_i                 (1'b0),
-
-        // ---------------------------------------------------------------------
-        // Status and Event float/open (Fix Lỗi 1)
-        // ---------------------------------------------------------------------
-        .wbuf_empty_o                        (),
-        .evt_cache_write_miss_o              (),
-        .evt_cache_read_miss_o               (),
-        .evt_cache_dir_unc_err_o             (),
-        .evt_cache_dir_cor_err_o             (),
-        .evt_cache_dat_unc_err_o             (),
-        .evt_cache_dat_cor_err_o             (),
-        .evt_scrub_complete_o                (),
-        .evt_uncached_req_o                  (),
-        .evt_cmo_req_o                       (),
-        .evt_write_req_o                     (),
-        .evt_read_req_o                      (),
-        .evt_prefetch_req_o                  (),
-        .evt_req_on_hold_o                   (),
-        .evt_rtab_rollback_o                 (),
-        .evt_stall_refill_o                  (),
-        .evt_stall_o                         ()
-    );
-
-    // =========================================================================
-    // Behavioral SV memory model — 64KB
-    // =========================================================================
-    localparam int unsigned MEM_DEPTH    = 65536;
-    localparam int unsigned BYTES_PER_BT = MEM_DATA_W / 8;  // 8
-
-    logic [7:0] shadow_mem [0:MEM_DEPTH-1];
-
-    // -- Read channel --
-    logic         rd_pending;
-    lc_mem_id_t   rd_id_q;
-    lc_mem_addr_t rd_addr_q;
-    int unsigned  rd_beats_total;
-    int unsigned  rd_beat_cnt;
-
-    assign mem_req_read_ready_i = 1'b1;
-
-    always_ff @(posedge clk_i or negedge rst_ni) begin
-        if (!rst_ni) begin
-            rd_pending            <= 1'b0;
-            rd_id_q               <= '0;
-            rd_addr_q             <= '0;
-            rd_beats_total        <= 0;
-            rd_beat_cnt           <= 0;
-            mem_resp_read_valid_i <= 1'b0;
-            mem_resp_read_error_i <= HPDCACHE_MEM_RESP_OK;
-            mem_resp_read_id_i    <= '0;
-            mem_resp_read_data_i  <= '0;
-            mem_resp_read_last_i  <= 1'b0;
-        end else begin
-            mem_resp_read_valid_i <= 1'b0;
-            mem_resp_read_last_i  <= 1'b0;
-
-            if (mem_req_read_valid_o && mem_req_read_ready_i && !rd_pending) begin
-                rd_id_q        <= mem_req_read_id_o;
-                rd_addr_q      <= mem_req_read_addr_o;
-                rd_beats_total <= int'(mem_req_read_len_o) + 1;
-                rd_beat_cnt    <= 0;
-                rd_pending     <= 1'b1;
-            end
-
-            if (rd_pending && mem_resp_read_ready_o) begin : blk_rd
-                lc_mem_data_t rdata;
-                lc_mem_addr_t beat_addr;
-                int unsigned  idx;
-
-                beat_addr = rd_addr_q + lc_mem_addr_t'(rd_beat_cnt * BYTES_PER_BT);
-
-                for (int b = 0; b < BYTES_PER_BT; b++) begin
-                    idx = int'(beat_addr) + b;
-                    rdata[b*8 +: 8] = (idx < MEM_DEPTH) ? shadow_mem[idx] : 8'hxx;
-                end
-
-                mem_resp_read_valid_i <= 1'b1;
-                mem_resp_read_error_i <= HPDCACHE_MEM_RESP_OK;
-                mem_resp_read_id_i    <= rd_id_q;
-                mem_resp_read_data_i  <= rdata;
-
-                if (rd_beat_cnt == rd_beats_total - 1) begin
-                    mem_resp_read_last_i <= 1'b1;
-                    rd_pending           <= 1'b0;
-                    rd_beat_cnt          <= 0;
-                end else begin
-                    rd_beat_cnt <= rd_beat_cnt + 1;
-                end
-            end
-        end
-    end
-
-    // -- Write channel --
-    assign mem_req_write_ready_i      = 1'b1;
-    assign mem_req_write_data_ready_i = 1'b1;
-
-    logic         wr_pending;
-    lc_mem_id_t   wr_id_q;
-    lc_mem_addr_t wr_addr_q;
-    int unsigned  wr_beats_total;
-    int unsigned  wr_beat_cnt;
-
-    // Sửa Lỗi 2: Sử dụng always thay cho always_ff để chia sẻ biến với khối initial
-    always @(posedge clk_i or negedge rst_ni) begin
-        if (!rst_ni) begin
-            wr_pending                 <= 1'b0;
-            wr_id_q                    <= '0;
-            wr_addr_q                  <= '0;
-            wr_beats_total             <= 0;
-            wr_beat_cnt                <= 0;
-            mem_resp_write_valid_i     <= 1'b0;
-            mem_resp_write_is_atomic_i <= 1'b0;
-            mem_resp_write_error_i     <= HPDCACHE_MEM_RESP_OK;
-            mem_resp_write_id_i        <= '0;
-        end else begin
-            mem_resp_write_valid_i <= 1'b0;
-
-            if (mem_req_write_valid_o && mem_req_write_ready_i && !wr_pending) begin
-                wr_id_q        <= mem_req_write_id_o;
-                wr_addr_q      <= mem_req_write_addr_o;
-                wr_beats_total <= int'(mem_req_write_len_o) + 1;
-                wr_beat_cnt    <= 0;
-                wr_pending     <= 1'b1;
-            end
-
-            if (wr_pending && mem_req_write_data_valid_o && mem_req_write_data_ready_i) begin : blk_wr
-                lc_mem_addr_t beat_addr;
-                int unsigned  idx;
-
-                beat_addr = wr_addr_q + lc_mem_addr_t'(wr_beat_cnt * BYTES_PER_BT);
-
-                for (int b = 0; b < BYTES_PER_BT; b++) begin
-                    idx = int'(beat_addr) + b;
-                    if (mem_req_write_be_o[b] && idx < MEM_DEPTH)
-                        shadow_mem[idx] <= mem_req_write_data_o[b*8 +: 8];
-                end
-
-                if (mem_req_write_last_o) begin
-                    mem_resp_write_valid_i     <= 1'b1;
-                    mem_resp_write_is_atomic_i <= 1'b1;
-                    mem_resp_write_error_i     <= HPDCACHE_MEM_RESP_OK;
-                    mem_resp_write_id_i        <= wr_id_q;
-                    wr_pending                 <= 1'b0;
-                    wr_beat_cnt                <= 0;
-                end else begin
-                    wr_beat_cnt <= wr_beat_cnt + 1;
-                end
-            end
-        end
-    end
+    initial clk = 1'b0;
+    always #(CLK_PERIOD/2) clk = ~clk;
 
     initial begin
-        for (int i = 0; i < MEM_DEPTH; i++)
-            shadow_mem[i] = 8'(i);
+        rst_n = 1'b0;
+        repeat (10) @(posedge clk);  // 10 cycles reset
+        @(negedge clk);
+        rst_n = 1'b1;
+    end
+
+    // -------------------------------------------------------------------------
+    // Interface instantiation
+    // -------------------------------------------------------------------------
+    hpdcache_if dut_if (.clk_i(clk), .rst_ni(rst_n));
+
+    // -------------------------------------------------------------------------
+    // DUT instantiation
+    // -------------------------------------------------------------------------
+    hpdcache_wrapper i_dut (
+        .clk_i                              (clk),
+        .rst_ni                             (rst_n),
+
+        .wbuf_flush_i                       (dut_if.wbuf_flush_i),
+
+        // Core request
+        .core_req_valid_i                   (dut_if.core_req_valid_i),
+        .core_req_ready_o                   (dut_if.core_req_ready_o),
+        .core_req_i                         (dut_if.core_req_i),
+        .core_req_abort_i                   (dut_if.core_req_abort_i),
+        .core_req_tag_i                     (dut_if.core_req_tag_i),
+        .core_req_pma_i                     (dut_if.core_req_pma_i),
+
+        // Core response
+        .core_rsp_valid_o                   (dut_if.core_rsp_valid_o),
+        .core_rsp_o                         (dut_if.core_rsp_o),
+
+        // Memory read
+        .mem_req_read_ready_i               (dut_if.mem_req_read_ready_i),
+        .mem_req_read_valid_o               (dut_if.mem_req_read_valid_o),
+        .mem_req_read_addr_o                (dut_if.mem_req_read_addr_o),
+        .mem_req_read_len_o                 (dut_if.mem_req_read_len_o),
+        .mem_req_read_size_o                (dut_if.mem_req_read_size_o),
+        .mem_req_read_id_o                  (dut_if.mem_req_read_id_o),
+        .mem_req_read_command_o             (dut_if.mem_req_read_command_o),
+        .mem_req_read_atomic_o              (dut_if.mem_req_read_atomic_o),
+        .mem_req_read_cacheable_o           (dut_if.mem_req_read_cacheable_o),
+
+        .mem_resp_read_ready_o              (dut_if.mem_resp_read_ready_o),  // DUT OUTPUT
+        .mem_resp_read_valid_i              (dut_if.mem_resp_read_valid_i),
+        .mem_resp_read_error_i              (dut_if.mem_resp_read_error_i),
+        .mem_resp_read_id_i                 (dut_if.mem_resp_read_id_i),
+        .mem_resp_read_data_i               (dut_if.mem_resp_read_data_i),
+        .mem_resp_read_last_i               (dut_if.mem_resp_read_last_i),
+
+        // Memory write
+        .mem_req_write_ready_i              (dut_if.mem_req_write_ready_i),
+        .mem_req_write_valid_o              (dut_if.mem_req_write_valid_o),
+        .mem_req_write_addr_o               (dut_if.mem_req_write_addr_o),
+        .mem_req_write_len_o                (dut_if.mem_req_write_len_o),
+        .mem_req_write_size_o               (dut_if.mem_req_write_size_o),
+        .mem_req_write_id_o                 (dut_if.mem_req_write_id_o),
+        .mem_req_write_command_o            (dut_if.mem_req_write_command_o),
+        .mem_req_write_atomic_o             (dut_if.mem_req_write_atomic_o),
+        .mem_req_write_cacheable_o          (dut_if.mem_req_write_cacheable_o),
+
+        .mem_req_write_data_ready_i         (dut_if.mem_req_write_data_ready_i),
+        .mem_req_write_data_valid_o         (dut_if.mem_req_write_data_valid_o),
+        .mem_req_write_data_o               (dut_if.mem_req_write_data_o),
+        .mem_req_write_be_o                 (dut_if.mem_req_write_be_o),
+        .mem_req_write_last_o               (dut_if.mem_req_write_last_o),
+
+        .mem_resp_write_ready_o             (dut_if.mem_resp_write_ready_o),  // DUT OUTPUT
+        .mem_resp_write_valid_i             (dut_if.mem_resp_write_valid_i),
+        .mem_resp_write_is_atomic_i         (dut_if.mem_resp_write_is_atomic_i),
+        .mem_resp_write_error_i             (dut_if.mem_resp_write_error_i),
+        .mem_resp_write_id_i                (dut_if.mem_resp_write_id_i),
+
+        // Performance events
+        .evt_cache_write_miss_o             (dut_if.evt_cache_write_miss_o),
+        .evt_cache_read_miss_o              (dut_if.evt_cache_read_miss_o),
+        .evt_cache_dir_unc_err_o            (dut_if.evt_cache_dir_unc_err_o),
+        .evt_cache_dir_cor_err_o            (dut_if.evt_cache_dir_cor_err_o),
+        .evt_cache_dat_unc_err_o            (dut_if.evt_cache_dat_unc_err_o),
+        .evt_cache_dat_cor_err_o            (dut_if.evt_cache_dat_cor_err_o),
+        .evt_scrub_complete_o               (dut_if.evt_scrub_complete_o),
+        .evt_uncached_req_o                 (dut_if.evt_uncached_req_o),
+        .evt_cmo_req_o                      (dut_if.evt_cmo_req_o),
+        .evt_write_req_o                    (dut_if.evt_write_req_o),
+        .evt_read_req_o                     (dut_if.evt_read_req_o),
+        .evt_prefetch_req_o                 (dut_if.evt_prefetch_req_o),
+        .evt_req_on_hold_o                  (dut_if.evt_req_on_hold_o),
+        .evt_rtab_rollback_o                (dut_if.evt_rtab_rollback_o),
+        .evt_stall_refill_o                 (dut_if.evt_stall_refill_o),
+        .evt_stall_o                        (dut_if.evt_stall_o),
+        .wbuf_empty_o                       (dut_if.wbuf_empty_o),
+
+        // Config
+        .cfg_enable_i                       (dut_if.cfg_enable_i),
+        .cfg_wbuf_threshold_i               (4'(dut_if.cfg_wbuf_threshold_i)),
+        .cfg_wbuf_reset_timecnt_on_write_i  (dut_if.cfg_wbuf_reset_timecnt_on_write_i),
+        .cfg_wbuf_sequential_waw_i          (dut_if.cfg_wbuf_sequential_waw_i),
+        .cfg_wbuf_inhibit_write_coalescing_i(dut_if.cfg_wbuf_inhibit_write_coalescing_i),
+        .cfg_prefetch_updt_plru_i           (dut_if.cfg_prefetch_updt_plru_i),
+        .cfg_error_on_cacheable_amo_i       (dut_if.cfg_error_on_cacheable_amo_i),
+        .cfg_rtab_single_entry_i            (dut_if.cfg_rtab_single_entry_i),
+        .cfg_default_wb_i                   (dut_if.cfg_default_wb_i),
+        .cfg_scrub_enable_i                 (dut_if.cfg_scrub_enable_i),
+        .cfg_scrub_period_i                 (dut_if.cfg_scrub_period_i),
+        .cfg_scrub_restart_i                (dut_if.cfg_scrub_restart_i)
+    );
+
+    // -------------------------------------------------------------------------
+    // Behavioral AXI Memory Model
+    // -------------------------------------------------------------------------
+    // Shadow memory: indexed bằng cacheline address (addr >> log2(CL_BYTES))
+    // Mỗi entry = 1 cacheline = CL_BYTES bytes = MEM_DW bits (512-bit cho 1 beat)
+    // Note: BEATS_PER_CL=1 khi MEM_DW=512 và CL_BYTES=64
+    logic [MEM_DW-1:0] mem_model [logic [MEM_AW-1:0]];
+
+    // Read FIFO
+    typedef struct {
+        logic [MEM_AW-1:0]  addr;
+        logic [MEM_IDW-1:0] id;
+        logic [7:0]         len;    // AXI burst length - 1
+    } rd_req_t;
+
+    rd_req_t  rd_fifo [0:RD_FIFO_DEPTH-1];
+    int       rd_fifo_wr_ptr;
+    int       rd_fifo_rd_ptr;
+    int       rd_fifo_cnt;
+    logic     rd_serving;
+    rd_req_t  rd_current;
+    int       rd_beat_cnt;
+
+    // Write tracking
+    logic [MEM_AW-1:0]  wr_addr_q;
+    logic [MEM_IDW-1:0] wr_id_q;
+    logic               wr_pending;
+
+    initial begin
+        rd_fifo_wr_ptr = 0;
+        rd_fifo_rd_ptr = 0;
+        rd_fifo_cnt    = 0;
+        rd_serving     = 1'b0;
+        rd_beat_cnt    = 0;
+        wr_pending     = 1'b0;
+
+        // Initialize mem_resp response signals (tb side)
+        dut_if.mem_resp_read_valid_i    = 1'b0;
+        dut_if.mem_resp_read_error_i  = hpdcache_pkg::hpdcache_mem_error_e'(0);
+        dut_if.mem_resp_read_id_i       = '0;
+        dut_if.mem_resp_read_data_i     = '0;
+        dut_if.mem_resp_read_last_i     = 1'b0;
+        dut_if.mem_resp_write_valid_i   = 1'b0;
+        dut_if.mem_resp_write_error_i = hpdcache_pkg::hpdcache_mem_error_e'(0);
+        dut_if.mem_resp_write_id_i      = '0;
+        dut_if.mem_resp_write_is_atomic_i = 1'b0;
+
+        // Accept all DUT read/write requests (memory always ready)
+        dut_if.mem_req_read_ready_i         = 1'b1;
+        dut_if.mem_req_write_ready_i        = 1'b1;
+        dut_if.mem_req_write_data_ready_i   = 1'b1;
+
+        fork
+            axi_read_req_enqueue();
+            axi_read_resp_serve();
+            axi_write_handle();
+        join_none
+    end
+
+    // -------------------------------------------------------------------------
+    // AXI Read: ENQ requests into FIFO
+    // -------------------------------------------------------------------------
+    task automatic axi_read_req_enqueue();
+        forever begin
+            @(posedge clk);
+            if (!rst_n) begin
+                rd_fifo_wr_ptr = 0; rd_fifo_rd_ptr = 0; rd_fifo_cnt = 0;
+            end else if (dut_if.mem_req_read_valid_o && dut_if.mem_req_read_ready_i) begin
+                if (rd_fifo_cnt >= RD_FIFO_DEPTH) begin
+                    $display("[MEM @%0t] ERROR: RD FIFO FULL! depth=%0d", $time, RD_FIFO_DEPTH);
+                    // Backpressure: deassert ready (rare — normally MSHR limits to 16)
+                    dut_if.mem_req_read_ready_i = 1'b0;
+                end else begin
+                    rd_fifo[rd_fifo_wr_ptr].addr = dut_if.mem_req_read_addr_o;
+                    rd_fifo[rd_fifo_wr_ptr].id   = dut_if.mem_req_read_id_o;
+                    rd_fifo[rd_fifo_wr_ptr].len  = dut_if.mem_req_read_len_o;
+                    rd_fifo_wr_ptr = (rd_fifo_wr_ptr + 1) % RD_FIFO_DEPTH;
+                    rd_fifo_cnt++;
+                    dut_if.mem_req_read_ready_i = 1'b1;
+                    $display("[MEM @%0t] RD FIFO ENQ: addr=0x%014h id=%0d len=%0d cnt=%0d",
+                             $time, dut_if.mem_req_read_addr_o, dut_if.mem_req_read_id_o,
+                             dut_if.mem_req_read_len_o, rd_fifo_cnt);
+                end
+            end
+        end
+    endtask
+
+    // -------------------------------------------------------------------------
+    // AXI Read: DEQ + SERVE beats
+    // FIX-1: POLL dut_if.mem_resp_read_ready_o (DUT OUTPUT) trước khi serve
+    // -------------------------------------------------------------------------
+    task automatic axi_read_resp_serve();
+        // FIX: AXI4 protocol — sender drives valid INDEPENDENTLY of ready.
+        // Bug cũ: chờ ready_o=1 mới drive valid_i=1 → deadlock vì DUT
+        // (hpdcache_miss_handler) chỉ assert ready_o sau khi thấy valid_i=1.
+        // Fix: DEQ → drive valid+data ngay trên negedge → đợi posedge handshake
+        //      (valid & ready) → advance beat. Deassert valid chỉ sau last beat.
+        logic [MEM_AW-1:0] cl_addr;
+        logic [MEM_DW-1:0] resp_data;
+
+        forever begin
+            @(posedge clk);
+            if (!rst_n) begin
+                rd_serving = 1'b0;
+                dut_if.mem_resp_read_valid_i = 1'b0;
+                dut_if.mem_resp_read_last_i  = 1'b0;
+            end else if (!rd_serving && rd_fifo_cnt > 0) begin
+                // DEQ next request
+                rd_current     = rd_fifo[rd_fifo_rd_ptr];
+                rd_fifo_rd_ptr = (rd_fifo_rd_ptr + 1) % RD_FIFO_DEPTH;
+                rd_fifo_cnt--;
+                rd_beat_cnt    = 0;
+                rd_serving     = 1'b1;
+                $display("[MEM @%0t] RD FIFO DEQ: addr=0x%014h id=%0d",
+                         $time, rd_current.addr, rd_current.id);
+
+                // Lookup data
+                cl_addr = rd_current.addr >> $clog2(CL_BYTES);
+                if (mem_model.exists(cl_addr))
+                    resp_data = mem_model[cl_addr];
+                else begin
+                    mem_model[cl_addr] = {16{cl_addr[31:0]}};
+                    resp_data = mem_model[cl_addr];
+                end
+
+                // Drive valid+data ngay trên negedge (không chờ ready_o)
+                @(negedge clk);
+                dut_if.mem_resp_read_valid_i = 1'b1;
+                dut_if.mem_resp_read_id_i    = rd_current.id;
+                dut_if.mem_resp_read_data_i  = resp_data;
+                dut_if.mem_resp_read_error_i = hpdcache_pkg::hpdcache_mem_error_e'(0);
+                dut_if.mem_resp_read_last_i  = (rd_current.len == 0) ? 1'b1 : 1'b0;
+
+            end else if (rd_serving) begin
+                // Handshake: beat accepted khi valid_i=1 && ready_o=1 tại posedge
+                if (dut_if.mem_resp_read_valid_i && dut_if.mem_resp_read_ready_o) begin
+                    $display("[MEM @%0t] RD SERVE beat=%0d/%0d id=%0d addr=0x%014h",
+                             $time, rd_beat_cnt, rd_current.len,
+                             rd_current.id, rd_current.addr);
+
+                    if (rd_beat_cnt == rd_current.len) begin
+                        // Last beat accepted → deassert valid
+                        @(negedge clk);
+                        dut_if.mem_resp_read_valid_i = 1'b0;
+                        dut_if.mem_resp_read_last_i  = 1'b0;
+                        rd_serving = 1'b0;
+                        $display("[MEM @%0t] RD DONE: id=%0d", $time, rd_current.id);
+                    end else begin
+                        // Advance to next beat
+                        rd_beat_cnt++;
+                        cl_addr = (rd_current.addr >> $clog2(CL_BYTES)) + rd_beat_cnt;
+                        if (mem_model.exists(cl_addr))
+                            resp_data = mem_model[cl_addr];
+                        else begin
+                            mem_model[cl_addr] = {16{cl_addr[31:0]}};
+                            resp_data = mem_model[cl_addr];
+                        end
+                        @(negedge clk);
+                        dut_if.mem_resp_read_data_i = resp_data;
+                        dut_if.mem_resp_read_last_i = (rd_beat_cnt == rd_current.len) ? 1'b1 : 1'b0;
+                    end
+                end
+                // valid_i stays asserted until ready_o=1 (AXI4 rule: cannot deassert valid)
+            end
+        end
+    endtask
+
+    // -------------------------------------------------------------------------
+    // AXI Write: capture write data, update shadow memory, ACK
+    // FIX-4: Chờ mem_resp_write_ready_o=1 trước khi assert write response
+    // -------------------------------------------------------------------------
+    task automatic axi_write_handle();
+        logic [MEM_AW-1:0] cl_addr;
+
+        forever begin
+            @(posedge clk);
+            if (!rst_n) begin
+                wr_pending = 1'b0;
+                dut_if.mem_resp_write_valid_i = 1'b0;
+            end else begin
+                // Capture write address
+                if (dut_if.mem_req_write_valid_o && dut_if.mem_req_write_ready_i) begin
+                    wr_addr_q   = dut_if.mem_req_write_addr_o;
+                    wr_id_q     = dut_if.mem_req_write_id_o;
+                    wr_pending  = 1'b1;
+                end
+                // Capture write data + update shadow memory
+                if (dut_if.mem_req_write_data_valid_o && dut_if.mem_req_write_data_ready_i) begin
+                    if (wr_pending) begin
+                        cl_addr = wr_addr_q >> $clog2(CL_BYTES);
+                        // Apply BE
+                        if (!mem_model.exists(cl_addr)) mem_model[cl_addr] = '0;
+                        for (int b = 0; b < MEM_DW/8; b++) begin
+                            if (dut_if.mem_req_write_be_o[b])
+                                mem_model[cl_addr][b*8 +: 8] = dut_if.mem_req_write_data_o[b*8 +: 8];
+                        end
+                        $display("[MEM @%0t] WR: addr=0x%014h id=%0d last=%0b",
+                                 $time, wr_addr_q, wr_id_q, dut_if.mem_req_write_last_o);
+                    end
+                end
+                // Send write response: FIX-4 — đợi DUT ready
+                if (wr_pending && !dut_if.mem_resp_write_valid_i) begin
+                    if (dut_if.mem_resp_write_ready_o) begin
+                        @(negedge clk);
+                        dut_if.mem_resp_write_valid_i     = 1'b1;
+                        dut_if.mem_resp_write_id_i        = wr_id_q;
+                        dut_if.mem_resp_write_error_i     = '0;
+                        dut_if.mem_resp_write_is_atomic_i = 1'b0;
+                        @(posedge clk);
+                        @(negedge clk);
+                        dut_if.mem_resp_write_valid_i = 1'b0;
+                        wr_pending = 1'b0;
+                        $display("[MEM @%0t] WR RESP: id=%0d", $time, wr_id_q);
+                    end
+                end
+            end
+        end
+    endtask
+
+    // -------------------------------------------------------------------------
+    // Waveform dump
+    // -------------------------------------------------------------------------
+    initial begin
+        $dumpfile("dump_hpdcache.vcd");
+        $dumpvars(0, hw_top);
     end
 
 endmodule : hw_top

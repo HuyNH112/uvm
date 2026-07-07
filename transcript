@@ -1,4 +1,10 @@
 do run_uvm.do
+# hpdcache_base_test
+# C:/altera/23.3/questa_fse/verilog_src/uvm-1.1d
+# D:/HCMUS/THESIS/cv-hpdcache-master
+# D:/HCMUS/UVM
+# D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include
+# === Step 1: Compile RTL (project files) ===
 # Compile of hpdcache_config.svh was successful.
 # Compile of hpdcache_typedef.svh was successful.
 # Compile of domino_pkg.sv was successful.
@@ -57,55 +63,117 @@ do run_uvm.do
 # Compile of hpdcache_sram_wmask_1rw.sv was successful with warnings.
 # Compile of tb_hpdcache_prefetch.sv was successful.
 # 57 compiles, 0 failed with no errors.
-# D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include
+# Compile of hpdcache_config.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of domino_pkg.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_lfsr.sv was successful.
+# Compile of hpdcache_sync_buffer.sv was successful.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg_initialized.sv was successful.
+# Compile of hpdcache_fxarb.sv was successful.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_prio_1hot_encoder.sv was successful.
+# Compile of hpdcache_prio_bin_encoder.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable.sv was successful with warnings.
+# Compile of hpdcache_sram_wmask.sv was successful with warnings.
+# Compile of hpdcache_regbank_wbyteenable_1rw.sv was successful.
+# Compile of hpdcache_regbank_wmask_1rw.sv was successful.
+# Compile of hpdcache_data_downsize.sv was successful.
+# Compile of hpdcache_data_upsize.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hwpf_stride_pkg.sv was successful.
+# Compile of hwpf_stride.sv was successful with warnings.
+# Compile of hwpf_stride_arb.sv was successful.
+# Compile of hwpf_stride_wrapper.sv was successful with warnings.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of hpdcache.sv was successful with warnings.
+# Compile of hpdcache_amo.sv was successful with warnings.
+# Compile of hpdcache_cmo.sv was successful with warnings.
+# Compile of hpdcache_core_arbiter.sv was successful with warnings.
+# Compile of hpdcache_ctrl.sv was successful with warnings.
+# Compile of hpdcache_ctrl_pe.sv was successful.
+# Compile of hpdcache_memctrl.sv was successful with warnings.
+# Compile of hpdcache_cbuf.sv was successful.
+# Compile of hpdcache_miss_handler.sv was successful with warnings.
+# Compile of hpdcache_mshr.sv was successful with warnings.
+# Compile of hpdcache_rtab.sv was successful with warnings.
+# Compile of hpdcache_uncached.sv was successful with warnings.
+# Compile of hpdcache_victim_plru.sv was successful.
+# Compile of hpdcache_victim_random.sv was successful.
+# Compile of hpdcache_victim_sel.sv was successful.
+# Compile of hpdcache_wbuf.sv was successful with warnings.
+# Compile of hpdcache_flush.sv was successful.
+# Compile of hpdcache_wrapper.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wmask_1rw.sv was successful with warnings.
+# Compile of tb_hpdcache_prefetch.sv was successful.
+# 57 compiles, 0 failed with no errors.
+# === Step 2: Compile Interface ===
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 09:38:27 on Jul 03,2026
-# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/hpdcache_if.sv 
+# Start time: 20:15:28 on Jul 07,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/HCMUS/UVM/sv" "+incdir+D:/HCMUS/UVM/tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" "+define+CONF_HPDCACHE_PA_WIDTH=56" "+define+CONF_HPDCACHE_WORD_WIDTH=64" "+define+CONF_HPDCACHE_SETS=64" "+define+CONF_HPDCACHE_WAYS=8" "+define+CONF_HPDCACHE_CL_WORDS=8" "+define+CONF_HPDCACHE_REQ_WORDS=2" "+define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6" "+define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3" "+define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56" "+define+CONF_HPDCACHE_MEM_ID_WIDTH=8" "+define+CONF_HPDCACHE_MEM_DATA_WIDTH=512" "+define+CONF_HPDCACHE_MSHR_SETS=4" "+define+CONF_HPDCACHE_MSHR_WAYS=4" "+define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4" "+define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_MSHR_USE_REGBANK=0" "+define+CONF_HPDCACHE_VICTIM_SEL=0" "+define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64" "+define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_ACCESS_WORDS=2" "+define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_WORDS=2" "+define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4" "+define+CONF_HPDCACHE_RTAB_ENTRIES=4" "+define+CONF_HPDCACHE_FLUSH_ENTRIES=2" "+define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_CBUF_ENTRIES=4" "+define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0" "+define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_WT_ENABLE=1" "+define+CONF_HPDCACHE_WB_ENABLE=1" "+define+CONF_HPDCACHE_LOW_LATENCY=0" "+define+CONF_HPDCACHE_ECC_ENABLE=0" "+define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0" "+define+HPDCACHE_ASSERT_OFF" D:/HCMUS/UVM/tb/hpdcache_if.sv 
 # -- Compiling interface hpdcache_if
 # -- Importing package hpdcache_pkg
 # 
 # Top level modules:
 # 	--none--
-# End time: 09:38:27 on Jul 03,2026, Elapsed time: 0:00:00
+# End time: 20:15:28 on Jul 07,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# === Step 3: Compile UVM Package ===
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 09:38:27 on Jul 03,2026
-# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" sv/hpdcache_uvm_pkg.sv 
+# Start time: 20:15:28 on Jul 07,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/HCMUS/UVM/sv" "+incdir+D:/HCMUS/UVM/tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" -L mtiUvm D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv 
 # -- Compiling package hpdcache_uvm_pkg
 # -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
-# ** Note: (vlog-2286) sv/hpdcache_uvm_pkg.sv(7): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# ** Note: (vlog-2286) D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv(26): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
 # -- Importing package hpdcache_pkg
 # 
 # Top level modules:
 # 	--none--
-# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:01
+# End time: 20:15:29 on Jul 07,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
+# === Step 4: Compile hw_top (DUT + Memory Model) ===
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 09:38:28 on Jul 03,2026
-# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/hw_top.sv 
+# Start time: 20:15:29 on Jul 07,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/HCMUS/UVM/sv" "+incdir+D:/HCMUS/UVM/tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" D:/HCMUS/UVM/tb/hw_top.sv 
 # -- Compiling module hw_top
 # -- Importing package hpdcache_pkg
 # 
 # Top level modules:
 # 	hw_top
-# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:00
+# End time: 20:15:29 on Jul 07,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
+# === Step 5: Compile tb_top (Tests + top) ===
 # Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
-# Start time: 09:38:28 on Jul 03,2026
-# vlog -reportprogress 300 -sv "+incdir+." "+incdir+sv" "+incdir+tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" tb/tb_top.sv 
-# ** Note: (vlog-2286) tb/tb_top.sv(4): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# Start time: 20:15:29 on Jul 07,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/HCMUS/UVM/sv" "+incdir+D:/HCMUS/UVM/tb" "+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include" -L mtiUvm D:/HCMUS/UVM/tb/tb_top.sv 
+# ** Note: (vlog-2286) D:/HCMUS/UVM/tb/tb_top.sv(10): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
 # -- Compiling package tb_top_sv_unit
 # -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
-# -- Importing package hpdcache_pkg
 # -- Importing package hpdcache_uvm_pkg
+# -- Importing package hpdcache_pkg
 # -- Compiling module tb_top
 # 
 # Top level modules:
 # 	tb_top
-# End time: 09:38:28 on Jul 03,2026, Elapsed time: 0:00:00
+# End time: 20:15:29 on Jul 07,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -voptargs=""+acc"" -L mtiUvm work.tb_top "+UVM_TESTNAME=hpdcache_base_test" "+UVM_VERBOSITY=UVM_LOW" 
-# Start time: 09:38:28 on Jul 03,2026
+# === Step 6: Simulate test: hpdcache_base_test ===
+# vsim -voptargs=""+acc=rn"" -L mtiUvm -L work work.tb_top "+UVM_TESTNAME=hpdcache_base_test" "+UVM_VERBOSITY=UVM_MEDIUM" -sv_seed random -t 1ns 
+# Start time: 20:15:29 on Jul 07,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_amo.sv(34): (vopt-13314) Defaulting port 'op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
@@ -122,33 +190,28 @@ do run_uvm.do
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv(27): (vopt-13314) Defaulting port 'wmask' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_miss_handler(fast)".
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(65): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv(55): (vopt-13314) Defaulting port 'alloc_deps_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_rtab(fast)".
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(54): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_uncached(fast)".
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(66): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(70): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache.sv(72): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_cmo.sv(66): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_cmo(fast)".
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(48): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(52): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(54): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
-# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_flush(fast)".
 # ** Warning: D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv(115): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=26.
 # Loading sv_std.std
-# Loading work.hpdcache_pkg(fast)
 # Loading work.hpdcache_if(fast)
+# Loading work.hpdcache_pkg(fast)
 # Loading mtiUvm.uvm_pkg(fast)
 # Loading work.hpdcache_uvm_pkg(fast)
 # Loading work.tb_top_sv_unit(fast)
 # Loading mtiUvm.questa_uvm_pkg(fast)
 # Loading work.tb_top(fast)
-# Loading work.hpdcache_if(fast__7)
 # Loading work.hw_top(fast)
+# Loading work.hpdcache_if(fast__2)
 # Loading work.hpdcache_wrapper(fast)
 # Loading work.hpdcache(fast)
 # Loading work.hpdcache_core_arbiter(fast)
@@ -223,13 +286,85 @@ do run_uvm.do
 # Loading work.hpdcache_fifo_reg(fast__8)
 # Loading work.hpdcache_mux(fast__16)
 # Loading work.hpdcache_mux(fast__17)
+# ** Warning: (vsim-8386) Illegal assignment to type 'enum reg[1:0] hpdcache_pkg::hpdcache_mem_error_e' from type 'bit': An enum variable may only be assigned the same enum typed variable or one of its values.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_top/u_hw File: D:/HCMUS/UVM/tb/hw_top.sv Line: 369
+# ** Warning: (vsim-3015) [PCDPC] - Port size (8) does not match connection size (4) for port 'cfg_wbuf_threshold_i'. The port definition is at: D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv(185).
+#    Time: 0 ns  Iteration: 0  Instance: /tb_top/u_hw/i_dut File: D:/HCMUS/UVM/tb/hw_top.sv Line: 70
 # Loading C:/intelFPGA/23.1std/questa_fse/uvm-1.1d\win64\uvm_dpi.dll
-# ** Error: Failure to checkout svverification license feature.
-# ** Error: (vsim-1) Unable to checkout verification license - required for testbench features (randomize, randcase, randsequence, covergroup).
-#    Time: 0 ps  Iteration: 0  Instance: /tb_top File: tb/tb_top.sv
-# Error loading design
-# Error: Error loading design
-#        Pausing macro execution
-# MACRO ./run_uvm.do PAUSED at line 55
-# End time: 10:15:41 on Jul 03,2026, Elapsed time: 0:37:13
-# Errors: 2, Warnings: 28
+# Sv_Seed = 872371617
+# ----------------------------------------------------------------
+# UVM-1.1d
+# (C) 2007-2013 Mentor Graphics Corporation
+# (C) 2007-2013 Cadence Design Systems, Inc.
+# (C) 2006-2013 Synopsys, Inc.
+# (C) 2011-2013 Cypress Semiconductor Corp.
+# ----------------------------------------------------------------
+# 
+#   ***********       IMPORTANT RELEASE NOTES         ************
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_NO_DEPRECATED undefined.
+#   See http://www.eda.org/svdb/view.php?id=3313 for more details.
+# 
+#   You are using a version of the UVM library that has been compiled
+#   with `UVM_OBJECT_MUST_HAVE_CONSTRUCTOR undefined.
+#   See http://www.eda.org/svdb/view.php?id=3770 for more details.
+# 
+#       (Specify +UVM_NO_RELNOTES to turn off this notice)
+# 
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(277) @ 0: reporter [Questa UVM] QUESTA_UVM-1.2.3
+# UVM_INFO verilog_src/questa_uvm_pkg-1.2/src/questa_uvm_pkg.sv(278) @ 0: reporter [Questa UVM]  questa_uvm::init(+struct)
+# UVM_INFO @ 0: reporter [RNTST] Running test hpdcache_base_test...
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_driver.sv(37) @ 100: uvm_test_top.env.driver [DRV] Reset released
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_driver.sv(39) @ 895: uvm_test_top.env.driver [DRV] Init delay done (80 cycles)
+# [MEM @965] WR: addr=0x000483f3f80b80 id=0 last=1
+# [MEM @975] RD FIFO ENQ: addr=0x000edfa32341c0 id=3 len=0 cnt=1
+# [MEM @975] RD FIFO DEQ: addr=0x000edfa32341c0 id=3
+# [MEM @985] RD SERVE beat=0/0 id=3 addr=0x000edfa32341c0
+# [MEM @985] WR: addr=0x000aba5dc5fd40 id=1 last=1
+# [MEM @990] RD DONE: id=3
+# [MEM @1005] RD FIFO ENQ: addr=0x000b083f499200 id=0 len=0 cnt=1
+# [MEM @1005] RD FIFO DEQ: addr=0x000b083f499200 id=0
+# [MEM @1015] RD SERVE beat=0/0 id=0 addr=0x000b083f499200
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_scoreboard.sv(133) @ 1015: uvm_test_top.env.scoreboard [SB] COLD MISS: PA=0x000edfa32341c0 TID=2 RDATA=0x7e8c8d077e8c8d077e8c8d077e8c8d07 (no ref)
+# [MEM @1020] RD DONE: id=0
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_scoreboard.sv(133) @ 1045: uvm_test_top.env.scoreboard [SB] COLD MISS: PA=0x000b083f499200 TID=3 RDATA=0x20fd264820fd264820fd264820fd2648 (no ref)
+# [MEM @1125] WR: addr=0x000eac29cf0300 id=2 last=1
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 4065: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_monitor.sv(121) @ 4065: uvm_test_top.env.monitor [MON] 
+# === Performance Events ===
+#   Read Miss : 2
+#   Write Miss: 3
+#   Prefetch  : 0
+#   Stall     : 8
+# ==========================
+# UVM_INFO D:/HCMUS/UVM/sv/hpdcache_scoreboard.sv(167) @ 4065: uvm_test_top.env.scoreboard [SB] 
+# ========== SCOREBOARD REPORT ==========
+#   REQ       : 5
+#   RSP       : 2
+#   PASS      : 0
+#   FAIL      : 0
+#   COLD MISS : 2
+# =======================================
+# [SB] TEST PASSED!
+# 
+# --- UVM Report Summary ---
+# 
+# ** Report counts by severity
+# UVM_INFO :   10
+# UVM_WARNING :    0
+# UVM_ERROR :    0
+# UVM_FATAL :    0
+# ** Report counts by id
+# [DRV]     2
+# [MON]     1
+# [Questa UVM]     2
+# [RNTST]     1
+# [SB]     3
+# [TEST_DONE]     1
+# ** Note: $finish    : C:/intelFPGA/23.1std/questa_fse/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
+#    Time: 4065 ns  Iteration: 55  Instance: /tb_top
+# 1
+# Break in Task uvm_pkg/uvm_root::run_test at C:/intelFPGA/23.1std/questa_fse/win64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh line 430
+# 0 ns
+# 4268 ns

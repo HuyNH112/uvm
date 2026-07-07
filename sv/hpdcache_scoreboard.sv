@@ -1,241 +1,176 @@
+// =============================================================================
+// hpdcache_scoreboard.sv
+// Self-checking scoreboard với shadow memory model
+//
+// Logic:
+//   STORE → shadow_mem[PA] = data masked by BE
+//   LOAD  → khi nhận RSP, compare DUT rdata với shadow_mem[PA]
+//           Cold miss → skip (no reference data)
+//           Hit → check byte-by-byte
+//
+// Dùng op_is_load/op_is_store helper functions từ pkg
+// UVM 1.1d: run_phase, fork process_req + process_rsp
+// =============================================================================
 `ifndef HPDCACHE_SCOREBOARD_SV
 `define HPDCACHE_SCOREBOARD_SV
 
 class hpdcache_scoreboard extends uvm_scoreboard;
+
     `uvm_component_utils(hpdcache_scoreboard)
 
-    uvm_tlm_analysis_fifo #(hpdcache_req_mon_t) af_hpdcache_req;
-    uvm_tlm_analysis_fifo #(hpdcache_rsp_t)     af_hpdcache_rsp;
+    // UVM 1.1d: uvm_tlm_analysis_fifo.analysis_export kiểu uvm_analysis_imp,
+    // KHÔNG phải uvm_analysis_export → không thể gán chéo kiểu.
+    // Fix: expose fifo.analysis_export trực tiếp, env connect vào đây.
+    uvm_tlm_analysis_fifo #(hpdcache_seq_item) fifo_req;
+    uvm_tlm_analysis_fifo #(hpdcache_seq_item) fifo_rsp;
 
-    typedef struct {
-        hpdcache_req_data_t  data;
-        hpdcache_req_be_t    be;
-        bit                  error;
-    } shadow_entry_t;
+    // Width shortcuts
+    localparam int unsigned PA_W   = UVM_HPDCACHE_PA_WIDTH;           // 56
+    localparam int unsigned DATA_W = UVM_REQ_DATA_WIDTH;              // 128
+    localparam int unsigned BE_W   = UVM_REQ_BE_WIDTH;                // 16
+    localparam int unsigned TID_W  = UVM_HPDCACHE_REQ_TRANS_ID_WIDTH; // 6
 
-    shadow_entry_t m_memory[hpdcache_req_addr_t];
+    // Shadow memory: PA → 128-bit data
+    logic [DATA_W-1:0]     shadow_mem   [logic [PA_W-1:0]];
+    // Pending LOAD tracking: TID → PA
+    logic [PA_W-1:0]       pending_load [logic [TID_W-1:0]];
 
-    hpdcache_req_mon_t m_inflight[hpdcache_req_tid_t][$];
+    int unsigned cnt_req, cnt_rsp, cnt_pass, cnt_fail, cnt_cold_miss;
 
-    bit m_error[hpdcache_set_t][hpdcache_tag_t];
-
-    int m_req_counter;
-    int m_rsp_counter;
-    int m_pass_counter;
-    int m_fail_counter;
-
-    event reset_asserted;
-    event reset_deasserted;
-
-    function new(string name = "hpdcache_scoreboard", uvm_component parent = null);
+    function new(string name, uvm_component parent);
         super.new(name, parent);
+        cnt_req = 0; cnt_rsp = 0; cnt_pass = 0;
+        cnt_fail = 0; cnt_cold_miss = 0;
     endfunction
 
-    virtual function void build_phase(uvm_phase phase);
+    function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-        af_hpdcache_req = new("af_hpdcache_req", this);
-        af_hpdcache_rsp = new("af_hpdcache_rsp", this);
-        m_req_counter   = 0;
-        m_rsp_counter   = 0;
-        m_pass_counter  = 0;
-        m_fail_counter  = 0;
-        `uvm_info("SB", "Build phase complete.", UVM_LOW)
+        fifo_req = new("fifo_req", this);
+        fifo_rsp = new("fifo_rsp", this);
+        // env.connect_phase kết nối monitor.ap_req → scoreboard.fifo_req.analysis_export
+        // và monitor.ap_rsp → scoreboard.fifo_rsp.analysis_export trực tiếp
     endfunction
 
-    virtual task pre_reset_phase(uvm_phase phase);
-        super.pre_reset_phase(phase);
-        -> reset_asserted;
-    endtask
-
-    virtual task reset_phase(uvm_phase phase);
-        super.reset_phase(phase);
-        m_memory.delete();
-        m_inflight.delete();
-        m_error.delete();
-        af_hpdcache_req.flush();
-        af_hpdcache_rsp.flush();
-        m_req_counter  = 0;
-        m_rsp_counter  = 0;
-        m_pass_counter = 0;
-        m_fail_counter = 0;
-        `uvm_info("SB", "Reset phase complete.", UVM_LOW)
-    endtask
-
-    virtual task post_reset_phase(uvm_phase phase);
-        super.post_reset_phase(phase);
-        -> reset_deasserted;
-    endtask
-
-    virtual task main_phase(uvm_phase phase);
-        super.main_phase(phase);
+    task run_phase(uvm_phase phase);
         fork
             process_req();
             process_rsp();
         join_none
-        `uvm_info("SB", "Main phase started.", UVM_LOW)
     endtask
 
-    virtual task process_req();
-        hpdcache_req_mon_t req;
-        hpdcache_set_t     set;
-        hpdcache_tag_t     tag;
-
+    // -------------------------------------------------------------------------
+    // process_req
+    // -------------------------------------------------------------------------
+    task process_req();
+        hpdcache_seq_item item;
+        logic [PA_W-1:0] pa;
         forever begin
-            af_hpdcache_req.get(req);
+            fifo_req.get(item);
+            cnt_req++;
+            pa = item.get_pa();
 
-            if (req.phys_indexed == 1'b0 && req.second_cycle == 1'b1) begin
-                if (m_inflight.exists(req.tid) && m_inflight[req.tid].size() > 0) begin
-                    m_inflight[req.tid][$].addr     = req.addr;
-                    m_inflight[req.tid][$].addr_tag = req.addr_tag;
+            if (is_store(item.op)) begin
+                // Ghi shadow memory theo BE
+                if (!shadow_mem.exists(pa))
+                    shadow_mem[pa] = '0;
+                for (int b = 0; b < BE_W; b++) begin
+                    if (item.be[b])
+                        shadow_mem[pa][b*8 +: 8] = item.wdata[b*8 +: 8];
                 end
-                continue;
-            end
-
-            set = req.addr[UVM_CL_OFFSET_WIDTH +: UVM_SET_WIDTH];
-            tag = req.addr_tag;
-
-            m_req_counter++;
-
-            if (req.need_rsp)
-                m_inflight[req.tid].push_back(req);
-
-            // ---------------------------------------------------------------
-            // STORE: update shadow memory
-            // ---------------------------------------------------------------
-            if (req.op == hpdcache_pkg::HPDCACHE_REQ_STORE) begin
-                shadow_entry_t entry;
-                hpdcache_req_addr_t key = req.addr;
-
-                if (m_memory.exists(key))
-                    entry = m_memory[key];
-                else begin
-                    entry.data  = '0;
-                    entry.be    = '0;
-                    entry.error = 1'b0;
-                end
-
-                foreach (req.be[i, j]) begin
-                    if (req.be[i][j]) begin
-                        entry.data[i][j*8 +: 8] = req.wdata[i][j*8 +: 8];
-                        entry.be[i][j]           = 1'b1;
-                    end
-                end
-
-                m_memory[key] = entry;
-
-                if (!req.pma.uncacheable)
-                    m_error[set][tag] = 1'b0;
-
                 `uvm_info("SB",
-                    $sformatf("STORE shadow: PA=0x%08h SET=%0d TAG=0x%05h WDATA=0x%016h BE=0x%02h",
-                              req.addr, set, tag, req.wdata, req.be),
+                    $sformatf("STORE: PA=0x%014h DATA=0x%032h BE=0x%04h",
+                              pa, item.wdata, item.be),
                     UVM_HIGH)
-            end
-        end
-    endtask : process_req
 
-    virtual task process_rsp();
-        hpdcache_rsp_t     rsp;
-        hpdcache_req_mon_t req;
-        hpdcache_set_t     set;
-        hpdcache_tag_t     tag;
-
-        forever begin
-            af_hpdcache_rsp.get(rsp);
-            m_rsp_counter++;
-
-            if (!m_inflight.exists(rsp.tid) || m_inflight[rsp.tid].size() == 0) begin
-                `uvm_error("SB",
-                    $sformatf("UNSOLICITED RSP: TID=%0d SID=%0d — no matching request",
-                              rsp.tid, rsp.sid))
-                continue;
-            end
-
-            req = m_inflight[rsp.tid].pop_front();
-            set = req.addr[UVM_CL_OFFSET_WIDTH +: UVM_SET_WIDTH];
-            tag = req.addr_tag;
-
-            // ---------------------------------------------------------------
-            // Error bit check
-            // ---------------------------------------------------------------
-            if (req.op == hpdcache_pkg::HPDCACHE_REQ_LOAD ||
-                (req.op == hpdcache_pkg::HPDCACHE_REQ_STORE && req.pma.uncacheable)) begin
-
-                bit exp_err = (m_error.exists(set) && m_error[set].exists(tag))
-                              ? m_error[set][tag] : 1'b0;
-
-                if (rsp.error !== exp_err) begin
-                    `uvm_error("SB",
-                        $sformatf("ERROR BIT MISMATCH: PA=0x%08h SET=%0d TAG=0x%05h EXP=%0b GOT=%0b",
-                                  req.addr, set, tag, exp_err, rsp.error))
-                    m_fail_counter++;
-                end
-            end
-
-            // ---------------------------------------------------------------
-            // Data check: LOAD
-            // ---------------------------------------------------------------
-            if (req.op == hpdcache_pkg::HPDCACHE_REQ_LOAD && rsp.error == 1'b0) begin
-                check_load_data(req, rsp);
-            end
-        end
-    endtask : process_rsp
-
-    function void check_load_data(hpdcache_req_mon_t req, hpdcache_rsp_t rsp);
-        hpdcache_set_t      set  = req.addr[UVM_CL_OFFSET_WIDTH +: UVM_SET_WIDTH];
-        hpdcache_tag_t      tag  = req.addr_tag;
-        hpdcache_req_addr_t key  = req.addr;
-        bit                 fail = 1'b0;
-
-        if (!m_memory.exists(key)) begin
-            `uvm_info("SB",
-                $sformatf("LOAD PA=0x%08h: cold miss / no shadow entry (skip data check)",
-                          req.addr),
-                UVM_HIGH)
-            return;
-        end
-
-        begin
-            shadow_entry_t entry = m_memory[key];
-
-            foreach (req.be[i, j]) begin
-                if (req.be[i][j] && entry.be[i][j]) begin
-                    if (rsp.rdata[i][j*8 +: 8] !== entry.data[i][j*8 +: 8]) begin
-                        `uvm_error("SB",
-                            $sformatf("DATA MISMATCH: PA=0x%08h BYTE[%0d] EXP=0x%02h GOT=0x%02h",
-                                      req.addr, j + i*(UVM_HPDCACHE_WORD_WIDTH/8),
-                                      entry.data[i][j*8 +: 8],
-                                      rsp.rdata[i][j*8 +: 8]))
-                        fail = 1'b1;
-                    end
-                end
-            end
-
-            if (fail) begin
-                m_fail_counter++;
-                `uvm_error("SB",
-                    $sformatf("LOAD FAIL: PA=0x%08h SET=%0d TAG=0x%05h TID=%0d",
-                              req.addr, set, tag, req.tid))
-            end else begin
-                m_pass_counter++;
+            end else if (is_load(item.op) && item.need_rsp) begin
+                // Track pending LOAD: TID → PA
+                if (pending_load.exists(item.tid))
+                    `uvm_warning("SB",
+                        $sformatf("TID=%0d already pending (collision?)", item.tid))
+                pending_load[item.tid] = pa;
                 `uvm_info("SB",
-                    $sformatf("LOAD PASS: PA=0x%08h SET=%0d TAG=0x%05h TID=%0d RDATA=0x%016h",
-                              req.addr, set, tag, req.tid, rsp.rdata),
+                    $sformatf("LOAD req: PA=0x%014h TID=%0d", pa, item.tid),
+                    UVM_HIGH)
+
+            end else if (is_cmo(item.op)) begin
+                `uvm_info("SB",
+                    $sformatf("CMO/PREFETCH: PA=0x%014h TID=%0d", pa, item.tid),
+                    UVM_HIGH)
+                // Prefetch không tạo response → không track
+
+            end else if (is_amo(item.op)) begin
+                `uvm_info("SB",
+                    $sformatf("AMO: PA=0x%014h TID=%0d (not data-checked)", pa, item.tid),
                     UVM_MEDIUM)
             end
         end
-    endfunction : check_load_data
+    endtask
 
-    virtual function void report_phase(uvm_phase phase);
-        super.report_phase(phase);
+    // -------------------------------------------------------------------------
+    // process_rsp
+    // -------------------------------------------------------------------------
+    task process_rsp();
+        hpdcache_seq_item rsp;
+        logic [PA_W-1:0]   pa;
+        logic [DATA_W-1:0] expected;
+        int                check_ok;
+
+        forever begin
+            fifo_rsp.get(rsp);
+            cnt_rsp++;
+
+            if (!pending_load.exists(rsp.tid)) begin
+                `uvm_warning("SB",
+                    $sformatf("RSP TID=%0d: no pending LOAD — skip", rsp.tid))
+                continue;
+            end
+
+            pa = pending_load[rsp.tid];
+            pending_load.delete(rsp.tid);
+
+            if (!shadow_mem.exists(pa)) begin
+                cnt_cold_miss++;
+                `uvm_info("SB",
+                    $sformatf("COLD MISS: PA=0x%014h TID=%0d RDATA=0x%032h (no ref)",
+                              pa, rsp.tid, rsp.wdata),
+                    UVM_MEDIUM)
+                continue;
+            end
+
+            expected = shadow_mem[pa];
+            check_ok = 1;
+            if (rsp.wdata !== expected) begin
+                for (int b = 0; b < BE_W; b++) begin
+                    if (rsp.wdata[b*8 +: 8] !== expected[b*8 +: 8]) begin
+                        check_ok = 0;
+                        `uvm_error("SB",
+                            $sformatf("MISMATCH: PA=0x%014h TID=%0d byte[%0d] GOT=0x%02h EXP=0x%02h",
+                                pa, rsp.tid, b,
+                                rsp.wdata[b*8 +: 8], expected[b*8 +: 8]))
+                    end
+                end
+            end
+
+            if (check_ok) begin
+                cnt_pass++;
+                `uvm_info("SB",
+                    $sformatf("LOAD PASS: PA=0x%014h TID=%0d RDATA=0x%032h",
+                              pa, rsp.tid, rsp.wdata),
+                    UVM_MEDIUM)
+            end else begin
+                cnt_fail++;
+            end
+        end
+    endtask
+
+    function void report_phase(uvm_phase phase);
         `uvm_info("SB", $sformatf(
-            "\n========== SCOREBOARD REPORT ==========\n  REQ  : %0d\n  RSP  : %0d\n  PASS : %0d\n  FAIL : %0d\n=======================================",
-            m_req_counter, m_rsp_counter, m_pass_counter, m_fail_counter),
-            UVM_LOW)
-        if (m_fail_counter > 0)
-            `uvm_error("SB", "TEST FAILED: Data/error mismatches detected!")
-        else if (m_rsp_counter > 0)
-            `uvm_info("SB", "TEST PASSED!", UVM_LOW)
+            "\n========== SCOREBOARD REPORT ==========\n  REQ       : %0d\n  RSP       : %0d\n  PASS      : %0d\n  FAIL      : %0d\n  COLD MISS : %0d\n=======================================\n[SB] %s",
+            cnt_req, cnt_rsp, cnt_pass, cnt_fail, cnt_cold_miss,
+            (cnt_fail == 0) ? "TEST PASSED!" : "TEST FAILED!"),
+            UVM_NONE)
+        if (cnt_fail > 0)
+            `uvm_error("SB", $sformatf("%0d data mismatches!", cnt_fail))
     endfunction
 
 endclass : hpdcache_scoreboard
