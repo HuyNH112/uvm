@@ -67,6 +67,12 @@ module hw_top;
     // -------------------------------------------------------------------------
     // DUT instantiation
     // -------------------------------------------------------------------------
+    // Intermediate signal: wbuf_threshold_i là 4-bit trong wrapper
+    // (wbuf_timecnt_t = logic unsigned [3:0]). Interface signal có thể
+    // khác origin typedef → Questa vsim-3015. Dùng explicit 4-bit slice.
+    logic [3:0] wbuf_threshold_4b;
+    assign wbuf_threshold_4b = dut_if.cfg_wbuf_threshold_i[3:0];
+
     hpdcache_wrapper i_dut (
         .clk_i                              (clk),
         .rst_ni                             (rst_n),
@@ -147,7 +153,7 @@ module hw_top;
 
         // Config
         .cfg_enable_i                       (dut_if.cfg_enable_i),
-        .cfg_wbuf_threshold_i               (4'(dut_if.cfg_wbuf_threshold_i)),
+        .cfg_wbuf_threshold_i               (wbuf_threshold_4b),
         .cfg_wbuf_reset_timecnt_on_write_i  (dut_if.cfg_wbuf_reset_timecnt_on_write_i),
         .cfg_wbuf_sequential_waw_i          (dut_if.cfg_wbuf_sequential_waw_i),
         .cfg_wbuf_inhibit_write_coalescing_i(dut_if.cfg_wbuf_inhibit_write_coalescing_i),
@@ -183,18 +189,30 @@ module hw_top;
     rd_req_t  rd_current;
     int       rd_beat_cnt;
 
-    // Write tracking
-    logic [MEM_AW-1:0]  wr_addr_q;
-    logic [MEM_IDW-1:0] wr_id_q;
-    logic               wr_pending;
+    // Write RSP FIFO — depth >= WBUF_DIR_ENTRIES=4
+    localparam int unsigned WR_RSP_DEPTH = `CONF_HPDCACHE_WBUF_DIR_ENTRIES;
+
+    typedef struct {
+        logic [MEM_AW-1:0]  addr;
+        logic [MEM_IDW-1:0] id;
+    } wr_entry_t;
+
+    wr_entry_t  wr_fifo     [0:WR_RSP_DEPTH-1];
+    int         wr_fifo_wr_ptr;
+    int         wr_fifo_rd_ptr;
+    int         wr_fifo_cnt;
+    logic       wr_rsp_serving;
 
     initial begin
         rd_fifo_wr_ptr = 0;
         rd_fifo_rd_ptr = 0;
         rd_fifo_cnt    = 0;
-        rd_serving     = 1'b0;
-        rd_beat_cnt    = 0;
-        wr_pending     = 1'b0;
+        rd_serving      = 1'b0;
+        rd_beat_cnt     = 0;
+        wr_fifo_wr_ptr  = 0;
+        wr_fifo_rd_ptr  = 0;
+        wr_fifo_cnt     = 0;
+        wr_rsp_serving  = 1'b0;
 
         // Initialize mem_resp response signals (tb side)
         dut_if.mem_resp_read_valid_i    = 1'b0;
@@ -327,56 +345,69 @@ module hw_top;
         end
     endtask
 
-    // -------------------------------------------------------------------------
-    // AXI Write: capture write data, update shadow memory, ACK
-    // FIX-4: Chờ mem_resp_write_ready_o=1 trước khi assert write response
-    // -------------------------------------------------------------------------
     task automatic axi_write_handle();
-        logic [MEM_AW-1:0] cl_addr;
+        logic [MEM_AW-1:0]  cl_addr;
+        wr_entry_t           cur_aw;
+        wr_entry_t           cur_b;
 
-        forever begin
-            @(posedge clk);
-            if (!rst_n) begin
-                wr_pending = 1'b0;
-                dut_if.mem_resp_write_valid_i = 1'b0;
-            end else begin
-                // Capture write address
-                if (dut_if.mem_req_write_valid_o && dut_if.mem_req_write_ready_i) begin
-                    wr_addr_q   = dut_if.mem_req_write_addr_o;
-                    wr_id_q     = dut_if.mem_req_write_id_o;
-                    wr_pending  = 1'b1;
-                end
-                // Capture write data + update shadow memory
-                if (dut_if.mem_req_write_data_valid_o && dut_if.mem_req_write_data_ready_i) begin
-                    if (wr_pending) begin
-                        cl_addr = wr_addr_q >> $clog2(CL_BYTES);
-                        // Apply BE
+        fork
+            forever begin
+                @(posedge clk);
+                if (!rst_n) begin
+                    wr_fifo_wr_ptr = 0;
+                    wr_fifo_rd_ptr = 0;
+                    wr_fifo_cnt    = 0;
+                end else begin
+                    if (dut_if.mem_req_write_valid_o && dut_if.mem_req_write_ready_i) begin
+                        cur_aw.addr = dut_if.mem_req_write_addr_o;
+                        cur_aw.id   = dut_if.mem_req_write_id_o;
+                    end
+                    if (dut_if.mem_req_write_data_valid_o && dut_if.mem_req_write_data_ready_i) begin
+                        cl_addr = cur_aw.addr >> $clog2(CL_BYTES);
                         if (!mem_model.exists(cl_addr)) mem_model[cl_addr] = '0;
                         for (int b = 0; b < MEM_DW/8; b++) begin
                             if (dut_if.mem_req_write_be_o[b])
                                 mem_model[cl_addr][b*8 +: 8] = dut_if.mem_req_write_data_o[b*8 +: 8];
                         end
                         $display("[MEM @%0t] WR: addr=0x%014h id=%0d last=%0b",
-                                 $time, wr_addr_q, wr_id_q, dut_if.mem_req_write_last_o);
-                    end
-                end
-                // Send write response: FIX-4 — đợi DUT ready
-                if (wr_pending && !dut_if.mem_resp_write_valid_i) begin
-                    if (dut_if.mem_resp_write_ready_o) begin
-                        @(negedge clk);
-                        dut_if.mem_resp_write_valid_i     = 1'b1;
-                        dut_if.mem_resp_write_id_i        = wr_id_q;
-                        dut_if.mem_resp_write_error_i     = '0;
-                        dut_if.mem_resp_write_is_atomic_i = 1'b0;
-                        @(posedge clk);
-                        @(negedge clk);
-                        dut_if.mem_resp_write_valid_i = 1'b0;
-                        wr_pending = 1'b0;
-                        $display("[MEM @%0t] WR RESP: id=%0d", $time, wr_id_q);
+                                 $time, cur_aw.addr, cur_aw.id, dut_if.mem_req_write_last_o);
+                        if (dut_if.mem_req_write_last_o) begin
+                            if (wr_fifo_cnt < WR_RSP_DEPTH) begin
+                                wr_fifo[wr_fifo_wr_ptr] = cur_aw;
+                                wr_fifo_wr_ptr = (wr_fifo_wr_ptr + 1) % WR_RSP_DEPTH;
+                                wr_fifo_cnt++;
+                            end else
+                                $display("[MEM @%0t] ERROR: WR RSP FIFO FULL!", $time);
+                        end
                     end
                 end
             end
-        end
+
+            forever begin
+                @(posedge clk);
+                if (!rst_n) begin
+                    wr_rsp_serving = 1'b0;
+                    dut_if.mem_resp_write_valid_i = 1'b0;
+                end else if (!wr_rsp_serving && wr_fifo_cnt > 0) begin
+                    cur_b          = wr_fifo[wr_fifo_rd_ptr];
+                    wr_fifo_rd_ptr = (wr_fifo_rd_ptr + 1) % WR_RSP_DEPTH;
+                    wr_fifo_cnt--;
+                    wr_rsp_serving = 1'b1;
+                    @(negedge clk);
+                    dut_if.mem_resp_write_valid_i     = 1'b1;
+                    dut_if.mem_resp_write_id_i        = cur_b.id;
+                    dut_if.mem_resp_write_error_i     = hpdcache_pkg::hpdcache_mem_error_e'(0);
+                    dut_if.mem_resp_write_is_atomic_i = 1'b0;
+                end else if (wr_rsp_serving) begin
+                    if (dut_if.mem_resp_write_valid_i && dut_if.mem_resp_write_ready_o) begin
+                        $display("[MEM @%0t] WR RESP: id=%0d", $time, cur_b.id);
+                        @(negedge clk);
+                        dut_if.mem_resp_write_valid_i = 1'b0;
+                        wr_rsp_serving = 1'b0;
+                    end
+                end
+            end
+        join_none
     endtask
 
     // -------------------------------------------------------------------------

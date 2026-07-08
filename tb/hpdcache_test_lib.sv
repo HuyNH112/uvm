@@ -188,7 +188,7 @@ class hpdcache_axi_stall_test extends hpdcache_base_test;
         phase.raise_objection(this);
         seq = hpdcache_axi_stall_seq::type_id::create("seq");
         seq.num_trans        = 20;
-        seq.max_stall_cycles = 5;
+        seq.max_stall_cycles = 10;
         seq.start(env.sequencer);
         repeat (drain_cycles) @(posedge env.driver.vif.clk_i);
         phase.drop_objection(this);

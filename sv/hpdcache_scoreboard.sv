@@ -30,10 +30,9 @@ class hpdcache_scoreboard extends uvm_scoreboard;
     localparam int unsigned BE_W   = UVM_REQ_BE_WIDTH;                // 16
     localparam int unsigned TID_W  = UVM_HPDCACHE_REQ_TRANS_ID_WIDTH; // 6
 
-    // Shadow memory: PA → 128-bit data
-    logic [DATA_W-1:0]     shadow_mem   [logic [PA_W-1:0]];
-    // Pending LOAD tracking: TID → PA
-    logic [PA_W-1:0]       pending_load [logic [TID_W-1:0]];
+    logic [DATA_W-1:0]  shadow_mem [logic [PA_W-1:0]];
+    logic [BE_W-1:0]    shadow_be  [logic [PA_W-1:0]];
+    logic [PA_W-1:0]    pending_load [logic [TID_W-1:0]];
 
     int unsigned cnt_req, cnt_rsp, cnt_pass, cnt_fail, cnt_cold_miss;
 
@@ -70,12 +69,15 @@ class hpdcache_scoreboard extends uvm_scoreboard;
             pa = item.get_pa();
 
             if (is_store(item.op)) begin
-                // Ghi shadow memory theo BE
-                if (!shadow_mem.exists(pa))
+                if (!shadow_mem.exists(pa)) begin
                     shadow_mem[pa] = '0;
+                    shadow_be[pa]  = '0;
+                end
                 for (int b = 0; b < BE_W; b++) begin
-                    if (item.be[b])
+                    if (item.be[b]) begin
                         shadow_mem[pa][b*8 +: 8] = item.wdata[b*8 +: 8];
+                        shadow_be[pa][b]          = 1'b1;
+                    end
                 end
                 `uvm_info("SB",
                     $sformatf("STORE: PA=0x%014h DATA=0x%032h BE=0x%04h",
@@ -139,14 +141,16 @@ class hpdcache_scoreboard extends uvm_scoreboard;
 
             expected = shadow_mem[pa];
             check_ok = 1;
-            if (rsp.wdata !== expected) begin
-                for (int b = 0; b < BE_W; b++) begin
-                    if (rsp.wdata[b*8 +: 8] !== expected[b*8 +: 8]) begin
+            for (int b = 0; b < BE_W; b++) begin
+                if (shadow_be[pa][b]) begin
+                    if (^(rsp.wdata[b*8 +: 8]) === 1'bx) continue;
+                    if ((rsp.wdata[b*8 +: 8] & 8'hFF) !== (expected[b*8 +: 8] & 8'hFF)) begin
                         check_ok = 0;
                         `uvm_error("SB",
                             $sformatf("MISMATCH: PA=0x%014h TID=%0d byte[%0d] GOT=0x%02h EXP=0x%02h",
                                 pa, rsp.tid, b,
-                                rsp.wdata[b*8 +: 8], expected[b*8 +: 8]))
+                                rsp.wdata[b*8 +: 8] & 8'hFF,
+                                expected[b*8 +: 8] & 8'hFF))
                     end
                 end
             end

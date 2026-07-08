@@ -15,10 +15,10 @@ T_opt
 !s11d tb_top_sv_unit D:/HCMUS/UVM/work 1 hpdcache_if 1 D:/HCMUS/UVM/work 
 !s11d hpdcache_uvm_pkg D:/HCMUS/UVM/work 1 hpdcache_if 1 D:/HCMUS/UVM/work 
 !s11d uvm_pkg C:/intelFPGA/23.1std/questa_fse/uvm-1.1d 1 hpdcache_if 1 D:/HCMUS/UVM/work 
-!s110 1783430130
-VCKDal2LLGLLPjg@>zKiGm2
+!s110 1783502186
+Ve7bRIzAckKHRf=`eji8152
 04 6 4 work tb_top fast 0
-=1-381428541227-6a4cfbf2-e2-2b80
+=1-381428541227-6a4e1569-13f-ec8
 R0
 !s12b OEM100
 !s124 OEM10U193 
@@ -31,7 +31,7 @@ Z3 2D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_history_buffers.sv
 Z4 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
 Z5 DXx4 work 10 domino_pkg 0 22 AL9ICMVFPbdDDE]jhe=6<2
 DXx4 work 30 domino_history_buffers_sv_unit 0 22 OePhKOXmWFV^BAVz0LY>W1
-Z6 !s110 1783430127
+Z6 !s110 1783502182
 Z7 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
@@ -48,7 +48,7 @@ Z10 FD:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_history_buffers.sv
 L0 2 19
 Z11 OL;L;2023.3;77
 31
-Z12 !s108 1783430127.000000
+Z12 !s108 1783502182.000000
 Z13 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_history_buffers.sv|
 Z14 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_history_buffers.sv|
 !i113 0
@@ -139,7 +139,7 @@ R2
 Xdomino_pkg
 2D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_pkg.sv
 R4
-Z23 !s110 1783430125
+Z23 !s110 1783502180
 !i10b 1
 !s100 I5==CaJ9X>K?E9EbB;_W60
 IAL9ICMVFPbdDDE]jhe=6<2
@@ -155,7 +155,7 @@ R11
 r1
 !s85 0
 31
-Z24 !s108 1783430125.000000
+Z24 !s108 1783502180.000000
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_pkg.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/prefetcher/domino_pkg.sv|
 !i113 0
@@ -356,7 +356,7 @@ R2
 vhpdcache_1hot_to_binary
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv
 R4
-Z46 !s110 1783430126
+Z46 !s110 1783502181
 !i10b 1
 !s100 f<ISKYA;cR_I=JR;d>JZH1
 IT>Jm@7f1llcV?aJ6eO>mY2
@@ -372,7 +372,7 @@ R11
 r1
 !s85 0
 31
-Z47 !s108 1783430126.000000
+Z47 !s108 1783502181.000000
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv|
 !i113 0
@@ -408,7 +408,7 @@ vhpdcache_cbuf
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_cbuf.sv
 R4
 R43
-R6
+Z48 !s110 1783502183
 !i10b 1
 !s100 :@<=Vja=naFf[:;gUZfcN3
 Ik:[2J]IP0KQImOVYho4bK1
@@ -424,7 +424,7 @@ R11
 r1
 !s85 0
 31
-R12
+Z49 !s108 1783502183.000000
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_cbuf.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_cbuf.sv|
 !i113 0
@@ -486,7 +486,7 @@ vhpdcache_ctrl
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv
 R4
 R43
-R6
+R48
 !i10b 1
 !s100 VNa_?=R6fna^>`A9Zf1c[2
 IVL2:Eb`N<WF7GC1>WZBRj1
@@ -502,7 +502,7 @@ R11
 r1
 !s85 0
 31
-R12
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv|
 !i113 0
@@ -512,7 +512,7 @@ vhpdcache_ctrl_pe
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl_pe.sv
 R4
 R43
-R6
+R48
 !i10b 1
 !s100 6kz0L8hleb^l5TcA?bUXZ3
 IE?DEK]0ORXY8k8>IQ>GSQ3
@@ -528,7 +528,7 @@ R11
 r1
 !s85 0
 31
-R12
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl_pe.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_ctrl_pe.sv|
 !i113 0
@@ -538,7 +538,7 @@ vhpdcache_data_downsize
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_downsize.sv
 R4
 R43
-R46
+R6
 !i10b 1
 !s100 :Sm>WzgD^kEcWPn@VaJS@1
 ICmcXg@2J;4^e]=_7IXh`n0
@@ -554,7 +554,7 @@ R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_downsize.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_downsize.sv|
 !i113 0
@@ -564,7 +564,7 @@ vhpdcache_data_resize
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv
 R4
 R43
-R46
+R6
 !i10b 1
 !s100 IY3<>nWW[4G4FeZd@n2c@2
 IRZh;OACz>WI[R6<YFnGDQ0
@@ -580,7 +580,7 @@ R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv|
 !i113 0
@@ -590,7 +590,7 @@ vhpdcache_data_upsize
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_upsize.sv
 R4
 R43
-R46
+R6
 !i10b 1
 !s100 @9S_dhS268Xf92Od8mNdO3
 Il^jzi?9SGEUg1UFA3IYUd0
@@ -600,13 +600,13 @@ R44
 8D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_upsize.sv
 FD:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_upsize.sv
 !i122 77
-Z48 L0 26 155
+Z50 L0 26 155
 R7
 R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_upsize.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_data_upsize.sv|
 !i113 0
@@ -640,7 +640,7 @@ R2
 vhpdcache_demux
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv
 R4
-R23
+R46
 !i10b 1
 !s100 8INIkCG2kjW]5<OnQkgF>3
 Ioc17zoh<;5e2dMFSaflkG0
@@ -665,7 +665,7 @@ R2
 vhpdcache_fifo_reg
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv
 R4
-R23
+R46
 !i10b 1
 !s100 hC2NiVHTe:kcHd[<BSJC02
 I@[XlFm0I;F2_zQX3G8@[i2
@@ -675,13 +675,13 @@ R44
 8D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv
 FD:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv
 !i122 62
-R48
+R50
 R7
 R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv|
 !i113 0
@@ -690,7 +690,7 @@ R2
 vhpdcache_fifo_reg_initialized
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg_initialized.sv
 R4
-R23
+R46
 !i10b 1
 !s100 `V=]PbFQceD6?3nhk`Wc?2
 I0hZ_Y0e=LbDBiDIEmYO0<3
@@ -706,7 +706,7 @@ R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg_initialized.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg_initialized.sv|
 !i113 0
@@ -716,7 +716,7 @@ vhpdcache_flush
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_flush.sv
 R4
 R43
-Z49 !s110 1783430128
+R48
 !i10b 1
 !s100 GaVWH90AZfWPUG1WVb?na3
 I7DcD4nQ:10WEAm3e`>;WJ1
@@ -732,7 +732,7 @@ R11
 r1
 !s85 0
 31
-Z50 !s108 1783430128.000000
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_flush.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_flush.sv|
 !i113 0
@@ -741,7 +741,7 @@ R2
 vhpdcache_fxarb
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fxarb.sv
 R4
-R23
+R46
 !i10b 1
 !s100 547J6P5YFSf8FYk`EIPMb0
 IjY`n1bZ?9LzE>2C1iHXcJ3
@@ -757,7 +757,7 @@ R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fxarb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_fxarb.sv|
 !i113 0
@@ -767,7 +767,7 @@ Yhpdcache_if
 2D:/HCMUS/UVM/tb/hpdcache_if.sv
 R4
 R43
-R49
+Z51 !s110 1783502184
 !i10b 1
 !s100 Mm212FdhaYNNiLQBD59DW2
 IX@JeQPOzc3:fM8]z<Z`]62
@@ -777,23 +777,23 @@ w1783418183
 8D:/HCMUS/UVM/tb/hpdcache_if.sv
 FD:/HCMUS/UVM/tb/hpdcache_if.sv
 !i122 110
-Z51 L0 23 0
+Z52 L0 23 0
 R7
 R11
 r1
 !s85 0
 31
-R50
+Z53 !s108 1783502184.000000
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh|D:/HCMUS/UVM/tb/hpdcache_if.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|+incdir+D:/HCMUS/UVM/sv|+incdir+D:/HCMUS/UVM/tb|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|+define+CONF_HPDCACHE_PA_WIDTH=56|+define+CONF_HPDCACHE_WORD_WIDTH=64|+define+CONF_HPDCACHE_SETS=64|+define+CONF_HPDCACHE_WAYS=8|+define+CONF_HPDCACHE_CL_WORDS=8|+define+CONF_HPDCACHE_REQ_WORDS=2|+define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6|+define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3|+define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56|+define+CONF_HPDCACHE_MEM_ID_WIDTH=8|+define+CONF_HPDCACHE_MEM_DATA_WIDTH=512|+define+CONF_HPDCACHE_MSHR_SETS=4|+define+CONF_HPDCACHE_MSHR_WAYS=4|+define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1|+define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4|+define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1|+define+CONF_HPDCACHE_MSHR_USE_REGBANK=0|+define+CONF_HPDCACHE_VICTIM_SEL=0|+define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1|+define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64|+define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1|+define+CONF_HPDCACHE_ACCESS_WORDS=2|+define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4|+define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4|+define+CONF_HPDCACHE_WBUF_WORDS=2|+define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4|+define+CONF_HPDCACHE_RTAB_ENTRIES=4|+define+CONF_HPDCACHE_FLUSH_ENTRIES=2|+define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2|+define+CONF_HPDCACHE_CBUF_ENTRIES=4|+define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0|+define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2|+define+CONF_HPDCACHE_WT_ENABLE=1|+define+CONF_HPDCACHE_WB_ENABLE=1|+define+CONF_HPDCACHE_LOW_LATENCY=0|+define+CONF_HPDCACHE_ECC_ENABLE=0|+define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0|+define+HPDCACHE_ASSERT_OFF|D:/HCMUS/UVM/tb/hpdcache_if.sv|
 !i113 0
-Z52 o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z54 o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 !s92 -sv -work work +incdir+. +incdir+D:/HCMUS/UVM/sv +incdir+D:/HCMUS/UVM/tb +incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include +define+CONF_HPDCACHE_PA_WIDTH=56 +define+CONF_HPDCACHE_WORD_WIDTH=64 +define+CONF_HPDCACHE_SETS=64 +define+CONF_HPDCACHE_WAYS=8 +define+CONF_HPDCACHE_CL_WORDS=8 +define+CONF_HPDCACHE_REQ_WORDS=2 +define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6 +define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3 +define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56 +define+CONF_HPDCACHE_MEM_ID_WIDTH=8 +define+CONF_HPDCACHE_MEM_DATA_WIDTH=512 +define+CONF_HPDCACHE_MSHR_SETS=4 +define+CONF_HPDCACHE_MSHR_WAYS=4 +define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1 +define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4 +define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1 +define+CONF_HPDCACHE_MSHR_USE_REGBANK=0 +define+CONF_HPDCACHE_VICTIM_SEL=0 +define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1 +define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64 +define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1 +define+CONF_HPDCACHE_ACCESS_WORDS=2 +define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4 +define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4 +define+CONF_HPDCACHE_WBUF_WORDS=2 +define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4 +define+CONF_HPDCACHE_RTAB_ENTRIES=4 +define+CONF_HPDCACHE_FLUSH_ENTRIES=2 +define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2 +define+CONF_HPDCACHE_CBUF_ENTRIES=4 +define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0 +define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2 +define+CONF_HPDCACHE_WT_ENABLE=1 +define+CONF_HPDCACHE_WB_ENABLE=1 +define+CONF_HPDCACHE_LOW_LATENCY=0 +define+CONF_HPDCACHE_ECC_ENABLE=0 +define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0 +define+HPDCACHE_ASSERT_OFF -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 vhpdcache_lfsr
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_lfsr.sv
 R4
-R23
+R46
 !i10b 1
 !s100 0RDRZ2BhPA>6RRBj8^H7k3
 IMU<XC>cJ46CGg1fW6AQGE3
@@ -809,7 +809,7 @@ R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_lfsr.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_lfsr.sv|
 !i113 0
@@ -869,7 +869,7 @@ vhpdcache_memctrl
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_memctrl.sv
 R4
 R43
-R6
+R48
 !i10b 1
 !s100 @Hz5TSf_agfTU[j90f]SP1
 I<BbLR4HJSDSPjZz_ThSRQ1
@@ -885,7 +885,7 @@ R11
 r1
 !s85 0
 31
-R12
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_memctrl.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_memctrl.sv|
 !i113 0
@@ -895,7 +895,7 @@ vhpdcache_miss_handler
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv
 R4
 R43
-R6
+R48
 !i10b 1
 !s100 ]JGoj_;HBN1nZFo4Zi@S61
 Io0bbU>TYoPMJg6mTU6nX=1
@@ -911,7 +911,7 @@ R11
 r1
 !s85 0
 31
-R12
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv|
 !i113 0
@@ -921,7 +921,7 @@ vhpdcache_mshr
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_mshr.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 OlORD0i>Jo<87_Z8HJ`^K3
 In<4m[h^LLj:c<Scbd=kkK3
@@ -937,7 +937,7 @@ R11
 r1
 !s85 0
 31
-R12
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_mshr.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_mshr.sv|
 !i113 0
@@ -1112,7 +1112,7 @@ R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_rrarb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_rrarb.sv|
 !i113 0
@@ -1122,7 +1122,7 @@ vhpdcache_rtab
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 L9F]P7ZZ]1BRT0h]^B<C<1
 InINR3I58hIDVgg=^31=gi0
@@ -1138,7 +1138,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv|
 !i113 0
@@ -1172,7 +1172,7 @@ R2
 vhpdcache_sram_1rw
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv
 R4
-R49
+R48
 !i10b 1
 !s100 zQ950cmPJz]<JaAbZIO;L1
 IoNZ[X`=:D<LdCL^k@S:Yi1
@@ -1188,7 +1188,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv|
 !i113 0
@@ -1222,7 +1222,7 @@ R2
 vhpdcache_sram_wbyteenable_1rw
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv
 R4
-R49
+R51
 !i10b 1
 !s100 IUe73B2]=;8Da>c70J:>N2
 IhZzTlT9JXGoljJTW[AFk:0
@@ -1238,7 +1238,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv|
 !i113 0
@@ -1272,7 +1272,7 @@ R2
 vhpdcache_sram_wmask_1rw
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv
 R4
-R49
+R51
 !i10b 1
 !s100 :HRkiA]NE^B3QoOmhoJTU1
 IVEB0Ja0E0DHU]4B4FKnEO2
@@ -1288,7 +1288,7 @@ R11
 r1
 !s85 0
 31
-R50
+R53
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wmask_1rw.sv|
 !i113 0
@@ -1297,7 +1297,7 @@ R2
 vhpdcache_sync_buffer
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sync_buffer.sv
 R4
-R23
+R46
 !i10b 1
 !s100 jkko_4X=SD8H_`hP5cY:h2
 IWi<1L=GY<_>lk3ah:0bNO0
@@ -1313,7 +1313,7 @@ R11
 r1
 !s85 0
 31
-R24
+R47
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sync_buffer.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/common/hpdcache_sync_buffer.sv|
 !i113 0
@@ -1323,7 +1323,7 @@ vhpdcache_uncached
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 _aocRl6Sgh<O>=ghE]76L0
 IG[:LF[XfNS8=Y:Y:@YGbA3
@@ -1339,7 +1339,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv|
 !i113 0
@@ -1347,31 +1347,31 @@ R15
 R2
 Xhpdcache_uvm_pkg
 2D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv
-Z53 !s115 hpdcache_if
+Z55 !s115 hpdcache_if
 R4
-Z54 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
+Z56 DXx6 mtiUvm 7 uvm_pkg 0 22 8V[`8]Q0W57le7Z>zYaAj1
 R43
-Z55 !s110 1783430129
+R51
 !i10b 1
-!s100 5eO2SN:1WRjZGOlTcBm`a1
-I:KHR`Y5]m:PGdLcoA;[_33
+!s100 JNX^Jn1<jN`GTD1XKL=Lg0
+IOjhOT<[GIifc9lP?R`:900
 S1
 R1
-w1783421702
+w1783449287
 8D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv
 FD:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv
-Z56 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
-Z57 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
-Z58 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
-Z59 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
-Z60 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
-Z61 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
-Z62 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
-Z63 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
-Z64 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
-Z65 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
-Z66 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
-Z67 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
+Z57 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh
+Z58 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh
+Z59 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh
+Z60 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh
+Z61 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh
+Z62 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh
+Z63 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh
+Z64 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh
+Z65 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh
+Z66 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh
+Z67 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh
+Z68 FC:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh
 FD:/HCMUS/UVM/sv/hpdcache_seq_item.sv
 FD:/HCMUS/UVM/sv/hpdcache_sequencer.sv
 FD:/HCMUS/UVM/sv/hpdcache_driver.sv
@@ -1379,24 +1379,24 @@ FD:/HCMUS/UVM/sv/hpdcache_monitor.sv
 FD:/HCMUS/UVM/sv/hpdcache_scoreboard.sv
 FD:/HCMUS/UVM/sv/hpdcache_env.sv
 !i122 111
-R51
-V:KHR`Y5]m:PGdLcoA;[_33
+R52
+VOjhOT<[GIifc9lP?R`:900
 R11
 r1
 !s85 0
 31
-R50
+R53
 !s107 D:/HCMUS/UVM/sv/hpdcache_env.sv|D:/HCMUS/UVM/sv/hpdcache_scoreboard.sv|D:/HCMUS/UVM/sv/hpdcache_monitor.sv|D:/HCMUS/UVM/sv/hpdcache_driver.sv|D:/HCMUS/UVM/sv/hpdcache_sequencer.sv|D:/HCMUS/UVM/sv/hpdcache_seq_item.sv|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|+incdir+D:/HCMUS/UVM/sv|+incdir+D:/HCMUS/UVM/tb|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|-L|mtiUvm|D:/HCMUS/UVM/sv/hpdcache_uvm_pkg.sv|
 !i113 0
-Z68 o-sv -work work -L mtiUvm -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUPF -L infact
-Z69 !s92 -sv -work work +incdir+. +incdir+D:/HCMUS/UVM/sv +incdir+D:/HCMUS/UVM/tb +incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include -L mtiUvm -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUPF -L infact
+Z69 o-sv -work work -L mtiUvm -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUPF -L infact
+Z70 !s92 -sv -work work +incdir+. +incdir+D:/HCMUS/UVM/sv +incdir+D:/HCMUS/UVM/tb +incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include -L mtiUvm -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUPF -L infact
 R2
 vhpdcache_victim_plru
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_plru.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 n>ReIjW4CnASchk[H7S]H1
 Icg77mS?=mn0<?]N6`kRZj1
@@ -1412,7 +1412,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_plru.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_plru.sv|
 !i113 0
@@ -1422,7 +1422,7 @@ vhpdcache_victim_random
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_random.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 ZdRFk:Pega3aie^z2CZEU3
 IFOCFk:Hd]Ib@GM4g8]SX`0
@@ -1438,7 +1438,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_random.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_random.sv|
 !i113 0
@@ -1448,7 +1448,7 @@ vhpdcache_victim_sel
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_sel.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 j]oPI3nGFjABF7S5<;FA21
 IIR>edcoFKfV=Ed?E8iS@70
@@ -1464,7 +1464,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_sel.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_victim_sel.sv|
 !i113 0
@@ -1474,7 +1474,7 @@ vhpdcache_wbuf
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 n==HFn>UB8XYf2KF7_Y`J1
 I_?nHQ=>n[;@kbAM2I1mBb1
@@ -1490,7 +1490,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv|
 !i113 0
@@ -1500,7 +1500,7 @@ vhpdcache_wrapper
 2D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv
 R4
 R43
-R49
+R48
 !i10b 1
 !s100 M2Pj=CMVP994KSzRdJg?B3
 I`GV>c:Ab`bKAoT0:YJ_f91
@@ -1516,7 +1516,7 @@ R11
 r1
 !s85 0
 31
-R50
+R49
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh|D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/hpdcache_wrapper.sv|
 !i113 0
@@ -1527,27 +1527,27 @@ vhw_top
 2D:/HCMUS/UVM/tb/hw_top.sv
 R4
 R43
-R55
+R51
 !i10b 1
-!s100 ;89WM]WBic5jVm^TK9V0g3
-IR_a>AV2[VQDakL42D[MUl1
+!s100 ;=U_=0=Lbz3A;GDT^A1PO0
+IMfgce]Hg85ON^nH67R2Ah2
 S1
 R1
-w1783430061
+w1783448256
 8D:/HCMUS/UVM/tb/hw_top.sv
 FD:/HCMUS/UVM/tb/hw_top.sv
 !i122 112
-L0 24 367
+L0 24 398
 R7
 R11
 r1
 !s85 0
 31
-Z70 !s108 1783430129.000000
+R53
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh|D:/HCMUS/UVM/tb/hw_top.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|+incdir+D:/HCMUS/UVM/sv|+incdir+D:/HCMUS/UVM/tb|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|D:/HCMUS/UVM/tb/hw_top.sv|
 !i113 0
-R52
+R54
 !s92 -sv -work work +incdir+. +incdir+D:/HCMUS/UVM/sv +incdir+D:/HCMUS/UVM/tb +incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R2
 vhwpf_stride
@@ -1555,7 +1555,7 @@ vhwpf_stride
 R4
 Z71 DXx4 work 15 hwpf_stride_pkg 0 22 ?DjS3zIY7Omh16K8=<kK[3
 R43
-R46
+R6
 !i10b 1
 !s100 jkg=a<;cCNi:SN5f:8g[^1
 I4TBc6<;FLn<?`_d6jA>lo2
@@ -1571,7 +1571,7 @@ R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride.sv|
 !i113 0
@@ -1581,7 +1581,7 @@ vhwpf_stride_arb
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_arb.sv
 R4
 R43
-R46
+R6
 !i10b 1
 !s100 ;[4U_f7jaXSa2_UBlOzjh1
 Ija]Dm<nT1hLYQfViQ_O8b0
@@ -1597,7 +1597,7 @@ R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_arb.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_arb.sv|
 !i113 0
@@ -1606,7 +1606,7 @@ R2
 Xhwpf_stride_pkg
 2D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_pkg.sv
 R4
-R46
+R6
 !i10b 1
 !s100 NT:Q]CJA[N0=k4<maXknl3
 I?DjS3zIY7Omh16K8=<kK[3
@@ -1622,7 +1622,7 @@ R11
 r1
 !s85 0
 31
-R47
+R12
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_pkg.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/src/hwpf_stride/hwpf_stride_pkg.sv|
 !i113 0
@@ -1661,7 +1661,7 @@ vtb_hpdcache_prefetch
 R4
 R43
 R5
-R49
+R51
 !i10b 1
 !s100 mH?d9G`83nLOFHG<SI]OD1
 IcMo6Z7h8<PoZU2j43U7BO2
@@ -1677,7 +1677,7 @@ R11
 r1
 !s85 0
 31
-R50
+R53
 !s107 D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh|D:/HCMUS/THESIS/cv-hpdcache-master/tb_hpdcache_prefetch.sv|
 !s90 -reportprogress|300|-work|work|-vopt|-sv|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|-stats=none|D:/HCMUS/THESIS/cv-hpdcache-master/tb_hpdcache_prefetch.sv|
 !i113 0
@@ -1687,11 +1687,11 @@ R2
 vtb_top
 Z72 2D:/HCMUS/UVM/tb/tb_top.sv
 R4
-R54
+R56
 R43
-Z73 DXx4 work 16 hpdcache_uvm_pkg 0 22 :KHR`Y5]m:PGdLcoA;[_33
-DXx4 work 14 tb_top_sv_unit 0 22 zA4b=?=1NOgJ[doFROITT1
-R55
+Z73 DXx4 work 16 hpdcache_uvm_pkg 0 22 OjhOT<[GIifc9lP?R`:900
+DXx4 work 14 tb_top_sv_unit 0 22 bifLb8GeeW:i?B5DLhP<b3
+R51
 R7
 r1
 !s85 0
@@ -1708,36 +1708,35 @@ Z75 FD:/HCMUS/UVM/tb/tb_top.sv
 L0 17 43
 R11
 31
-R70
+R53
 Z76 !s107 D:/HCMUS/UVM/tb/hpdcache_test_lib.sv|D:/HCMUS/UVM/tb/hpdcache_base_test.sv|D:/HCMUS/UVM/tb/hpdcache_seq_lib.sv|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_deprecated_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_reg_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_callback_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_sequence_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/tlm1/uvm_tlm_imps.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_tlm_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_printer_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_object_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_phase_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_message_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/macros/uvm_version_defines.svh|C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src/uvm_macros.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh|D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh|D:/HCMUS/UVM/tb/tb_top.sv|
 Z77 !s90 -reportprogress|300|-sv|-work|work|+incdir+.|+incdir+D:/HCMUS/UVM/sv|+incdir+D:/HCMUS/UVM/tb|+incdir+D:/HCMUS/THESIS/cv-hpdcache-master/rtl/include|-L|mtiUvm|D:/HCMUS/UVM/tb/tb_top.sv|
 !i113 0
-R68
 R69
+R70
 R2
 Xtb_top_sv_unit
 R72
-R53
+R55
 R4
-R54
+R56
 R43
 R73
-R55
-VzA4b=?=1NOgJ[doFROITT1
+R51
+VbifLb8GeeW:i?B5DLhP<b3
 r1
 !s85 0
 !i10b 1
-!s100 7V;eHN2GM]@ZI9fA60T683
-IzA4b=?=1NOgJ[doFROITT1
+!s100 Z]:[g]lHeR15=oCbjI=i:3
+IbifLb8GeeW:i?B5DLhP<b3
 !i103 1
 S1
 R1
-w1783428606
+w1783443758
 R74
 R75
 FD:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_config.svh
 FD:/HCMUS/THESIS/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh
-R56
 R57
 R58
 R59
@@ -1749,6 +1748,7 @@ R64
 R65
 R66
 R67
+R68
 FD:/HCMUS/UVM/tb/hpdcache_seq_lib.sv
 FD:/HCMUS/UVM/tb/hpdcache_base_test.sv
 FD:/HCMUS/UVM/tb/hpdcache_test_lib.sv
@@ -1756,10 +1756,10 @@ FD:/HCMUS/UVM/tb/hpdcache_test_lib.sv
 L0 9 0
 R11
 31
-R70
+R53
 R76
 R77
 !i113 0
-R68
 R69
+R70
 R2
