@@ -75,7 +75,13 @@ vlog -sv -work work \
     +define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0 \
     +define+HPDCACHE_ASSERT_OFF \
     $TB_DIR/tb/hpdcache_if.sv
-
+echo "=== Step 2b: Compile RVFI Interface ==="
+vlog -sv -work work \
+    +incdir+. \
+    +incdir+$TB_DIR/sv \
+    +incdir+$TB_DIR/tb \
+    +incdir+$HPDCACHE_INC \
+    $TB_DIR/tb/cva6_rvfi_if.sv
 echo "=== Step 3: Compile UVM Package ==="
 vlog -sv -work work \
     +incdir+. \

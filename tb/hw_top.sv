@@ -63,7 +63,30 @@ module hw_top;
     // Interface instantiation
     // -------------------------------------------------------------------------
     hpdcache_if dut_if (.clk_i(clk), .rst_ni(rst_n));
-
+	
+	// -------------------------------------------------------------------------
+    // RVFI Interface instantiation (CVA6 Core observation)
+    // -------------------------------------------------------------------------
+    cva6_rvfi_if rvfi_vif (.clk_i(clk), .rst_ni(rst_n));
+    
+    // Placeholder: Connect RVFI signals from CVA6 core
+    // CRITICAL: This assumes CVA6 has rvfi_probes_o or similar output
+    // If core is not directly instantiated in hw_top, remove these assigns
+    // and handle in top-level integration
+    
+    // assign rvfi_vif.commit_valid    = /* from CVA6 */;
+    // assign rvfi_vif.commit_pc       = /* from CVA6 */;
+    // assign rvfi_vif.commit_pc_next  = /* from CVA6 */;
+    // assign rvfi_vif.commit_instr    = /* from CVA6 */;
+    // assign rvfi_vif.commit_rd_addr  = /* from CVA6 */;
+    // assign rvfi_vif.commit_rd_we    = /* from CVA6 */;
+    // assign rvfi_vif.commit_rd_wdata = /* from CVA6 */;
+    // assign rvfi_vif.exception_valid = /* from CVA6 */;
+    // assign rvfi_vif.mcause          = /* from CVA6 */;
+    // assign rvfi_vif.mepc            = /* from CVA6 */;
+    // assign rvfi_vif.csr_valid       = /* from CVA6 */;
+    // assign rvfi_vif.csr_addr        = /* from CVA6 */;
+    // assign rvfi_vif.csr_wdata       = /* from CVA6 */;
     // -------------------------------------------------------------------------
     // DUT instantiation
     // -------------------------------------------------------------------------

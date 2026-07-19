@@ -129,7 +129,16 @@ package hpdcache_uvm_pkg;
     `include "hpdcache_monitor.sv"
     `include "hpdcache_scoreboard.sv"
     `include "hpdcache_env.sv"
-
+	// =========================================================================
+    // ISA Agent classes — TC 1.1 (ALU), TC 1.2 (Branch), TC 1.3 (Exception)
+    // =========================================================================
+    `include "isa_seq_item.sv"
+    `include "isa_commit_monitor.sv"
+    `include "isa_csr_monitor.sv"
+    `include "isa_driver.sv"
+    `include "isa_sequencer.sv"
+    `include "isa_agent.sv"
+    `include "isa_scoreboard.sv"
 endpackage : hpdcache_uvm_pkg
 
 `endif // HPDCACHE_UVM_PKG_SV

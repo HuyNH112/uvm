@@ -43,7 +43,12 @@ module tb_top;
             "hpdcache_vif_monitor",
             u_hw.dut_if.monitor_mp
         );
-
+		uvm_config_db #(virtual cva6_rvfi_if.monitor_mp)::set(
+            null,
+            "uvm_test_top.*",
+            "rvfi_vif",
+            u_hw.rvfi_vif
+        );
         run_test("hpdcache_base_test");
     end
 
