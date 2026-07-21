@@ -20,8 +20,15 @@
 // =============================================================================
 `include "hpdcache_config.svh"
 `include "hpdcache_typedef.svh"
+`include "rvfi_types.svh"                // Required for RVFI_PROBES_INSTR_T macro
 
 module hw_top;
+
+    // NOTE: CVA6 core instantiation requires:
+    // - ariane_pkg, config_pkg, cva6_config_pkg, build_config_pkg (from CVA6 RTL)
+    // - These should be compiled as part of RTL compilation Step 1
+    // If compilation fails with undefined package errors, ensure CVA6 RTL packages
+    // are included in the +incdir compilation flag
 
     // -------------------------------------------------------------------------
     // Parameters
@@ -69,26 +76,76 @@ module hw_top;
     // -------------------------------------------------------------------------
     cva6_rvfi_if rvfi_vif (.clk_i(clk), .rst_ni(rst_n));
     
-    // Placeholder: Connect RVFI signals from CVA6 core
-    // CRITICAL: This assumes CVA6 has rvfi_probes_o or similar output
-    // If core is not directly instantiated in hw_top, remove these assigns
-    // and handle in top-level integration
+    // =========================================================================
+    // CVA6 CORE INSTANTIATION (Option A)
+    // =========================================================================
+    // CVA6 core with RVFI probes output
+    // RVFI probes connect directly to rvfi_vif for ISA verification
+    // Core is independent; can optionally connect to hpdcache for testing
     
-    // assign rvfi_vif.commit_valid    = /* from CVA6 */;
-    // assign rvfi_vif.commit_pc       = /* from CVA6 */;
-    // assign rvfi_vif.commit_pc_next  = /* from CVA6 */;
-    // assign rvfi_vif.commit_instr    = /* from CVA6 */;
-    // assign rvfi_vif.commit_rd_addr  = /* from CVA6 */;
-    // assign rvfi_vif.commit_rd_we    = /* from CVA6 */;
-    // assign rvfi_vif.commit_rd_wdata = /* from CVA6 */;
-    // assign rvfi_vif.exception_valid = /* from CVA6 */;
-    // assign rvfi_vif.mcause          = /* from CVA6 */;
-    // assign rvfi_vif.mepc            = /* from CVA6 */;
-    // assign rvfi_vif.csr_valid       = /* from CVA6 */;
-    // assign rvfi_vif.csr_addr        = /* from CVA6 */;
-    // assign rvfi_vif.csr_wdata       = /* from CVA6 */;
+    localparam config_pkg::cva6_cfg_t CVA6Cfg = 
+        build_config_pkg::build_config(cva6_config_pkg::cva6_cfg);
+    
+    // RVFI probes struct (output from CVA6 core)
+    localparam type rvfi_probes_instr_t = `RVFI_PROBES_INSTR_T(CVA6Cfg);
+    localparam type rvfi_probes_csr_t   = `RVFI_PROBES_CSR_T(CVA6Cfg);
+    localparam type rvfi_probes_t = struct packed {
+        rvfi_probes_csr_t   csr;
+        rvfi_probes_instr_t instr;
+    };
+    
+    rvfi_probes_t rvfi_probes;
+    
+    // Minimal CVA6 core instantiation
+    // NOTE: Full core requires many ports (AXI, interrupt, debug, etc.)
+    // This is a skeleton; complete instantiation depends on CVA6 configuration
+    cva6 #(
+        .CVA6Cfg(CVA6Cfg),
+        .rvfi_probes_instr_t(rvfi_probes_instr_t),
+        .rvfi_probes_csr_t(rvfi_probes_csr_t),
+        .rvfi_probes_t(rvfi_probes_t)
+    ) u_cva6 (
+        .clk_i                              (clk),
+        .rst_ni                             (rst_n),
+        
+        // NOTE: CVA6 has separate I-fetch and LSU ports
+        // For full integration with hpdcache, these need proper arbitration
+        // Placeholder: leave unconnected for TC 1.1-1.3 (no cache activity)
+        // TODO: Connect fetch_req/fetch_rsp, lsu_req/lsu_rsp as needed
+        
+        // RVFI probes output (for ISA verification)
+        .rvfi_probes_o                      (rvfi_probes),
+        
+        // Other required CVA6 ports (stub values for now)
+        // .irq_i(1'b0), .ipi_i(1'b0), .timer_irq_i(1'b0),
+        // .debug_req_i(1'b0), .debug_we_i(1'b0),
+        // .debug_addr_i(0), .debug_wdata_i(0),
+        // .debug_rdata_o(), .debug_halted_o(),
+        // TODO: Add AXI master interface for memory access
+        
+        // Suppress unused port warnings:
+        .*                                  ()  // Unconnected ports
+    );
+    
+    // =========================================================================
+    // RVFI SIGNAL ASSIGNMENTS — Connected from CVA6 core
+    // =========================================================================
+    assign rvfi_vif.commit_valid    = u_cva6.rvfi_probes_o.instr.valid;
+    assign rvfi_vif.commit_pc       = u_cva6.rvfi_probes_o.instr.pc;
+    assign rvfi_vif.commit_pc_next  = u_cva6.rvfi_probes_o.instr.pc_next;
+    assign rvfi_vif.commit_instr    = u_cva6.rvfi_probes_o.instr.insn;
+    assign rvfi_vif.commit_rd_addr  = u_cva6.rvfi_probes_o.instr.rd_addr;
+    assign rvfi_vif.commit_rd_we    = u_cva6.rvfi_probes_o.instr.rd_we;
+    assign rvfi_vif.commit_rd_wdata = u_cva6.rvfi_probes_o.instr.rd_wdata;
+    assign rvfi_vif.exception_valid = u_cva6.rvfi_probes_o.csr.exception_valid;
+    assign rvfi_vif.mcause          = u_cva6.rvfi_probes_o.csr.mcause;
+    assign rvfi_vif.mepc            = u_cva6.rvfi_probes_o.csr.mepc;
+    assign rvfi_vif.csr_valid       = u_cva6.rvfi_probes_o.csr.csr_we;
+    assign rvfi_vif.csr_addr        = u_cva6.rvfi_probes_o.csr.csr_addr;
+    assign rvfi_vif.csr_wdata       = u_cva6.rvfi_probes_o.csr.csr_wdata;
+    
     // -------------------------------------------------------------------------
-    // DUT instantiation
+    // DUT instantiation (HPDcache — optional for Phase 1, used in Phase 2+)
     // -------------------------------------------------------------------------
     // Intermediate signal: wbuf_threshold_i là 4-bit trong wrapper
     // (wbuf_timecnt_t = logic unsigned [3:0]). Interface signal có thể

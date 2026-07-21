@@ -121,16 +121,18 @@ package hpdcache_uvm_pkg;
     endfunction
 
     // =========================================================================
-    // UVM components — include order = dependency order
+    // UVM components — FIXED: ISA Agent classes FIRST (before hpdcache_env)
+    // Dependency order: ISA agents must be defined before env uses them
     // =========================================================================
     `include "hpdcache_seq_item.sv"
     `include "hpdcache_sequencer.sv"
     `include "hpdcache_driver.sv"
     `include "hpdcache_monitor.sv"
     `include "hpdcache_scoreboard.sv"
-    `include "hpdcache_env.sv"
-	// =========================================================================
-    // ISA Agent classes — TC 1.1 (ALU), TC 1.2 (Branch), TC 1.3 (Exception)
+    
+    // =========================================================================
+    // ISA Agent classes — MOVED UP (TC 1.1 ALU, TC 1.2 Branch, TC 1.3 Exception)
+    // Must be defined BEFORE hpdcache_env.sv includes them
     // =========================================================================
     `include "isa_seq_item.sv"
     `include "isa_commit_monitor.sv"
@@ -139,6 +141,10 @@ package hpdcache_uvm_pkg;
     `include "isa_sequencer.sv"
     `include "isa_agent.sv"
     `include "isa_scoreboard.sv"
+    
+    // hpdcache_env uses isa_agent and isa_scoreboard types (now defined)
+    `include "hpdcache_env.sv"
+    
 endpackage : hpdcache_uvm_pkg
 
 `endif // HPDCACHE_UVM_PKG_SV

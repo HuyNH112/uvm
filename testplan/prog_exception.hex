@@ -1,0 +1,36 @@
+// =============================================================================
+// prog_exception.hex — TC 1.3 Machine Code (RV64I Exception Handling)
+// =============================================================================
+// Format: Verilog $readmemh (32-bit words)
+//
+// Assembly → Machine Code:
+//   PC    | Instruction       | Machine Code | Notes
+//   ───────────────────────────────────────────────────────────
+//   0x00  | addi x2, x0, 42   | 0x02A00113   | x2 := 42 (0x2A)
+//   0x04  | ecall             | 0x00000073   | Trap: mcause=11, mepc=0x04
+//   0x08  | j -2 (0x00)       | 0xFF9FF06F   | Jump back (hang)
+//
+// RVFI Trace (expected):
+//   [0] commit_instr=0x02A00113
+//       commit_pc=0x0000
+//       rd=2, rd_wdata=0x000000000000002A
+//       exception_valid=0
+//
+//   [1] commit_instr=0x00000073
+//       commit_pc=0x0004
+//       exception_valid=1
+//       mcause=0x0B (11 decimal = ECALL from M-mode)
+//       mepc=0x0004
+//       csr_valid=1 (CSR trap state updated internally)
+//
+// Verification:
+//   ✓ Two commits captured
+//   ✓ First commit: normal ALU (addi)
+//   ✓ Second commit: exception on ECALL
+//   ✓ mepc set to ECALL instruction PC
+//   ✓ mcause = 11
+// =============================================================================
+
+02a00113    // 0x00: addi x2, x0, 42
+00000073    // 0x04: ecall (exception: mcause=11, mepc=0x04)
+ff9ff06f    // 0x08: j -2 (jump back to 0x00, hang)
