@@ -1,7 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0a6758b-e6c3-4f46-8d0c-6c63be125c91" name="Changes" comment="src" />
+    <list default="true" id="b0a6758b-e6c3-4f46-8d0c-6c63be125c91" name="Changes" comment="src">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_dcache.do" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump_hpdcache.vcd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/full.cr.mti" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/full.mpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelsim.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_all_Testcases.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim.vcd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/questa_regression.do" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sim/questa_run.do" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testplan/testplan_uvm11d.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/testplan/testplan_uvm11d.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transcript" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_blockdiagram_dcache.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_dcache.cr.mti" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_dcache.mpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_hpdcache.cr.mti" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_hpdcache.mpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_test.cr.mti" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uvm_test.mpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vsim.wlf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vsim_stacktrace.vstf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exempt12gdad" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exempt1ajdi1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptc8tw5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptcbkw4d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptczyw8k" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exempte9qnk5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptq5s2m9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptqsc2sd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_data/exemptqt12eh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib1_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib1_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib1_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib2_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib2_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib2_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib3_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib3_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib3_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib4_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib4_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib4_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib5_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib5_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib5_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib6_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib6_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib6_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib7_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib7_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/@_opt/_lib7_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_0.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_0.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_0.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_1.qdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_1.qpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_lib1_1.qtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_opt__lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/work/_vmake" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784470007018</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="src">
+      <option name="closed" value="true" />
+      <created>1784602721411</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1784602721411</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
