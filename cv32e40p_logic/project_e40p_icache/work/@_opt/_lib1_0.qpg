@@ -1,0 +1,2317 @@
+m255
+K4
+z2
+!s12c _opt
+Z0 !s99 nomlopt
+!s11f vlog 2023.3 2023.07, Jul 17 2023
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dD:/khoaluantotnghiep/project_e40p_icache
+T_opt
+!s110 1785377819
+Vof9XdacI`QFbVRL]G]Vn[0
+04 19 4 work tc_icache_miss_rate fast 0
+=1-381428541227-6a6ab41a-32d-2fcc
+R0
+!s12b OEM100
+!s124 OEM10U6 
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2023.3;77
+vaddr_decode
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/addr_decode.sv
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z4 DXx4 work 11 cf_math_pkg 0 22 253WW>G_Nf7S=[8gkj[HE2
+Z5 !s110 1785377803
+!i10b 1
+!s100 4>gI>ZaTI@DPz@IOE_Yl_3
+ID4c6>o5chl>?>?X3jaFTg0
+S1
+R1
+Z6 w1785376837
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/addr_decode.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/addr_decode.sv
+!i122 137
+L0 30 132
+Z7 VDg1SIo80bB@j0V0VzS_@n1
+Z8 OL;L;2023.3;77
+r1
+!s85 0
+31
+!i113 0
+Z9 o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vbinary_to_gray
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/binary_to_gray.sv
+R3
+R5
+!i10b 1
+!s100 h<aF?URczUlk<=7RZ;7c[0
+IihC6Ah>>gLE3H3zAM]^S83
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/binary_to_gray.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/binary_to_gray.sv
+!i122 138
+L0 15 8
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcb_filter
+Z10 2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter.sv
+R3
+Z11 DXx4 work 13 cb_filter_pkg 0 22 ORN2M?d1U?;K9K[W2DZ7b1
+R5
+!i10b 1
+!s100 4[hFT>b8zNGbZZ7PbYCnW0
+I][c?L?i0Q8j9JWkX`A[Af3
+S1
+R1
+R6
+Z12 8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter.sv
+Z13 FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter.sv
+!i122 139
+L0 43 156
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcb_filter_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter_pkg.sv
+R3
+Z14 !s110 1785377800
+!i10b 1
+!s100 Sazbe9ZnTIzM?oSFo?h5j2
+IORN2M?d1U?;K9K[W2DZ7b1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter_pkg.sv
+!i122 104
+Z15 L0 14 0
+VORN2M?d1U?;K9K[W2DZ7b1
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_2phase
+Z16 2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_2phase.sv
+R3
+R5
+!i10b 1
+!s100 OSd_7U?8<mL_goN5B`R`X2
+IUD3ggW5:DU]B`bI@30IK`0
+S1
+R1
+R6
+Z17 8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_2phase.sv
+Z18 FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_2phase.sv
+!i122 140
+L0 19 46
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_2phase_dst
+R16
+R3
+R5
+!i10b 1
+!s100 O5jXmc?UIfa:1ndT_nhDX2
+IFb[9k:kcmk`Wn]VC^J;k50
+S1
+R1
+R6
+R17
+R18
+!i122 140
+L0 118 57
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_2phase_src
+R16
+R3
+R5
+!i10b 1
+!s100 nkoF=YVe:Fnzh58jZSSKK3
+Io@f9dlM@77cYZ7n1k2gKa2
+S1
+R1
+R6
+R17
+R18
+!i122 140
+L0 68 46
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_fifo_2phase
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_2phase.sv
+R3
+R5
+!i10b 1
+!s100 GeH7i:]N_DiE19oHdN;H=1
+I6=bh;fgJnC4PK^kPNLaCz1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_2phase.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_2phase.sv
+!i122 141
+L0 22 113
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_fifo_gray
+Z19 2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_gray.sv
+R3
+R5
+!i10b 1
+!s100 ?n<V0]@PzBA_G3nQ@E=eJ2
+I2^X6SO>:]RQJNdS148Mo12
+S1
+R1
+R6
+Z20 8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_gray.sv
+Z21 FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_gray.sv
+!i122 142
+L0 78 66
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_fifo_gray_dst
+R19
+R3
+R5
+!i10b 1
+!s100 Z8iO]_8N<VTJUa?<DEf[U1
+I;eez<MH?<QHPBj5?cZ<In1
+S1
+R1
+R6
+R20
+R21
+!i122 142
+L0 206 64
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcdc_fifo_gray_src
+R19
+R3
+R5
+!i10b 1
+!s100 Jcd2TAzB_TO0c;G`f8Ze03
+IJQR1HnLKmaA7`zlBbT2_O1
+S1
+R1
+R6
+R20
+R21
+!i122 142
+L0 148 54
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcf_math_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cf_math_pkg.sv
+R3
+R14
+!i10b 1
+!s100 BCK1a3g]B;deb7k<XVBUH0
+I253WW>G_Nf7S=[8gkj[HE2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cf_math_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cf_math_pkg.sv
+!i122 103
+L0 18 0
+V253WW>G_Nf7S=[8gkj[HE2
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vclk_div
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/clk_div.sv
+R3
+R5
+!i10b 1
+!s100 EbElOSZ^2ET@BXVAhHgS_1
+I@L^]J5`kU8FOQo6W6GSiB0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/clk_div.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/clk_div.sv
+!i122 143
+L0 13 30
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcounter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/counter.sv
+R3
+R5
+!i10b 1
+!s100 fAXT?FGIi^P@i@DfJJFz_3
+I040Ad]?P^Bza9C1^:6W@H0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/counter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/counter.sv
+!i122 144
+L0 14 30
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_aligner
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_aligner.sv
+R3
+Z22 !s110 1785377801
+!i10b 1
+!s100 nN7SCkmhVG_RO1C1a@b503
+If3]WEC[=YRZ9VMRc9HNS93
+S1
+R1
+Z23 w1785376836
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_aligner.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_aligner.sv
+!i122 110
+L0 23 230
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_alu
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu.sv
+R3
+Z24 DXx4 work 12 cv32e40p_pkg 0 22 j6VPTfee>NdVFeaeP5>UT2
+R22
+!i10b 1
+!s100 Nb9P]a7E4BFF8gGTVNY253
+ImV_fiE;]2LFL^h1hkU^gW2
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu.sv
+!i122 111
+L0 28 959
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_alu_div
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu_div.sv
+R3
+R22
+!i10b 1
+!s100 DKaXCSoZ4Jh5DTTlEAQOk1
+IBoNPdSSzc15f3;;AnI<Fl3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu_div.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu_div.sv
+!i122 112
+L0 26 201
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_apu_core_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_apu_core_pkg.sv
+R3
+R14
+!i10b 1
+!s100 BfS6EaQkd8YdhjhSMgMk;1
+IOS033GSHCLImTMU2zGQWe0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_apu_core_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_apu_core_pkg.sv
+!i122 101
+L0 22 0
+VOS033GSHCLImTMU2zGQWe0
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_apu_disp
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_apu_disp.sv
+R3
+R22
+!i10b 1
+!s100 oU_mf4bQkM=hE`M;1nUH53
+I0E@gCLlYWiQ@?SL[NbL@33
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_apu_disp.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_apu_disp.sv
+!i122 113
+L0 25 218
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_clock_gate
+2D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_sim_clock_gate.sv
+R3
+R22
+!i10b 1
+!s100 _20hQfRmW^MMjk[<4Bh<91
+IDE>ED>hhS3P<>UXV2[cIC0
+S1
+R1
+Z25 w1785376834
+8D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_sim_clock_gate.sv
+FD:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_sim_clock_gate.sv
+!i122 109
+L0 15 16
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_compressed_decoder
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_compressed_decoder.sv
+R3
+R24
+R22
+!i10b 1
+!s100 4Lh`V@>RUbK^5<_`e`3X?1
+If92RFb4KzALQ;moWfC?7z1
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_compressed_decoder.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_compressed_decoder.sv
+!i122 114
+L0 27 575
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_controller
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_controller.sv
+R3
+R24
+R22
+!i10b 1
+!s100 _QS0BVl?2O1lO?HTKeDQ53
+I^^=2HAHho8M:@E]@nYa7E3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_controller.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_controller.sv
+!i122 115
+L0 31 1593
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_core
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_core.sv
+R3
+Z26 DXx4 work 21 cv32e40p_apu_core_pkg 0 22 OS033GSHCLImTMU2zGQWe0
+R24
+R22
+!i10b 1
+!s100 <oUL@cm<9:Fg[47>9LY@E2
+I?G;9WjX?LlYznoFNHfc@S3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_core.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_core.sv
+!i122 116
+L0 31 1262
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_cs_registers
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_cs_registers.sv
+R3
+R24
+R22
+!i10b 1
+!s100 bGHMQSGHcVBenZ@0n>=IO1
+IV@T@Zdf@^6`;g4:ID_zmz2
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_cs_registers.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_cs_registers.sv
+!i122 117
+L0 30 1518
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_decoder
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_decoder.sv
+R3
+R24
+R26
+Z27 DXx4 work 16 cv32e40p_fpu_pkg 0 22 lenM?7D52X_GlJ_k[=zbW0
+R22
+!i10b 1
+!s100 KN7<@=3aR=^RhV3[Q9S2]2
+Id<C5kAE;]VoIU[6TJ^MA>3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_decoder.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_decoder.sv
+!i122 118
+L0 28 2984
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_ex_stage
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ex_stage.sv
+R3
+R24
+R26
+R22
+!i10b 1
+!s100 J:1:S1fMAIzK@gBE:N_z73
+I=T7iUYPGLQFR?JUOTOZIz3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ex_stage.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ex_stage.sv
+!i122 119
+L0 32 448
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_ff_one
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ff_one.sv
+R3
+R22
+!i10b 1
+!s100 `dj4@Q:75UY<G:DVYR2Q:3
+Ijc]RE4G28>HHkcL;ZKi7M0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ff_one.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ff_one.sv
+!i122 120
+L0 25 75
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_fifo
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fifo.sv
+R3
+R22
+!i10b 1
+!s100 :`nD>KQ8DC9O=PHZigCLa1
+IY4eYISPTT171WlKF79RMT0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fifo.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fifo.sv
+!i122 121
+L0 15 154
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_fp_wrapper
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fp_wrapper.sv
+R3
+R26
+R24
+Z28 DXx4 work 9 fpnew_pkg 0 22 EYKLF_m<f3bU:SHFDTGOo0
+Z29 !s110 1785377802
+!i10b 1
+!s100 0g<XXK?dZYZbJ[7Xo;;nE0
+I4dz23`Q6o06VVQ8R3R5XZ0
+S1
+R1
+Z30 w1785376838
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fp_wrapper.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fp_wrapper.sv
+!i122 122
+L0 14 111
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_fpu_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_fpu_pkg.sv
+R3
+R14
+!i10b 1
+!s100 g0K<Iz1TXX5fWeV3QU9;K1
+IlenM?7D52X_GlJ_k[=zbW0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_fpu_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_fpu_pkg.sv
+!i122 102
+L0 38 0
+VlenM?7D52X_GlJ_k[=zbW0
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_hwloop_regs
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_hwloop_regs.sv
+R3
+R29
+!i10b 1
+!s100 VHg6MV0JKIThEP?DGdeo12
+IXb8WBme=SVC[2g[OZJH9j0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_hwloop_regs.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_hwloop_regs.sv
+!i122 123
+L0 25 93
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_icache
+2D:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv
+R3
+Z31 DXx4 work 19 cv32e40p_icache_pkg 0 22 JSIlhL^USW=hk^z7[Oh>i1
+Z32 !s110 1785377808
+!i10b 1
+!s100 `]Q<aR4>?f]8BUd0_>5Pg1
+I_NBoD[bL4O[UL8LF813RP2
+S1
+R1
+Z33 w1785376840
+8D:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv
+FD:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv
+!i122 208
+L0 16 304
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_icache_data_mem
+2D:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv
+R3
+R31
+R32
+!i10b 1
+!s100 O8NK=6LkZz=jKj1]hSS7E1
+IOD62eOgAFf?NGz]QHIe652
+S1
+R1
+R33
+8D:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv
+FD:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv
+!i122 206
+Z34 L0 16 52
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_icache_pkg
+2D:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv
+R3
+Z35 !s110 1785377807
+!i10b 1
+!s100 F@XS6oY^]hfO`8d63[WYQ2
+IJSIlhL^USW=hk^z7[Oh>i1
+S1
+R1
+R33
+8D:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv
+FD:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv
+!i122 204
+R15
+VJSIlhL^USW=hk^z7[Oh>i1
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_icache_tag_mem
+2D:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv
+R3
+R31
+R32
+!i10b 1
+!s100 ^OofA[cEJH;HF?6EC@U5O2
+IU`6Do`Ei8cDR9B7K778IY1
+S1
+R1
+R33
+8D:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv
+FD:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv
+!i122 207
+R34
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_id_stage
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_id_stage.sv
+R3
+R24
+R26
+R27
+R29
+!i10b 1
+!s100 CUeHgkeB3WDAoUAMB]WNA0
+Ik[SoUVU<he^`]z000M@7B0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_id_stage.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_id_stage.sv
+!i122 124
+L0 30 1808
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_if_stage
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_if_stage.sv
+R3
+R24
+R29
+!i10b 1
+!s100 cmZa:UMXXTN7SS8B6S7^32
+Ic86A<TcS40z=2Fc23OELo0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_if_stage.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_if_stage.sv
+!i122 125
+L0 28 292
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_int_controller
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_int_controller.sv
+R3
+R24
+R29
+!i10b 1
+!s100 A2_CD4<E^C]gO_bWNEe4<0
+Ib29<jhFVb2DfFe2DSm8lb1
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_int_controller.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_int_controller.sv
+!i122 126
+L0 24 129
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_load_store_unit
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_load_store_unit.sv
+R3
+R29
+!i10b 1
+!s100 e:DjhJQSciC>`P:6oYP6L0
+Iffg8D6_HZS[H_?ND0TH913
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_load_store_unit.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_load_store_unit.sv
+!i122 127
+L0 26 524
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_mult
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_mult.sv
+R3
+R24
+R29
+!i10b 1
+!s100 RPkKBDS2S0]GQB55]<i`o1
+Ij]09hD0Y^kf`EfLd44LY:0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_mult.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_mult.sv
+!i122 128
+L0 26 362
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_obi_interface
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_obi_interface.sv
+R3
+R29
+!i10b 1
+!s100 WLl9EbD33H8mK]VcccbRN0
+ICWoXY>JjZglTonE[:TH_33
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_obi_interface.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_obi_interface.sv
+!i122 129
+L0 38 169
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_pkg.sv
+R3
+R14
+!i10b 1
+!s100 5nGJ6cZ3TD6nCE3UDoNjY3
+Ij6VPTfee>NdVFeaeP5>UT2
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_pkg.sv
+!i122 100
+L0 26 0
+Vj6VPTfee>NdVFeaeP5>UT2
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_popcnt
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_popcnt.sv
+R3
+R29
+!i10b 1
+!s100 RDJ6CRdWK`RkkC6kVb_=L3
+IfYonB<hk9hF7m`9C:<CMM0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_popcnt.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_popcnt.sv
+!i122 130
+L0 25 38
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_prefetch_buffer
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_buffer.sv
+R3
+R29
+!i10b 1
+!s100 T91=`^FR4UmfGR3PY1e[_3
+Ia3SmGJcl3?C>kSX:cDLko3
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_buffer.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_buffer.sv
+!i122 131
+L0 27 228
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_prefetch_controller
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_controller.sv
+R3
+R24
+R29
+!i10b 1
+!s100 a^CLzNM0Jdd;a2PdQ2c3h1
+I`F9N:ReaHTe1FGW65>9Hh2
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_controller.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_controller.sv
+!i122 132
+L0 40 324
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_register_file
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_register_file_latch.sv
+R3
+R29
+!i10b 1
+!s100 dPZjD:UgD@LA<n?EbGk=>2
+IVR6;AL2?[]:9]JE:Tz]eV1
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_register_file_latch.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_register_file_latch.sv
+!i122 134
+L0 32 161
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_rvfi_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_rvfi_pkg.sv
+R3
+R24
+R14
+!i10b 1
+!s100 hX>zoU05[K^A_oYd`=8WZ0
+IOgbSSV1KdnC1R@6c[]YZb3
+S1
+R1
+R25
+8D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_rvfi_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_rvfi_pkg.sv
+!i122 107
+L0 27 0
+VOgbSSV1KdnC1R@6c[]YZb3
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_sleep_unit
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_sleep_unit.sv
+R3
+R24
+R29
+!i10b 1
+!s100 =RD1BI0YIkAdnaSBgmI0`2
+Ih@2QZCBN0No1BndF>>iji0
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_sleep_unit.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_sleep_unit.sv
+!i122 135
+L0 56 237
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vcv32e40p_top
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_top.sv
+R3
+R26
+R5
+!i10b 1
+!s100 37FoQ<;_ToT_GMlHeE@RT1
+IzL8^Dd=C39cMjWPTT]ecY2
+S1
+R1
+R23
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_top.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_top.sv
+!i122 136
+L0 26 172
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xcv32e40p_tracer_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_tracer_pkg.sv
+R3
+R24
+R14
+!i10b 1
+!s100 `l@M]3?5UEGKdL]JRGW4a0
+I<QVeLdZDXWShLzM^jh<`o3
+S1
+R1
+R25
+8D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_tracer_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_tracer_pkg.sv
+!i122 108
+L0 12 0
+V<QVeLdZDXWShLzM^jh<`o3
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vdelta_counter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/delta_counter.sv
+R3
+R5
+!i10b 1
+!s100 UJbDN<mnFYXjPkcNZXXNa2
+IL_LVMYU1QR:MViSh17_Ek0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/delta_counter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/delta_counter.sv
+!i122 145
+L0 13 62
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vecc_decode
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_decode.sv
+R3
+Z36 DXx4 work 7 ecc_pkg 0 22 heaz_kTmG1inLXh0`1i@e1
+R5
+!i10b 1
+!s100 oE3eP`CP]e;I6n:OgQ`fI0
+I3C55;DMn<Yd?df15OYKob0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_decode.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_decode.sv
+!i122 146
+L0 29 100
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vecc_encode
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_encode.sv
+R3
+R36
+R5
+!i10b 1
+!s100 hZ19Y2dDEUD`HXW0m]=3]0
+I3gc`6KGZC@1l2@84>`4Dz0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_encode.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_encode.sv
+!i122 147
+L0 22 57
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xecc_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_pkg.sv
+R3
+R14
+!i10b 1
+!s100 7:lA[;Se0P6gGGJmjfVI20
+Iheaz_kTmG1inLXh0`1i@e1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_pkg.sv
+!i122 105
+L0 15 0
+Vheaz_kTmG1inLXh0`1i@e1
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vedge_detect
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_detect.sv
+R3
+R5
+!i10b 1
+!s100 nGL:S2?<9Xzj4?mFi6J[m2
+IoDj4N=^eNDSSUEcC29@E53
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_detect.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_detect.sv
+!i122 148
+L0 14 19
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vedge_propagator
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator.sv
+R3
+R5
+!i10b 1
+!s100 QBBV;nzQNn=7TeJ6Q@bf32
+IaP9C3IizI<66VPJSk5=Bi1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator.sv
+!i122 149
+L0 13 38
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vedge_propagator_rx
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_rx.sv
+R3
+Z37 !s110 1785377804
+!i10b 1
+!s100 E9b0Ta3f9B;K@4LHPgJao2
+I>hE:ScCm3:A`;]Ob;D;K82
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_rx.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_rx.sv
+!i122 150
+L0 13 19
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vedge_propagator_tx
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_tx.sv
+R3
+R37
+!i10b 1
+!s100 TTCnmJaMHNeY>UW7z]iTW2
+IFeGC>J9:?=adH3P:SzZzL1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_tx.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_tx.sv
+!i122 151
+L0 13 28
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vexp_backoff
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/exp_backoff.sv
+R3
+R37
+!i10b 1
+!s100 khUV=Y8Jei4;4Q:6^5PEc0
+IL34HOfN48Nj8FTUokcejQ3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/exp_backoff.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/exp_backoff.sv
+!i122 152
+L0 23 76
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfall_through_register
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fall_through_register.sv
+R3
+R37
+!i10b 1
+!s100 oDnoljjc;MO^98bA[6@Ic2
+I?O]6c^_@d1b0[ooBZDZeb2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fall_through_register.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fall_through_register.sv
+!i122 153
+L0 15 44
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfifo_v3
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fifo_v3.sv
+R3
+R37
+!i10b 1
+!s100 7_5RiaYT<1nTYiL=VV]e?0
+IHABTQUA7Nn8VT0M4B=ZdN3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fifo_v3.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fifo_v3.sv
+!i122 154
+L0 13 142
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_cast_multi
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_cast_multi.sv
+R3
+R28
+Z38 !s110 1785377806
+!i10b 1
+!s100 cN<M31hWPMmd0?@ao6gdn0
+Ik6oAZ:ST>fCieSHQYTAaQ3
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_cast_multi.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_cast_multi.sv
+!i122 192
+L0 18 784
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_classifier
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_classifier.sv
+R3
+R28
+R35
+!i10b 1
+!s100 ^>C:@EOR6`<5i^oRB0CX>1
+I=jeBjn]d[NITaKV6^?@Vb2
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_classifier.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_classifier.sv
+!i122 193
+L0 16 59
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_divsqrt_multi
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_multi.sv
+R3
+R28
+R35
+!i10b 1
+!s100 8HbW31KJ>F8eJ_jHLAe_Q1
+IFTO1`NHAH9TF6eXiD?>_Z1
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_multi.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_multi.sv
+!i122 194
+L0 18 362
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_divsqrt_th_32
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_th_32.sv
+R3
+R28
+R35
+!i10b 1
+!s100 2mG?]PT:kPcdKJHo_?oX23
+IlH;]RhFen75X<L85Q]>MW2
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_th_32.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_th_32.sv
+!i122 195
+L0 21 459
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_fma
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma.sv
+R3
+R28
+R35
+!i10b 1
+!s100 j76RI[DQBf3UNYn96:a>22
+IM4jb1O5MfBJ@^GUQE=[1=0
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma.sv
+!i122 196
+L0 18 678
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_fma_multi
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma_multi.sv
+R3
+R28
+R35
+!i10b 1
+!s100 nnPQ<PUHmBdH426nHU:3N1
+IcFUo5HfccPSb90b9OT[c>3
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma_multi.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma_multi.sv
+!i122 197
+L0 18 827
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_noncomp
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_noncomp.sv
+R3
+R28
+R35
+!i10b 1
+!s100 ^<g@MKzdB>8kJC?HAz]j51
+IQnXcMN;d8z9^G<oe444DL0
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_noncomp.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_noncomp.sv
+!i122 198
+L0 18 401
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_opgroup_block
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_block.sv
+R3
+R28
+R35
+!i10b 1
+!s100 ;fc9OUC21M9F]^B]7T0Hj3
+IGe5o:_<NCZF4D^W2AMSn23
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_block.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_block.sv
+!i122 199
+L0 16 233
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_opgroup_fmt_slice
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_fmt_slice.sv
+R3
+R28
+R35
+!i10b 1
+!s100 kdHgYBbVKCBeSG8YDEFQ62
+I<T86G``]eETAliQ@o>gYJ3
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_fmt_slice.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_fmt_slice.sv
+!i122 200
+L0 16 284
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_opgroup_multifmt_slice
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_multifmt_slice.sv
+R3
+R28
+R35
+!i10b 1
+!s100 jO@TZS?i2G;6EAZYbk=5K3
+ImJGoK5bPDo>LGPEhEXFn<3
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_multifmt_slice.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_multifmt_slice.sv
+!i122 201
+L0 18 505
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+Xfpnew_pkg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_pkg.sv
+R3
+R14
+!i10b 1
+!s100 ajSYZOVd@?i_ho>^@]aLn2
+IEYKLF_m<f3bU:SHFDTGOo0
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_pkg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_pkg.sv
+!i122 106
+Z39 L0 16 0
+VEYKLF_m<f3bU:SHFDTGOo0
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_rounding
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_rounding.sv
+R3
+R28
+R35
+!i10b 1
+!s100 ;?HJW>6=EdEGBD633GhaI0
+IbPz=jLY5W72^5@];AklW10
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_rounding.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_rounding.sv
+!i122 202
+L0 16 61
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vfpnew_top
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_top.sv
+R3
+R28
+R35
+!i10b 1
+!s100 8dk;T^Hc9n@=5mE]J<d^53
+IFQ7ob7WH09A7@[[QJz0m70
+S1
+R1
+R30
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_top.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_top.sv
+!i122 203
+L0 16 173
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vgray_to_binary
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/gray_to_binary.sv
+R3
+R37
+!i10b 1
+!s100 cG>gFR;z[HIFdEz^]>1O`0
+I=5i<?WA=NLT0>IzGflo=l3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/gray_to_binary.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/gray_to_binary.sv
+!i122 155
+L0 15 9
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vhash_block
+R10
+R3
+R11
+R5
+!i10b 1
+!s100 YK=VI1CC?N>MUMI7m8`:?3
+IB<3GLhdQNB]ef?Z50VdJW1
+S1
+R1
+R6
+R12
+R13
+!i122 139
+L0 201 46
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vid_queue
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/id_queue.sv
+R3
+R4
+R37
+!i10b 1
+!s100 VcZ?8jJ<cHG1P@CG[_WlA2
+If?<dlaDo2^4SG?;a`R]>I3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/id_queue.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/id_queue.sv
+!i122 156
+L0 42 237
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+visochronous_spill_register
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/isochronous_spill_register.sv
+R3
+R37
+!i10b 1
+!s100 0a]W[];lCo:mFLkgBhkbU0
+I3OE8e5_<SjAk777i0>N:40
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/isochronous_spill_register.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/isochronous_spill_register.sv
+!i122 157
+L0 30 58
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vlfsr
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr.sv
+R3
+R37
+!i10b 1
+!s100 ZPT796JU@@?S[G4ohCb^X1
+I7cb=W6A^cC4E=3:DRKTo62
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr.sv
+!i122 158
+L0 22 294
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vlfsr_16bit
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_16bit.sv
+R3
+R37
+!i10b 1
+!s100 aPf0Rg5BR0d1_6?5Ze6zM3
+I=H]on^geZK=M[F6b==Z6Q1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_16bit.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_16bit.sv
+!i122 159
+L0 21 48
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vlfsr_8bit
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_8bit.sv
+R3
+R37
+!i10b 1
+!s100 W=PmlG@j4O@G0Lc<?ejjB0
+I<b2=;=>g]SaVf_EFTYg7>3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_8bit.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_8bit.sv
+!i122 160
+L0 17 45
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vlzc
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lzc.sv
+R3
+R4
+R37
+!i10b 1
+!s100 lZa^Mnl[28h8>3g_j;k>A3
+Ij1Y0SbJh^`DV6GEi89c6W3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lzc.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lzc.sv
+!i122 161
+L0 25 88
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vmax_counter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/max_counter.sv
+R3
+R37
+!i10b 1
+!s100 3Z^=a=^IP?4OC9NT01Q?K1
+I];7f;ohzYlUS@?AAOIQZ:3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/max_counter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/max_counter.sv
+!i122 162
+L0 13 65
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vmv_filter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/mv_filter.sv
+R3
+R37
+!i10b 1
+!s100 ;FLRbZBFX[]@jZzDcJLLn0
+I^X?9<4UGI6odWefLSG3gD3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/mv_filter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/mv_filter.sv
+!i122 163
+L0 13 43
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vonehot_to_bin
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/onehot_to_bin.sv
+R3
+Z40 !s110 1785377805
+!i10b 1
+!s100 mHJm4b=98?L`J71B1FCz52
+IGKDS`6mSiKeJgIWGA6VS90
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/onehot_to_bin.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/onehot_to_bin.sv
+!i122 164
+L0 13 26
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vplru
+2D:/khoaluantotnghiep/icache-master/plru.sv
+R3
+R35
+!i10b 1
+!s100 ?hoO_ZNkQN^B9z0Ah63[M2
+IGD^c6zT8kSZCAW3KGk>zF3
+S1
+R1
+R33
+8D:/khoaluantotnghiep/icache-master/plru.sv
+FD:/khoaluantotnghiep/icache-master/plru.sv
+!i122 205
+L0 25 91
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vplru_tree
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/plru_tree.sv
+R3
+R40
+!i10b 1
+!s100 @U4]ZKGXlUbAM3=6JFT_13
+IJ?0781@PdUcN=[NZi6;zK2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/plru_tree.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/plru_tree.sv
+!i122 165
+L0 17 104
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vpopcount
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/popcount.sv
+R3
+R40
+!i10b 1
+!s100 z^78VVNeH^n55QE58=SOL1
+Ig6lg0NFUB]5OI9YUi0AmD0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/popcount.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/popcount.sv
+!i122 166
+L0 19 42
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vrr_arb_tree
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rr_arb_tree.sv
+R3
+R40
+!i10b 1
+!s100 PIiW<cWgW8RbSXIlNc2;c2
+IjKG]H4i76SoG[gMz1j<5C0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rr_arb_tree.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rr_arb_tree.sv
+!i122 167
+L0 47 301
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vrstgen
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen.sv
+R3
+R40
+!i10b 1
+!s100 C5kNAQJ@6UfRUn1U?PQob3
+IKjMPXN8hica=kBCYn2:T50
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen.sv
+!i122 168
+L0 13 18
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vrstgen_bypass
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen_bypass.sv
+R3
+R40
+!i10b 1
+!s100 8J3:kZK7EDfo?Mhk9kL]]0
+IMDgboDza:HZOT9T=k^ie43
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen_bypass.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen_bypass.sv
+!i122 169
+L0 15 43
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vserial_deglitch
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/serial_deglitch.sv
+R3
+R40
+!i10b 1
+!s100 :ib`ed[o74jMn24MAo<]B0
+IRcU4_2eW1ihM1Glo42BPA1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/serial_deglitch.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/serial_deglitch.sv
+!i122 170
+L0 15 36
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vshift_reg
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/shift_reg.sv
+R3
+R40
+!i10b 1
+!s100 4V0gB@4jCU^f]X_aSXGH?3
+I67D>]=aWH>>L1eQI7b^jF1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/shift_reg.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/shift_reg.sv
+!i122 171
+L0 16 38
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vspill_register
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/spill_register.sv
+R3
+R40
+!i10b 1
+!s100 `zPM^kn:1:Sn?f6m_JJ]D1
+I=KFbiAZcEX[E>AN7R25WK3
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/spill_register.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/spill_register.sv
+!i122 172
+L0 17 79
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_arbiter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter.sv
+R3
+R40
+!i10b 1
+!s100 UZY5SC?7LZAR<I1][84K>1
+Ie2P>Az<WP6=aCP@MNLQMO0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter.sv
+!i122 173
+L0 16 34
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_arbiter_flushable
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter_flushable.sv
+R3
+R40
+!i10b 1
+!s100 h_h=LVlGeTQ:;cf8W2ODj1
+IGT43fBC8VJlL4DQdzGO@d1
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter_flushable.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter_flushable.sv
+!i122 174
+L0 16 67
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_delay
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_delay.sv
+R3
+R40
+!i10b 1
+!s100 <o2=_6e25m1^zWhaT?TV42
+ISGbJf7IdYi[7=EzDRW?^a0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_delay.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_delay.sv
+!i122 175
+L0 14 119
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_demux
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_demux.sv
+R3
+R40
+!i10b 1
+!s100 0cnIRi4I^DHm2mMnTNNc^3
+InY^^GhZHmoNJdA_n2g3Af2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_demux.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_demux.sv
+!i122 176
+L0 15 22
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+YSTREAM_DV
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_intf.sv
+R3
+R38
+!i10b 1
+!s100 Tc5cDEzE4hNRERaj@VjZ02
+IN4NOOzC9`::9DcYO@RTQC2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_intf.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_intf.sv
+!i122 181
+R39
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+n@s@t@r@e@a@m_@d@v
+vstream_fifo
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fifo.sv
+R3
+R40
+!i10b 1
+!s100 _><87?oLLSIPAhU[MZ30b1
+Iz?_3ek[N8Og;_^@CzEaCH2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fifo.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fifo.sv
+!i122 177
+L0 13 54
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_filter
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_filter.sv
+R3
+R40
+!i10b 1
+!s100 cV8W9kc[e2?cA7EkPJ^XO0
+I0c?5]DXQ=BZjzzb<Jj>0Q2
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_filter.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_filter.sv
+!i122 178
+L0 13 14
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2
+vstream_fork
+2D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fork.sv
+R3
+R38
+!i10b 1
+!s100 R5eCd@hKiImJo[mZ@;:^11
+IjhO`a`ghA^0ad4JB3_f8R0
+S1
+R1
+R6
+8D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fork.sv
+FD:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fork.sv
+!i122 179
+L0 19 115
+R7
+R8
+r1
+!s85 0
+31
+!i113 0
+R9
+R2

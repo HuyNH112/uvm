@@ -1,6 +1,6 @@
-interface cva6_rvfi_if(input logic clk_i, input logic rst_ni);
-    
-    // ===== RVFI Signals from CVA6 (commit_valid → core committed instruction)
+interface cv32e40p_rvfi_if(input logic clk_i, input logic rst_ni);
+
+    // ===== RVFI Signals from CV32E40P (commit_valid → core committed instruction)
     logic              commit_valid;      // Instruction committed this cycle
     logic [63:0]       commit_pc;         // Committed instruction PC
     logic [63:0]       commit_pc_next;    // Next PC (PC + 4 or branch target)
@@ -28,4 +28,4 @@ interface cva6_rvfi_if(input logic clk_i, input logic rst_ni);
               csr_valid, csr_addr, csr_wdata
     );
     
-endinterface : cva6_rvfi_if
+endinterface : cv32e40p_rvfi_if

@@ -1,0 +1,834 @@
+# === PHASE 1: INCLUDES & TYPEDEFS ===
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/include/common_cells/registers.svh
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_config.svh
+# === PHASE 2: CV32E40P CORE RTL ===
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_sim_clock_gate.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_aligner.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_alu_div.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_apu_disp.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_compressed_decoder.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_controller.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_core.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_cs_registers.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_decoder.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ex_stage.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_ff_one.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fifo.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_fp_wrapper.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_hwloop_regs.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_id_stage.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_if_stage.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_int_controller.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_load_store_unit.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_mult.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_obi_interface.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_popcnt.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_buffer.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_prefetch_controller.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_register_file_ff.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_register_file_latch.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_sleep_unit.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/cv32e40p_top.sv
+# === PHASE 2B: CV32E40P PACKAGES & VENDOR ===
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_apu_core_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/include/cv32e40p_fpu_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_apu_tracer.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_core_log.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_rvfi.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_rvfi_trace.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_tb_wrapper.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/cv32e40p_tracer.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_rvfi_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/bhv/include/cv32e40p_tracer_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/amo_shim.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/cv32e40p_random_interrupt_generator.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/cv32e40p_tb_subsystem.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/dp_ram.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/mm_ram.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/riscv_gnt_stall.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/riscv_rvalid_stall.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/tb_top.sv
+# D:/khoaluantotnghiep/cv32e40p-master/example_tb/core/include/perturbation_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/addr_decode.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/binary_to_gray.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cb_filter_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_2phase.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_2phase.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cdc_fifo_gray.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/cf_math_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/clk_div.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/counter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/delta_counter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_decode.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_encode.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/ecc_pkg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_detect.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_rx.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/edge_propagator_tx.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/exp_backoff.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fall_through_register.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/fifo_v3.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/gray_to_binary.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/id_queue.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/isochronous_spill_register.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_16bit.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lfsr_8bit.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/lzc.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/max_counter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/mv_filter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/onehot_to_bin.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/plru_tree.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/popcount.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rr_arb_tree.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/rstgen_bypass.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/serial_deglitch.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/shift_reg.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/spill_register.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_arbiter_flushable.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_delay.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_demux.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fifo.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_filter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fork.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_fork_dynamic.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_intf.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_join.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_mux.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_omega_net.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_register.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_to_mem.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/stream_xbar.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/sub_per_hash.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/sync.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/sync_wedge.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/unread.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/clock_divider.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/clock_divider_counter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/fifo_v1.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/fifo_v2.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/find_first_one.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/generic_LFSR_8bit.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/generic_fifo.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/generic_fifo_adv.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_common_cells/src/deprecated/prioarbiter.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_cast_multi.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_classifier.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_multi.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_divsqrt_th_32.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_fma_multi.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_noncomp.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_block.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_fmt_slice.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_opgroup_multifmt_slice.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_rounding.sv
+# D:/khoaluantotnghiep/cv32e40p-master/rtl/vendor/pulp_platform_fpnew/src/fpnew_top.sv
+# === PHASE 3: I-CACHE ===
+# D:/khoaluantotnghiep/icache-master/plru.sv
+# D:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv
+# D:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv
+# D:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv
+# D:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv
+# === PHASE 4: OBI-to-AXI4 ADAPTER (PRODUCTION) ===
+# D:/khoaluantotnghiep/integration/obi_to_axi4_adapter.sv
+# === PHASE 5: HPDCACHE PACKAGES & UTILS ===
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_pkg.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_read_arbiter.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_write_arbiter.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_resp_demux.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_36_29_dec.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_36_29_enc.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_39_32_dec.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_39_32_enc.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_55_48_dec.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_55_48_enc.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_72_64_dec.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_72_64_enc.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/ecc/prim_secded_pkg.sv
+# === PHASE 6: HPDCACHE COMMON ===
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_decoder.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_rrarb.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv
+# === PHASE 7: DOMINO PREFETCHER ===
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_pkg.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_trigger_detector.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_history_buffers.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_xor_hash.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_mht_ram.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/prefetcher/domino_prefetcher_top.sv
+# === PHASE 8: TESTBENCH - OBI-to-AXI4 INTEGRATION ===
+# D:/khoaluantotnghiep/testbench/int_full_integration.sv
+# 0
+# 0
+# 1
+# Compile of registers.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of hpdcache_config.svh was successful.
+# Compile of cv32e40p_sim_clock_gate.sv was successful.
+# Compile of cv32e40p_aligner.sv was successful.
+# Compile of cv32e40p_alu.sv failed with 2 errors.
+# Compile of cv32e40p_alu_div.sv was successful.
+# Compile of cv32e40p_apu_disp.sv was successful with warnings.
+# Compile of cv32e40p_compressed_decoder.sv failed with 39 errors.
+# Compile of cv32e40p_controller.sv failed with 2 errors.
+# Compile of cv32e40p_core.sv failed with 15 errors.
+# Compile of cv32e40p_cs_registers.sv failed with 2 errors.
+# Compile of cv32e40p_decoder.sv failed with 137 errors.
+# Compile of cv32e40p_ex_stage.sv failed with 3 errors.
+# Compile of cv32e40p_ff_one.sv was successful.
+# Compile of cv32e40p_fifo.sv was successful.
+# Compile of cv32e40p_fp_wrapper.sv failed with 42 errors.
+# Compile of cv32e40p_hwloop_regs.sv was successful.
+# Compile of cv32e40p_id_stage.sv failed with 6 errors.
+# Compile of cv32e40p_if_stage.sv failed with 17 errors.
+# Compile of cv32e40p_int_controller.sv failed with 2 errors.
+# Compile of cv32e40p_load_store_unit.sv was successful.
+# Compile of cv32e40p_mult.sv failed with 2 errors.
+# Compile of cv32e40p_obi_interface.sv was successful with warnings.
+# Compile of cv32e40p_popcnt.sv was successful.
+# Compile of cv32e40p_prefetch_buffer.sv was successful.
+# Compile of cv32e40p_prefetch_controller.sv failed with 1 errors.
+# Compile of cv32e40p_register_file_ff.sv was successful.
+# Compile of cv32e40p_register_file_latch.sv was successful with warnings.
+# Compile of cv32e40p_sleep_unit.sv failed with 1 errors.
+# Compile of cv32e40p_top.sv failed with 5 errors.
+# Compile of cv32e40p_pkg.sv was successful.
+# Compile of cv32e40p_apu_core_pkg.sv was successful.
+# Compile of cv32e40p_fpu_pkg.sv was successful.
+# Compile of fpnew_pkg.sv was successful.
+# Compile of cv32e40p_apu_tracer.sv was successful.
+# Compile of cv32e40p_core_log.sv was successful.
+# Compile of cv32e40p_rvfi.sv failed with 3 errors.
+# Compile of cv32e40p_rvfi_trace.sv failed with 2 errors.
+# Compile of cv32e40p_tb_wrapper.sv was successful.
+# Compile of cv32e40p_tracer.sv was successful.
+# Compile of cv32e40p_rvfi_pkg.sv was successful.
+# Compile of cv32e40p_tracer_pkg.sv was successful.
+# Compile of amo_shim.sv was successful.
+# Compile of cv32e40p_random_interrupt_generator.sv failed with 8 errors.
+# Compile of cv32e40p_tb_subsystem.sv was successful.
+# Compile of dp_ram.sv was successful.
+# Compile of mm_ram.sv was successful.
+# Compile of riscv_gnt_stall.sv failed with 5 errors.
+# Compile of riscv_rvalid_stall.sv failed with 4 errors.
+# Compile of tb_top.sv was successful.
+# Compile of perturbation_pkg.sv was successful.
+# Compile of addr_decode.sv failed with 3 errors.
+# Compile of binary_to_gray.sv was successful.
+# Compile of cb_filter.sv failed with 3 errors.
+# Compile of cb_filter_pkg.sv was successful.
+# Compile of cdc_2phase.sv was successful.
+# Compile of cdc_fifo_2phase.sv was successful.
+# Compile of cdc_fifo_gray.sv failed with 4 errors.
+# Compile of cf_math_pkg.sv was successful.
+# Compile of clk_div.sv was successful.
+# Compile of counter.sv was successful.
+# Compile of delta_counter.sv was successful with warnings.
+# Compile of ecc_decode.sv failed with 1 errors.
+# Compile of ecc_encode.sv failed with 1 errors.
+# Compile of ecc_pkg.sv was successful.
+# Compile of edge_detect.sv was successful.
+# Compile of edge_propagator.sv was successful.
+# Compile of edge_propagator_rx.sv was successful.
+# Compile of edge_propagator_tx.sv was successful.
+# Compile of exp_backoff.sv was successful.
+# Compile of fall_through_register.sv was successful.
+# Compile of fifo_v3.sv was successful.
+# Compile of gray_to_binary.sv was successful.
+# Compile of id_queue.sv was successful with warnings.
+# Compile of isochronous_spill_register.sv failed with 8 errors.
+# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr_16bit.sv was successful.
+# Compile of lfsr_8bit.sv was successful.
+# Compile of lzc.sv was successful with warnings.
+# Compile of max_counter.sv was successful.
+# Compile of mv_filter.sv was successful.
+# Compile of onehot_to_bin.sv was successful.
+# Compile of plru_tree.sv was successful.
+# Compile of popcount.sv was successful.
+# Compile of rr_arb_tree.sv was successful.
+# Compile of rstgen.sv was successful.
+# Compile of rstgen_bypass.sv was successful.
+# Compile of serial_deglitch.sv was successful.
+# Compile of shift_reg.sv was successful.
+# Compile of spill_register.sv was successful.
+# Compile of stream_arbiter.sv was successful.
+# Compile of stream_arbiter_flushable.sv was successful.
+# Compile of stream_delay.sv was successful with warnings.
+# Compile of stream_demux.sv was successful.
+# Compile of stream_fifo.sv was successful.
+# Compile of stream_filter.sv was successful.
+# Compile of stream_fork.sv was successful with warnings.
+# Compile of stream_fork_dynamic.sv was successful with warnings.
+# Compile of stream_intf.sv was successful.
+# Compile of stream_join.sv was successful.
+# Compile of stream_mux.sv was successful.
+# Compile of stream_omega_net.sv was successful.
+# Compile of stream_register.sv was successful.
+# Compile of stream_to_mem.sv failed with 3 errors.
+# Compile of stream_xbar.sv was successful.
+# Compile of sub_per_hash.sv was successful.
+# Compile of sync.sv was successful.
+# Compile of sync_wedge.sv was successful.
+# Compile of unread.sv was successful.
+# Compile of clock_divider.sv was successful.
+# Compile of clock_divider_counter.sv was successful.
+# Compile of fifo_v1.sv was successful.
+# Compile of fifo_v2.sv was successful.
+# Compile of find_first_one.sv was successful.
+# Compile of generic_LFSR_8bit.sv was successful.
+# Compile of generic_fifo.sv was successful.
+# Compile of generic_fifo_adv.sv was successful.
+# Compile of prioarbiter.sv was successful.
+# Compile of fpnew_cast_multi.sv failed with 41 errors.
+# Compile of fpnew_classifier.sv was successful with warnings.
+# Compile of fpnew_divsqrt_multi.sv failed with 31 errors.
+# Compile of fpnew_divsqrt_th_32.sv failed with 14 errors.
+# Compile of fpnew_fma.sv failed with 36 errors.
+# Compile of fpnew_fma_multi.sv failed with 39 errors.
+# Compile of fpnew_noncomp.sv failed with 22 errors.
+# Compile of fpnew_opgroup_block.sv was successful with warnings.
+# Compile of fpnew_opgroup_fmt_slice.sv was successful with warnings.
+# Compile of fpnew_opgroup_multifmt_slice.sv failed with 6 errors.
+# Compile of fpnew_rounding.sv was successful.
+# Compile of fpnew_top.sv was successful with warnings.
+# Compile of plru.sv was successful.
+# Compile of cv32e40p_icache_pkg.sv was successful.
+# Compile of cv32e40p_icache_data_mem.sv was successful.
+# Compile of cv32e40p_icache_tag_mem.sv was successful.
+# Compile of cv32e40p_icache.sv was successful.
+# Compile of obi_to_axi4_adapter.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_mem_resp_demux.sv was successful with warnings.
+# Compile of prim_secded_36_29_dec.sv was successful.
+# Compile of prim_secded_36_29_enc.sv was successful.
+# Compile of prim_secded_39_32_dec.sv was successful.
+# Compile of prim_secded_39_32_enc.sv was successful.
+# Compile of prim_secded_55_48_dec.sv was successful.
+# Compile of prim_secded_55_48_enc.sv was successful.
+# Compile of prim_secded_72_64_dec.sv was successful.
+# Compile of prim_secded_72_64_enc.sv was successful.
+# Compile of prim_secded_pkg.sv was successful.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of domino_pkg.sv was successful.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of int_full_integration.sv was successful with warnings.
+# 166 compiles, 34 failed with 510 errors.
+# Compile of registers.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of hpdcache_config.svh was successful.
+# Compile of cv32e40p_sim_clock_gate.sv was successful.
+# Compile of cv32e40p_aligner.sv was successful.
+# Compile of cv32e40p_alu.sv was successful.
+# Compile of cv32e40p_alu_div.sv was successful.
+# Compile of cv32e40p_apu_disp.sv was successful with warnings.
+# Compile of cv32e40p_compressed_decoder.sv was successful.
+# Compile of cv32e40p_controller.sv was successful with warnings.
+# Compile of cv32e40p_core.sv was successful.
+# Compile of cv32e40p_cs_registers.sv was successful with warnings.
+# Compile of cv32e40p_decoder.sv was successful.
+# Compile of cv32e40p_ex_stage.sv was successful with warnings.
+# Compile of cv32e40p_ff_one.sv was successful.
+# Compile of cv32e40p_fifo.sv was successful.
+# Compile of cv32e40p_fp_wrapper.sv was successful.
+# Compile of cv32e40p_hwloop_regs.sv was successful.
+# Compile of cv32e40p_id_stage.sv was successful with warnings.
+# Compile of cv32e40p_if_stage.sv was successful.
+# Compile of cv32e40p_int_controller.sv was successful.
+# Compile of cv32e40p_load_store_unit.sv was successful.
+# Compile of cv32e40p_mult.sv was successful.
+# Compile of cv32e40p_obi_interface.sv was successful with warnings.
+# Compile of cv32e40p_popcnt.sv was successful.
+# Compile of cv32e40p_prefetch_buffer.sv was successful.
+# Compile of cv32e40p_prefetch_controller.sv was successful.
+# Compile of cv32e40p_register_file_ff.sv was successful.
+# Compile of cv32e40p_register_file_latch.sv was successful with warnings.
+# Compile of cv32e40p_sleep_unit.sv was successful.
+# Compile of cv32e40p_top.sv was successful.
+# Compile of cv32e40p_pkg.sv was successful.
+# Compile of cv32e40p_apu_core_pkg.sv was successful.
+# Compile of cv32e40p_fpu_pkg.sv was successful.
+# Compile of fpnew_pkg.sv was successful.
+# Compile of cv32e40p_apu_tracer.sv was successful.
+# Compile of cv32e40p_core_log.sv was successful.
+# Compile of cv32e40p_rvfi.sv failed with 1 errors.
+# Compile of cv32e40p_rvfi_trace.sv was successful with warnings.
+# Compile of cv32e40p_tb_wrapper.sv was successful.
+# Compile of cv32e40p_tracer.sv was successful.
+# Compile of cv32e40p_rvfi_pkg.sv was successful.
+# Compile of cv32e40p_tracer_pkg.sv was successful.
+# Compile of amo_shim.sv was successful.
+# Compile of cv32e40p_random_interrupt_generator.sv was successful.
+# Compile of cv32e40p_tb_subsystem.sv was successful.
+# Compile of dp_ram.sv was successful.
+# Compile of mm_ram.sv was successful.
+# Compile of riscv_gnt_stall.sv was successful.
+# Compile of riscv_rvalid_stall.sv was successful.
+# Compile of tb_top.sv was successful.
+# Compile of perturbation_pkg.sv was successful.
+# Compile of addr_decode.sv was successful.
+# Compile of binary_to_gray.sv was successful.
+# Compile of cb_filter.sv was successful.
+# Compile of cb_filter_pkg.sv was successful.
+# Compile of cdc_2phase.sv was successful.
+# Compile of cdc_fifo_2phase.sv was successful.
+# Compile of cdc_fifo_gray.sv failed with 4 errors.
+# Compile of cf_math_pkg.sv was successful.
+# Compile of clk_div.sv was successful.
+# Compile of counter.sv was successful.
+# Compile of delta_counter.sv was successful with warnings.
+# Compile of ecc_decode.sv was successful.
+# Compile of ecc_encode.sv was successful.
+# Compile of ecc_pkg.sv was successful.
+# Compile of edge_detect.sv was successful.
+# Compile of edge_propagator.sv was successful.
+# Compile of edge_propagator_rx.sv was successful.
+# Compile of edge_propagator_tx.sv was successful.
+# Compile of exp_backoff.sv was successful.
+# Compile of fall_through_register.sv was successful.
+# Compile of fifo_v3.sv was successful.
+# Compile of gray_to_binary.sv was successful.
+# Compile of id_queue.sv was successful with warnings.
+# Compile of isochronous_spill_register.sv failed with 8 errors.
+# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr_16bit.sv was successful.
+# Compile of lfsr_8bit.sv was successful.
+# Compile of lzc.sv was successful with warnings.
+# Compile of max_counter.sv was successful.
+# Compile of mv_filter.sv was successful.
+# Compile of onehot_to_bin.sv was successful.
+# Compile of plru_tree.sv was successful.
+# Compile of popcount.sv was successful.
+# Compile of rr_arb_tree.sv was successful.
+# Compile of rstgen.sv was successful.
+# Compile of rstgen_bypass.sv was successful.
+# Compile of serial_deglitch.sv was successful.
+# Compile of shift_reg.sv was successful.
+# Compile of spill_register.sv was successful.
+# Compile of stream_arbiter.sv was successful.
+# Compile of stream_arbiter_flushable.sv was successful.
+# Compile of stream_delay.sv was successful with warnings.
+# Compile of stream_demux.sv was successful.
+# Compile of stream_fifo.sv was successful.
+# Compile of stream_filter.sv was successful.
+# Compile of stream_fork.sv was successful with warnings.
+# Compile of stream_fork_dynamic.sv was successful with warnings.
+# Compile of stream_intf.sv was successful.
+# Compile of stream_join.sv was successful.
+# Compile of stream_mux.sv was successful.
+# Compile of stream_omega_net.sv was successful.
+# Compile of stream_register.sv was successful.
+# Compile of stream_to_mem.sv failed with 3 errors.
+# Compile of stream_xbar.sv was successful.
+# Compile of sub_per_hash.sv was successful.
+# Compile of sync.sv was successful.
+# Compile of sync_wedge.sv was successful.
+# Compile of unread.sv was successful.
+# Compile of clock_divider.sv was successful.
+# Compile of clock_divider_counter.sv was successful.
+# Compile of fifo_v1.sv was successful.
+# Compile of fifo_v2.sv was successful.
+# Compile of find_first_one.sv was successful.
+# Compile of generic_LFSR_8bit.sv was successful.
+# Compile of generic_fifo.sv was successful.
+# Compile of generic_fifo_adv.sv was successful.
+# Compile of prioarbiter.sv was successful.
+# Compile of fpnew_cast_multi.sv failed with 41 errors.
+# Compile of fpnew_classifier.sv was successful with warnings.
+# Compile of fpnew_divsqrt_multi.sv failed with 31 errors.
+# Compile of fpnew_divsqrt_th_32.sv failed with 14 errors.
+# Compile of fpnew_fma.sv failed with 36 errors.
+# Compile of fpnew_fma_multi.sv failed with 39 errors.
+# Compile of fpnew_noncomp.sv failed with 22 errors.
+# Compile of fpnew_opgroup_block.sv was successful with warnings.
+# Compile of fpnew_opgroup_fmt_slice.sv was successful with warnings.
+# Compile of fpnew_opgroup_multifmt_slice.sv failed with 6 errors.
+# Compile of fpnew_rounding.sv was successful.
+# Compile of fpnew_top.sv was successful with warnings.
+# Compile of plru.sv was successful.
+# Compile of cv32e40p_icache_pkg.sv was successful.
+# Compile of cv32e40p_icache_data_mem.sv was successful.
+# Compile of cv32e40p_icache_tag_mem.sv was successful.
+# Compile of cv32e40p_icache.sv was successful.
+# Compile of obi_to_axi4_adapter.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_mem_resp_demux.sv was successful with warnings.
+# Compile of prim_secded_36_29_dec.sv was successful.
+# Compile of prim_secded_36_29_enc.sv was successful.
+# Compile of prim_secded_39_32_dec.sv was successful.
+# Compile of prim_secded_39_32_enc.sv was successful.
+# Compile of prim_secded_55_48_dec.sv was successful.
+# Compile of prim_secded_55_48_enc.sv was successful.
+# Compile of prim_secded_72_64_dec.sv was successful.
+# Compile of prim_secded_72_64_enc.sv was successful.
+# Compile of prim_secded_pkg.sv was successful.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of domino_pkg.sv was successful.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of int_full_integration.sv was successful with warnings.
+# 166 compiles, 11 failed with 205 errors.
+# Compile of registers.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of hpdcache_config.svh was successful.
+# Compile of cv32e40p_sim_clock_gate.sv was successful.
+# Compile of cv32e40p_aligner.sv was successful.
+# Compile of cv32e40p_alu.sv was successful.
+# Compile of cv32e40p_alu_div.sv was successful.
+# Compile of cv32e40p_apu_disp.sv was successful with warnings.
+# Compile of cv32e40p_compressed_decoder.sv was successful.
+# Compile of cv32e40p_controller.sv was successful with warnings.
+# Compile of cv32e40p_core.sv was successful.
+# Compile of cv32e40p_cs_registers.sv was successful with warnings.
+# Compile of cv32e40p_decoder.sv was successful.
+# Compile of cv32e40p_ex_stage.sv was successful with warnings.
+# Compile of cv32e40p_ff_one.sv was successful.
+# Compile of cv32e40p_fifo.sv was successful.
+# Compile of cv32e40p_fp_wrapper.sv was successful.
+# Compile of cv32e40p_hwloop_regs.sv was successful.
+# Compile of cv32e40p_id_stage.sv was successful with warnings.
+# Compile of cv32e40p_if_stage.sv was successful.
+# Compile of cv32e40p_int_controller.sv was successful.
+# Compile of cv32e40p_load_store_unit.sv was successful.
+# Compile of cv32e40p_mult.sv was successful.
+# Compile of cv32e40p_obi_interface.sv was successful with warnings.
+# Compile of cv32e40p_popcnt.sv was successful.
+# Compile of cv32e40p_prefetch_buffer.sv was successful.
+# Compile of cv32e40p_prefetch_controller.sv was successful.
+# Compile of cv32e40p_register_file_ff.sv was successful.
+# Compile of cv32e40p_register_file_latch.sv was successful with warnings.
+# Compile of cv32e40p_sleep_unit.sv was successful.
+# Compile of cv32e40p_top.sv was successful.
+# Compile of cv32e40p_pkg.sv was successful.
+# Compile of cv32e40p_apu_core_pkg.sv was successful.
+# Compile of cv32e40p_fpu_pkg.sv was successful.
+# Compile of fpnew_pkg.sv was successful.
+# Compile of cv32e40p_apu_tracer.sv was successful.
+# Compile of cv32e40p_core_log.sv was successful.
+# Compile of cv32e40p_rvfi.sv was successful with warnings.
+# Compile of cv32e40p_rvfi_trace.sv was successful with warnings.
+# Compile of cv32e40p_tb_wrapper.sv was successful.
+# Compile of cv32e40p_tracer.sv was successful.
+# Compile of cv32e40p_rvfi_pkg.sv was successful.
+# Compile of cv32e40p_tracer_pkg.sv was successful.
+# Compile of amo_shim.sv was successful.
+# Compile of cv32e40p_random_interrupt_generator.sv was successful.
+# Compile of cv32e40p_tb_subsystem.sv was successful.
+# Compile of dp_ram.sv was successful.
+# Compile of mm_ram.sv was successful.
+# Compile of riscv_gnt_stall.sv was successful.
+# Compile of riscv_rvalid_stall.sv was successful.
+# Compile of tb_top.sv was successful.
+# Compile of perturbation_pkg.sv was successful.
+# Compile of addr_decode.sv was successful.
+# Compile of binary_to_gray.sv was successful.
+# Compile of cb_filter.sv was successful.
+# Compile of cb_filter_pkg.sv was successful.
+# Compile of cdc_2phase.sv was successful.
+# Compile of cdc_fifo_2phase.sv was successful.
+# Compile of cdc_fifo_gray.sv was successful.
+# Compile of cf_math_pkg.sv was successful.
+# Compile of clk_div.sv was successful.
+# Compile of counter.sv was successful.
+# Compile of delta_counter.sv was successful with warnings.
+# Compile of ecc_decode.sv was successful.
+# Compile of ecc_encode.sv was successful.
+# Compile of ecc_pkg.sv was successful.
+# Compile of edge_detect.sv was successful.
+# Compile of edge_propagator.sv was successful.
+# Compile of edge_propagator_rx.sv was successful.
+# Compile of edge_propagator_tx.sv was successful.
+# Compile of exp_backoff.sv was successful.
+# Compile of fall_through_register.sv was successful.
+# Compile of fifo_v3.sv was successful.
+# Compile of gray_to_binary.sv was successful.
+# Compile of id_queue.sv was successful with warnings.
+# Compile of isochronous_spill_register.sv was successful with warnings.
+# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr_16bit.sv was successful.
+# Compile of lfsr_8bit.sv was successful.
+# Compile of lzc.sv was successful with warnings.
+# Compile of max_counter.sv was successful.
+# Compile of mv_filter.sv was successful.
+# Compile of onehot_to_bin.sv was successful.
+# Compile of plru_tree.sv was successful.
+# Compile of popcount.sv was successful.
+# Compile of rr_arb_tree.sv was successful.
+# Compile of rstgen.sv was successful.
+# Compile of rstgen_bypass.sv was successful.
+# Compile of serial_deglitch.sv was successful.
+# Compile of shift_reg.sv was successful.
+# Compile of spill_register.sv was successful.
+# Compile of stream_arbiter.sv was successful.
+# Compile of stream_arbiter_flushable.sv was successful.
+# Compile of stream_delay.sv was successful with warnings.
+# Compile of stream_demux.sv was successful.
+# Compile of stream_fifo.sv was successful.
+# Compile of stream_filter.sv was successful.
+# Compile of stream_fork.sv was successful with warnings.
+# Compile of stream_fork_dynamic.sv was successful with warnings.
+# Compile of stream_intf.sv was successful.
+# Compile of stream_join.sv was successful.
+# Compile of stream_mux.sv was successful.
+# Compile of stream_omega_net.sv was successful.
+# Compile of stream_register.sv was successful.
+# Compile of stream_to_mem.sv was successful with warnings.
+# Compile of stream_xbar.sv was successful.
+# Compile of sub_per_hash.sv was successful.
+# Compile of sync.sv was successful.
+# Compile of sync_wedge.sv was successful.
+# Compile of unread.sv was successful.
+# Compile of clock_divider.sv was successful.
+# Compile of clock_divider_counter.sv was successful.
+# Compile of fifo_v1.sv was successful.
+# Compile of fifo_v2.sv was successful.
+# Compile of find_first_one.sv was successful.
+# Compile of generic_LFSR_8bit.sv was successful.
+# Compile of generic_fifo.sv was successful.
+# Compile of generic_fifo_adv.sv was successful.
+# Compile of prioarbiter.sv was successful.
+# Compile of fpnew_cast_multi.sv was successful with warnings.
+# Compile of fpnew_classifier.sv was successful with warnings.
+# Compile of fpnew_divsqrt_multi.sv was successful with warnings.
+# Compile of fpnew_divsqrt_th_32.sv was successful with warnings.
+# Compile of fpnew_fma.sv was successful with warnings.
+# Compile of fpnew_fma_multi.sv was successful with warnings.
+# Compile of fpnew_noncomp.sv was successful with warnings.
+# Compile of fpnew_opgroup_block.sv was successful with warnings.
+# Compile of fpnew_opgroup_fmt_slice.sv was successful with warnings.
+# Compile of fpnew_opgroup_multifmt_slice.sv was successful with warnings.
+# Compile of fpnew_rounding.sv was successful.
+# Compile of fpnew_top.sv was successful with warnings.
+# Compile of plru.sv was successful.
+# Compile of cv32e40p_icache_pkg.sv was successful.
+# Compile of cv32e40p_icache_data_mem.sv was successful.
+# Compile of cv32e40p_icache_tag_mem.sv was successful.
+# Compile of cv32e40p_icache.sv was successful.
+# Compile of obi_to_axi4_adapter.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_mem_resp_demux.sv was successful with warnings.
+# Compile of prim_secded_36_29_dec.sv was successful.
+# Compile of prim_secded_36_29_enc.sv was successful.
+# Compile of prim_secded_39_32_dec.sv was successful.
+# Compile of prim_secded_39_32_enc.sv was successful.
+# Compile of prim_secded_55_48_dec.sv was successful.
+# Compile of prim_secded_55_48_enc.sv was successful.
+# Compile of prim_secded_72_64_dec.sv was successful.
+# Compile of prim_secded_72_64_enc.sv was successful.
+# Compile of prim_secded_pkg.sv was successful.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of domino_pkg.sv was successful.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of int_full_integration.sv was successful with warnings.
+# 166 compiles, 0 failed with no errors.
+vsim -voptargs=+acc work.int_full_integration_tb
+# vsim -voptargs="+acc" work.int_full_integration_tb 
+# Start time: 10:04:31 on Jul 30,2026
+# Loading C:/Users/ADM/AppData/Local/Temp\ADM@HNG_dpi_2836\win64_gcc-7.4.0\export_tramp.dll
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(345): (vopt-2244) Variable 'timeout_cnt' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(402): (vopt-2244) Variable 'expected_wdata' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(403): (vopt-2244) Variable 'expected_wstrb' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(440): (vopt-2244) Variable 'timeout_cnt' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(498): (vopt-2244) Variable 'timeout_cnt' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(563): (vopt-2244) Variable 'timeout_cnt' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(604): (vopt-2244) Variable 'timeout_cnt' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(643): (vopt-2244) Variable 'expected_wdata_partial' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Warning: D:/khoaluantotnghiep/testbench/int_full_integration.sv(644): (vopt-2244) Variable 'expected_wstrb_partial' is implicitly static. You must either explicitly declare it as static or automatic
+# or remove the initialization in the declaration of variable.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=10.
+# Loading sv_std.std
+# Loading work.int_full_integration_tb(fast)
+# Loading work.obi_to_axi4_adapter(fast)
+add wave -position insertpoint sim:/int_full_integration_tb/*
+run -all
+# 
+# ╔════════════════════════════════════════════════════════════════╗
+# ║  OBI-to-AXI4 ADAPTER INTEGRATION TEST (5-ITERATION LOOP)      ║
+# ║  Full RTL: CV32E40P + Adapter + L1 Cache                      ║
+# ║  Date: 30 July 2026 - COMPLETE VERIFICATION                   ║
+# ╚════════════════════════════════════════════════════════════════╝
+# 
+# 
+# ╔════════════════════════════════════════════════════════════════╗
+# ║  SYNCHRONIZATION VERIFICATION - CLOCK EDGE ALIGNMENT          ║
+# ║  Monitor: All latency counters and valid pulses must align    ║
+# ║  with clock edges (@ posedge clk_i)                           ║
+# ╚════════════════════════════════════════════════════════════════╝
+# 
+# [TEST 1] Instruction Fetch via OBI → AXI4 AR/R
+# 
+#   Cycle 7: Send instr_req=1, addr=0x80000000
+#   Cycle 8: ✓ instr_gnt=1 (adapter accepted)
+#   Cycle 8: ✓ AXI4 AR valid: addr=0x80000000, id=0 (instr), size=3
+# ✗ WARNING: Read latency changed unexpectedly: 0 → 5
+#   Cycle 13: ✓ instr_rvalid=1, rdata=0x80000000
+# 
+# [TEST 2] Data Write via OBI → AXI4 AW/W/B
+# 
+#   Cycle 15: Send data_req=1 (write), addr=0x80001000, wdata=0xcafebabe, be=1111
+#   Cycle 16: ✓ data_gnt=1 (adapter accepted)
+#   Cycle 16: ✓ AXI4 AW valid: addr=0x80001000, id=1 (write)
+#   Cycle 16: ✓ AXI4 W valid: wdata=0x00000000cafebabe, wstrb=0x0f
+#            ✓ Data padding correct: [upper=0x00000000][lower=0xCAFEBABE]
+#            ✓ Byte enable expansion: be[1111] → strb[00001111]
+# ✗ WARNING: Write latency changed unexpectedly: 0 → 3
+#   Cycle 19: ✓ data_rvalid=1 (write response via B channel)
+# 
+# [TEST 3] Data Read via OBI → AXI4 AR/R
+# 
+#   Cycle 21: Send data_req=1 (read), addr=0x80002000
+#   Cycle 22: ✓ data_gnt=1 (adapter accepted)
+#   Cycle 22: ✓ AXI4 AR valid: addr=0x80002000, id=1 (data read)
+# ✗ WARNING: Read latency changed unexpectedly: 0 → 5
+#   Cycle 27: ✓ data_rvalid=1, rdata=0x80002000
+# 
+# [TEST 4] Concurrent Instr + Data Read (Priority Test)
+# 
+#   Cycle 29: Send BOTH instr_req=1 AND data_req=1 (read)
+#            Instr addr=0x80004000, Data addr=0x80005000
+#   Cycle 30: ✓ PRIORITY CORRECT: instr_gnt=1, data_gnt=0 (instr has priority)
+#   Cycle 30: ✓ Only instruction AR issued (id=0)
+# ✗ WARNING: Read latency changed unexpectedly: 0 → 5
+#   Cycle 35: ✓ instr_rvalid=1 (instruction response)
+#   Cycle 36: Retry data_req=1 after instr completes
+#   Cycle 37: ✓ data_gnt=1 (now accepted after instr priority released)
+# ✗ WARNING: Read latency changed unexpectedly: 0 → 5
+#   Cycle 42: ✓ data_rvalid=1 (data response)
+# 
+# [TEST 5] Data Width Conversion Verification (Partial Byte Enable)
+# 
+#   Cycle 44: Send data write: wdata=0xdeadbeef, be=1100 (partial write)
+#   Cycle 45: ✓ AXI4 W valid: wdata=0x00000000deadbeef, wstrb=0x0c
+#            ✓ Data padding correct: [upper=0x00000000][lower=0xDEADBEEF]
+#            ✓ Partial byte enable expansion: be[1100] → strb[00001100]
+#            ✓ wlast=1 (single beat confirmed)
+# ✗ WARNING: Write latency changed unexpectedly: 0 → 3
+# 
+# ╔════════════════════════════════════════════════════════════════╗
+# ║  INTEGRATION TEST COMPLETE - FULL VERIFICATION SUMMARY        ║
+# ╠════════════════════════════════════════════════════════════════╣
+# ║                                                                ║
+# ║  PASSED CHECKS: 19/19
+# ║  FAILED CHECKS: 0/19
+# ║  EXECUTED CHECKS: 19/30 (via log_check tracking)
+# ║  MISSING CHECKS: 11/30
+# ║                                                                ║
+# ║  DETAILED CHECK STATUS (19 checks):                          ║
+# ║  ─────────────────────────────────────────────────────────   ║
+# ║  [ 1] ✓ PASS: TEST1: instr_gnt valid
+# ║  [ 2] ✓ PASS: TEST1: AR valid id=0
+# ║  [ 3] ✓ PASS: TEST1: instr_rvalid response
+# ║  [ 4] ✓ PASS: TEST2: data_gnt valid
+# ║  [ 5] ✓ PASS: TEST2: AW valid id=1
+# ║  [ 6] ✓ PASS: TEST2: data padding
+# ║  [ 7] ✓ PASS: TEST2: strobe expansion
+# ║  [ 8] ✓ PASS: TEST2: data_rvalid response
+# ║  [ 9] ✓ PASS: TEST3: data_gnt valid
+# ║  [10] ✓ PASS: TEST3: AR valid id=1
+# ║  [11] ✓ PASS: TEST3: data_rvalid response
+# ║  [12] ✓ PASS: TEST4a: priority arbitration
+# ║  [13] ✓ PASS: TEST4a: instr AR priority
+# ║  [14] ✓ PASS: TEST4a: instr_rvalid response
+# ║  [15] ✓ PASS: TEST4b: data_gnt after priority
+# ║  [16] ✓ PASS: TEST4b: data_rvalid response
+# ║  [17] ✓ PASS: TEST5: partial padding
+# ║  [18] ✓ PASS: TEST5: partial strobe
+# ║  [19] ✓ PASS: TEST5: wlast=1
+# ║  ─────────────────────────────────────────────────────────   ║
+# ║  NOTE: Test plan defines 30 checks, code implements 19      ║
+# ║        Missing 11 checks are not yet designed              ║
+# ║                                                                ║
+# ║  ✓✓✓ ALL TESTS PASSED - ADAPTER PRODUCTION READY ✓✓✓         ║
+# ║                                                                ║
+# ║  Verified Features:                                          ║
+# ║  ✓ OBI Instruction Path (AR/R with ID=0)                    ║
+# ║  ✓ OBI Data Write Path (AW/W/B with ID=1)                  ║
+# ║  ✓ OBI Data Read Path (AR/R with ID=1)                     ║
+# ║  ✓ Instruction Priority Arbitration (instr > data read)     ║
+# ║  ✓ Data Width Conversion (32-bit OBI ↔ 64-bit AXI4)        ║
+# ║  ✓ Byte Enable → Strobe Expansion ({4'h0, be[3:0]})        ║
+# ║  ✓ Latency: 5-cycle for reads, 3-cycle for write response  ║
+# ║  ✓ Handshaking: OBI (req/gnt) ↔ AXI4 (valid/ready)         ║
+# ║  ✓ Protocol Compliance: AXI4 Full, single-beat transfers    ║
+# ║                                                                ║
+# ║  Adapter Status: 
+# PRODUCTION READY ✓
+# ║  Ready for: UVM Testbench Integration                       ║
+# ║             CV32E40P with HPDcache + Domino Prefetcher      ║
+# ║                                                                ║
+# ╚════════════════════════════════════════════════════════════════╝
+# 
+# ** Note: $finish    : D:/khoaluantotnghiep/testbench/int_full_integration.sv(749)
+#    Time: 475 ns  Iteration: 0  Instance: /int_full_integration_tb
+# 1
+# Break in Module int_full_integration_tb at D:/khoaluantotnghiep/testbench/int_full_integration.sv line 749
+# Causality operation skipped due to absence of debug database file
+# End time: 12:18:23 on Jul 30,2026, Elapsed time: 2:13:52
+# Errors: 0, Warnings: 193
+# Closing project D:/khoaluantotnghiep/project_int_full_integration/int_full_integration.mpf

@@ -1,0 +1,112 @@
+vlog -work work -vopt -sv +incdir+D:/UVM_CV32E40P/sv -stats=none D:/UVM_CV32E40P/sv/hpdcache_coverage.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/UVM_CV32E40P/sv/hpdcache_coverage.sv(5): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: (vlog-13069) D:/UVM_CV32E40P/sv/hpdcache_coverage.sv(23): near "pkt": syntax error, unexpected IDENTIFIER, expecting ')'.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/sv/instruction_decoder.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module instruction_decoder
+-- Importing package hpdcache_pkg
+** Error (suppressible): D:/UVM_CV32E40P/sv/instruction_decoder.sv(259): (vlog-1957) The sva directive is not sensitive to a clock. Unclocked directives are not supported.
+** Error (suppressible): D:/UVM_CV32E40P/sv/instruction_decoder.sv(271): (vlog-1957) The sva directive is not sensitive to a clock. Unclocked directives are not supported.
+** Note: (vlog-2286) D:/UVM_CV32E40P/sv/instruction_decoder.sv(284): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/sv/hpdcache_prefetcher_monitor.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/UVM_CV32E40P/sv/hpdcache_prefetcher_monitor.sv(11): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: D:/UVM_CV32E40P/sv/hpdcache_prefetcher_monitor.sv(21): (vlog-2730) Undefined variable: 'UVM_HPDCACHE_PA_WIDTH'.
+** Error: D:/UVM_CV32E40P/sv/hpdcache_prefetcher_monitor.sv(23): (vlog-2730) Undefined variable: 'UVM_TAG_WIDTH'.
+** Error: D:/UVM_CV32E40P/sv/hpdcache_prefetcher_monitor.sv(24): (vlog-2730) Undefined variable: 'UVM_REQ_OFFSET_WIDTH'.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/sv/hpdcache_performance_measurement.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/UVM_CV32E40P/sv/hpdcache_performance_measurement.sv(11): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: D:/UVM_CV32E40P/sv/hpdcache_performance_measurement.sv(21): (vlog-2730) Undefined variable: 'UVM_HPDCACHE_PA_WIDTH'.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Note: (vlog-2286) D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(21): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+-- Compiling package cv32e40p_obi_adapter_if_sv_unit
+-- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+-- Importing package hpdcache_pkg
+** Error: D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(229): Illegal value (1000) for output formal (timeout_cycles).  Value must be assignable.
+-- Compiling interface cv32e40p_obi_adapter_if
+** Error: D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(68): 'hpdcache_req_t' is an unknown type.
+Or did you omit the '()' for an instantiation?
+** Error: D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(72): 'hpdcache_rsp_t' is an unknown type.
+Or did you omit the '()' for an instantiation?
+** Error: D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(79): 'hpdcache_req_t' is an unknown type.
+Or did you omit the '()' for an instantiation?
+** Error: D:/UVM_CV32E40P/tb/cv32e40p_obi_adapter_if.sv(82): 'hpdcache_rsp_t' is an unknown type.
+Or did you omit the '()' for an instantiation?
+
+
+vlog -work work -vopt -sv +incdir+D:/UVM_CV32E40P/tb -stats=none D:/UVM_CV32E40P/tb/tc_i_01_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_i_01_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_i_01_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_d_01_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_d_01_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_d_01_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_p_01_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_p_01_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_p_01_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_i_02_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_d_02_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_d_02_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_d_02_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_d_03_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_d_03_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_d_03_test.sv(5): Error in class extension specification.
+
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_p_02_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_p_02_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_p_02_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_p_03_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_p_03_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_p_03_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_int_01_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_int_01_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_int_01_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_int_02_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_int_02_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_int_02_test.sv(5): Error in class extension specification.
+
+
+vlog -work work -vopt -sv -stats=none D:/UVM_CV32E40P/tb/tc_sys_01_test.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+** Error: (vlog-13069) D:/UVM_CV32E40P/tb/tc_sys_01_test.sv(5): near "hpdcache_base_test": syntax error, unexpected IDENTIFIER.
+** Error: D:/UVM_CV32E40P/tb/tc_sys_01_test.sv(5): Error in class extension specification.
+
+
+
+
+

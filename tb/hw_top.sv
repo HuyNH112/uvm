@@ -1,161 +1,95 @@
 // =============================================================================
 // hw_top.sv
-// Hardware top: DUT (hpdcache_wrapper) + Behavioral AXI Memory Model
+// Hardware top: CV32E40P (optional) + HPDcache DUT + Behavioral AXI Memory Model
 //
-// CRITICAL FIXES vs. bug report:
-//   FIX-1: mem_resp_read_ready_o là OUTPUT của DUT — memory model POLL sẵn
-//           Không drive vào DUT, chỉ sample. Serve beat CHỈ KHI DUT assert.
-//   FIX-2: FIFO depth = MSHR_SETS × MSHR_WAYS = 4 × 4 = 16 outstanding misses
-//   FIX-3: shadow_mem[addr] indexed bằng cacheline address (addr[55:6])
-//          để lookup đúng 64 bytes per cacheline cho 512-bit AXI burst
-//   FIX-4: Write response ACK: chờ mem_resp_write_ready_o trước khi assert valid
+// Architecture:
+//   CV32E40P (32-bit RISC-V) → OBI Interface → HPDcache Wrapper → AXI Memory
 //
-// AXI Read Protocol:
-//   DUT → mem_req_read_valid_o + addr/id → ENQ vào rd_fifo[]
-//   Memory → DEQ khi idle → serve N beats (512-bit × len) → DUT
-//   Mỗi beat: assert valid, đợi DUT ready (mem_resp_read_ready_o=1), deassert
+// HPDCache Configuration (from hpdcache_config.svh):
+//   - 64 sets × 8 ways = 32 KB D-Cache
+//   - 64 byte cacheline (8 words × 8 bytes)
+//   - 56-bit physical address (from wrapper)
+//   - 512-bit AXI data width (8 words × 64 bits)
+//   - Domino Prefetcher with MHT1/MHT2 patterns
 //
-// AXI Write Protocol:
-//   DUT → mem_req_write_valid_o + data valid → capture + ACK
+// Phase 1 (Current - HPDcache-only):
+//   - DUT: hpdcache_wrapper (D-cache only)
+//   - Stimulus: Mock transaction generator (UVM testbench)
+//   - No CV32E40P core (can be integrated in Phase 2)
+//
+// AXI Memory Model:
+//   - Read FIFO: depth=16 (MSHR_SETS × MSHR_WAYS = 4 × 4)
+//   - Write Response FIFO: depth=4 (WBUF_DIR_ENTRIES)
+//   - Shadow memory: indexed by cacheline address [55:6]
 // =============================================================================
-`include "hpdcache_config.svh"
-`include "hpdcache_typedef.svh"
-`include "rvfi_types.svh"                // Required for RVFI_PROBES_INSTR_T macro
+`timescale 1ns/1ps
 
 module hw_top;
 
-    // NOTE: CVA6 core instantiation requires:
-    // - ariane_pkg, config_pkg, cva6_config_pkg, build_config_pkg (from CVA6 RTL)
-    // - These should be compiled as part of RTL compilation Step 1
-    // If compilation fails with undefined package errors, ensure CVA6 RTL packages
-    // are included in the +incdir compilation flag
+    // =========================================================================
+    // Configuration Parameters
+    // From: hpdcache_config.svh + hpdcache_uvm_pkg.sv
+    // =========================================================================
 
-    // -------------------------------------------------------------------------
-    // Parameters
-    // -------------------------------------------------------------------------
-    localparam int unsigned MEM_AW       = `CONF_HPDCACHE_MEM_ADDR_WIDTH;  // 56
-    localparam int unsigned MEM_DW       = `CONF_HPDCACHE_MEM_DATA_WIDTH;  // 512
-    localparam int unsigned MEM_IDW      = `CONF_HPDCACHE_MEM_ID_WIDTH;    // 8
-    localparam int unsigned CL_WORDS     = `CONF_HPDCACHE_CL_WORDS;        // 8
-    localparam int unsigned WORD_W       = `CONF_HPDCACHE_WORD_WIDTH;       // 64
-    localparam int unsigned CL_BYTES     = CL_WORDS * (WORD_W / 8);        // 64
-    localparam int unsigned AXI_BYTES    = MEM_DW / 8;                     // 64
-    // Number of AXI beats per cacheline refill
-    localparam int unsigned BEATS_PER_CL = CL_BYTES / AXI_BYTES;           // 1
-    // MSHR: max outstanding misses
-    localparam int unsigned RD_FIFO_DEPTH = `CONF_HPDCACHE_MSHR_SETS
-                                          * `CONF_HPDCACHE_MSHR_WAYS;      // 16
-    localparam int unsigned WBUF_TCW     = `CONF_HPDCACHE_WBUF_TIMECNT_WIDTH;
+    // Physical address & data width (HPDCache)
+    localparam int unsigned PA_WIDTH       = 56;    // Physical address width
+    localparam int unsigned MEM_AW         = 56;    // Memory address width (same as PA_WIDTH)
+    localparam int unsigned MEM_DW         = 512;   // Memory data width (AXI)
+    localparam int unsigned MEM_IDW        = 8;     // Memory ID width (AXI)
 
-    // Clock / Reset
-    localparam real CLK_PERIOD = 10.0; // ns
+    // Cache line configuration
+    localparam int unsigned CL_WORDS       = 8;     // Words per cache line (CL_WORDS)
+    localparam int unsigned WORD_WIDTH     = 64;    // Bits per word
+    localparam int unsigned CL_BYTES       = CL_WORDS * (WORD_WIDTH / 8);  // 64 bytes
+    localparam int unsigned AXI_BYTES      = MEM_DW / 8;                   // 64 bytes
+    localparam int unsigned BEATS_PER_CL   = CL_BYTES / AXI_BYTES;         // 1 beat
 
-    // -------------------------------------------------------------------------
-    // Clock & Reset
-    // -------------------------------------------------------------------------
-    logic clk;
-    logic rst_n;
+    // MSHR (Miss Status Hold Register) - max outstanding read requests
+    localparam int unsigned MSHR_SETS      = 4;     // MSHR set bits
+    localparam int unsigned MSHR_WAYS      = 4;     // MSHR ways per set
+    localparam int unsigned RD_FIFO_DEPTH  = MSHR_SETS * MSHR_WAYS;  // 16
 
-    initial clk = 1'b0;
-    always #(CLK_PERIOD/2) clk = ~clk;
+    // Write buffer configuration
+    localparam int unsigned WBUF_DIR_ENTRIES = 4;   // Write directory entries
+    localparam int unsigned WBUF_TCW       = 4;     // Write buffer time counter width
+    localparam int unsigned WR_RSP_DEPTH   = WBUF_DIR_ENTRIES;
+
+    // Clock configuration
+    localparam real CLK_PERIOD = 10.0; // ns (100 MHz)
+
+    // =========================================================================
+    // CLOCK & RESET GENERATION
+    // =========================================================================
+    logic clk_i;
+    logic rst_ni;
+
+    initial clk_i = 1'b0;
+    always #(CLK_PERIOD/2) clk_i = ~clk_i;
 
     initial begin
-        rst_n = 1'b0;
-        repeat (10) @(posedge clk);  // 10 cycles reset
-        @(negedge clk);
-        rst_n = 1'b1;
+        rst_ni = 1'b0;
+        repeat (10) @(posedge clk_i);  // 10 cycles of reset
+        @(negedge clk_i);
+        rst_ni = 1'b1;
+        $display("[HW_TOP] Reset released at %0t ns: rst_ni=%b", $time, rst_ni);
     end
 
-    // -------------------------------------------------------------------------
-    // Interface instantiation
-    // -------------------------------------------------------------------------
-    hpdcache_if dut_if (.clk_i(clk), .rst_ni(rst_n));
-	
-	// -------------------------------------------------------------------------
-    // RVFI Interface instantiation (CVA6 Core observation)
-    // -------------------------------------------------------------------------
-    cva6_rvfi_if rvfi_vif (.clk_i(clk), .rst_ni(rst_n));
-    
     // =========================================================================
-    // CVA6 CORE INSTANTIATION (Option A)
+    // INTERFACE INSTANTIATION
     // =========================================================================
-    // CVA6 core with RVFI probes output
-    // RVFI probes connect directly to rvfi_vif for ISA verification
-    // Core is independent; can optionally connect to hpdcache for testing
-    
-    localparam config_pkg::cva6_cfg_t CVA6Cfg = 
-        build_config_pkg::build_config(cva6_config_pkg::cva6_cfg);
-    
-    // RVFI probes struct (output from CVA6 core)
-    localparam type rvfi_probes_instr_t = `RVFI_PROBES_INSTR_T(CVA6Cfg);
-    localparam type rvfi_probes_csr_t   = `RVFI_PROBES_CSR_T(CVA6Cfg);
-    localparam type rvfi_probes_t = struct packed {
-        rvfi_probes_csr_t   csr;
-        rvfi_probes_instr_t instr;
-    };
-    
-    rvfi_probes_t rvfi_probes;
-    
-    // Minimal CVA6 core instantiation
-    // NOTE: Full core requires many ports (AXI, interrupt, debug, etc.)
-    // This is a skeleton; complete instantiation depends on CVA6 configuration
-    cva6 #(
-        .CVA6Cfg(CVA6Cfg),
-        .rvfi_probes_instr_t(rvfi_probes_instr_t),
-        .rvfi_probes_csr_t(rvfi_probes_csr_t),
-        .rvfi_probes_t(rvfi_probes_t)
-    ) u_cva6 (
-        .clk_i                              (clk),
-        .rst_ni                             (rst_n),
-        
-        // NOTE: CVA6 has separate I-fetch and LSU ports
-        // For full integration with hpdcache, these need proper arbitration
-        // Placeholder: leave unconnected for TC 1.1-1.3 (no cache activity)
-        // TODO: Connect fetch_req/fetch_rsp, lsu_req/lsu_rsp as needed
-        
-        // RVFI probes output (for ISA verification)
-        .rvfi_probes_o                      (rvfi_probes),
-        
-        // Other required CVA6 ports (stub values for now)
-        // .irq_i(1'b0), .ipi_i(1'b0), .timer_irq_i(1'b0),
-        // .debug_req_i(1'b0), .debug_we_i(1'b0),
-        // .debug_addr_i(0), .debug_wdata_i(0),
-        // .debug_rdata_o(), .debug_halted_o(),
-        // TODO: Add AXI master interface for memory access
-        
-        // Suppress unused port warnings:
-        .*                                  ()  // Unconnected ports
-    );
-    
+    hpdcache_if dut_if (.clk_i(clk_i), .rst_ni(rst_ni));
+
     // =========================================================================
-    // RVFI SIGNAL ASSIGNMENTS — Connected from CVA6 core
+    // DUT INSTANTIATION: HPDcache Wrapper
     // =========================================================================
-    assign rvfi_vif.commit_valid    = u_cva6.rvfi_probes_o.instr.valid;
-    assign rvfi_vif.commit_pc       = u_cva6.rvfi_probes_o.instr.pc;
-    assign rvfi_vif.commit_pc_next  = u_cva6.rvfi_probes_o.instr.pc_next;
-    assign rvfi_vif.commit_instr    = u_cva6.rvfi_probes_o.instr.insn;
-    assign rvfi_vif.commit_rd_addr  = u_cva6.rvfi_probes_o.instr.rd_addr;
-    assign rvfi_vif.commit_rd_we    = u_cva6.rvfi_probes_o.instr.rd_we;
-    assign rvfi_vif.commit_rd_wdata = u_cva6.rvfi_probes_o.instr.rd_wdata;
-    assign rvfi_vif.exception_valid = u_cva6.rvfi_probes_o.csr.exception_valid;
-    assign rvfi_vif.mcause          = u_cva6.rvfi_probes_o.csr.mcause;
-    assign rvfi_vif.mepc            = u_cva6.rvfi_probes_o.csr.mepc;
-    assign rvfi_vif.csr_valid       = u_cva6.rvfi_probes_o.csr.csr_we;
-    assign rvfi_vif.csr_addr        = u_cva6.rvfi_probes_o.csr.csr_addr;
-    assign rvfi_vif.csr_wdata       = u_cva6.rvfi_probes_o.csr.csr_wdata;
-    
-    // -------------------------------------------------------------------------
-    // DUT instantiation (HPDcache — optional for Phase 1, used in Phase 2+)
-    // -------------------------------------------------------------------------
-    // Intermediate signal: wbuf_threshold_i là 4-bit trong wrapper
-    // (wbuf_timecnt_t = logic unsigned [3:0]). Interface signal có thể
-    // khác origin typedef → Questa vsim-3015. Dùng explicit 4-bit slice.
-    logic [3:0] wbuf_threshold_4b;
-    assign wbuf_threshold_4b = dut_if.cfg_wbuf_threshold_i[3:0];
+    // Intermediate signal: wbuf_threshold_i is 8-bit in wrapper
+    // (wbuf_timecnt_t = logic unsigned [7:0] from CONF_HPDCACHE_WBUF_TIMECNT_WIDTH)
+    logic [7:0] wbuf_threshold_8b;
+    assign wbuf_threshold_8b = dut_if.cfg_wbuf_threshold_i[7:0];
 
     hpdcache_wrapper i_dut (
-        .clk_i                              (clk),
-        .rst_ni                             (rst_n),
+        .clk_i                              (clk_i),
+        .rst_ni                             (rst_ni),
 
         .wbuf_flush_i                       (dut_if.wbuf_flush_i),
 
@@ -233,7 +167,7 @@ module hw_top;
 
         // Config
         .cfg_enable_i                       (dut_if.cfg_enable_i),
-        .cfg_wbuf_threshold_i               (wbuf_threshold_4b),
+        .cfg_wbuf_threshold_i               (wbuf_threshold_8b),
         .cfg_wbuf_reset_timecnt_on_write_i  (dut_if.cfg_wbuf_reset_timecnt_on_write_i),
         .cfg_wbuf_sequential_waw_i          (dut_if.cfg_wbuf_sequential_waw_i),
         .cfg_wbuf_inhibit_write_coalescing_i(dut_if.cfg_wbuf_inhibit_write_coalescing_i),
@@ -268,9 +202,6 @@ module hw_top;
     logic     rd_serving;
     rd_req_t  rd_current;
     int       rd_beat_cnt;
-
-    // Write RSP FIFO — depth >= WBUF_DIR_ENTRIES=4
-    localparam int unsigned WR_RSP_DEPTH = `CONF_HPDCACHE_WBUF_DIR_ENTRIES;
 
     typedef struct {
         logic [MEM_AW-1:0]  addr;
@@ -310,6 +241,21 @@ module hw_top;
         dut_if.mem_req_write_ready_i        = 1'b1;
         dut_if.mem_req_write_data_ready_i   = 1'b1;
 
+        // Initialize configuration signals (CRITICAL: enable cache!)
+        dut_if.cfg_enable_i                        = 1'b1;   // ENABLE CACHE
+        dut_if.cfg_wbuf_threshold_i                = 8'd4;   // Default threshold (8-bit)
+        dut_if.cfg_wbuf_reset_timecnt_on_write_i   = 1'b0;
+        dut_if.cfg_wbuf_sequential_waw_i           = 1'b1;
+        dut_if.cfg_wbuf_inhibit_write_coalescing_i = 1'b0;
+        dut_if.cfg_prefetch_updt_plru_i            = 1'b1;
+        dut_if.cfg_error_on_cacheable_amo_i        = 1'b0;
+        dut_if.cfg_rtab_single_entry_i             = 1'b0;
+        dut_if.cfg_default_wb_i                    = 1'b1;  // Write-back mode
+        dut_if.cfg_scrub_enable_i                  = 1'b0;
+        dut_if.cfg_scrub_period_i                  = 6'd0;
+        dut_if.cfg_scrub_restart_i                 = 1'b0;
+        dut_if.wbuf_flush_i                        = 1'b0;
+
         fork
             axi_read_req_enqueue();
             axi_read_resp_serve();
@@ -322,8 +268,8 @@ module hw_top;
     // -------------------------------------------------------------------------
     task automatic axi_read_req_enqueue();
         forever begin
-            @(posedge clk);
-            if (!rst_n) begin
+            @(posedge clk_i);
+            if (!rst_ni) begin
                 rd_fifo_wr_ptr = 0; rd_fifo_rd_ptr = 0; rd_fifo_cnt = 0;
             end else if (dut_if.mem_req_read_valid_o && dut_if.mem_req_read_ready_i) begin
                 if (rd_fifo_cnt >= RD_FIFO_DEPTH) begin
@@ -359,8 +305,8 @@ module hw_top;
         logic [MEM_DW-1:0] resp_data;
 
         forever begin
-            @(posedge clk);
-            if (!rst_n) begin
+            @(posedge clk_i);
+            if (!rst_ni) begin
                 rd_serving = 1'b0;
                 dut_if.mem_resp_read_valid_i = 1'b0;
                 dut_if.mem_resp_read_last_i  = 1'b0;
@@ -384,7 +330,7 @@ module hw_top;
                 end
 
                 // Drive valid+data ngay trên negedge (không chờ ready_o)
-                @(negedge clk);
+                @(negedge clk_i);
                 dut_if.mem_resp_read_valid_i = 1'b1;
                 dut_if.mem_resp_read_id_i    = rd_current.id;
                 dut_if.mem_resp_read_data_i  = resp_data;
@@ -400,7 +346,7 @@ module hw_top;
 
                     if (rd_beat_cnt == rd_current.len) begin
                         // Last beat accepted → deassert valid
-                        @(negedge clk);
+                        @(negedge clk_i);
                         dut_if.mem_resp_read_valid_i = 1'b0;
                         dut_if.mem_resp_read_last_i  = 1'b0;
                         rd_serving = 1'b0;
@@ -415,7 +361,7 @@ module hw_top;
                             mem_model[cl_addr] = {16{cl_addr[31:0]}};
                             resp_data = mem_model[cl_addr];
                         end
-                        @(negedge clk);
+                        @(negedge clk_i);
                         dut_if.mem_resp_read_data_i = resp_data;
                         dut_if.mem_resp_read_last_i = (rd_beat_cnt == rd_current.len) ? 1'b1 : 1'b0;
                     end
@@ -432,8 +378,8 @@ module hw_top;
 
         fork
             forever begin
-                @(posedge clk);
-                if (!rst_n) begin
+                @(posedge clk_i);
+                if (!rst_ni) begin
                     wr_fifo_wr_ptr = 0;
                     wr_fifo_rd_ptr = 0;
                     wr_fifo_cnt    = 0;
@@ -464,8 +410,8 @@ module hw_top;
             end
 
             forever begin
-                @(posedge clk);
-                if (!rst_n) begin
+                @(posedge clk_i);
+                if (!rst_ni) begin
                     wr_rsp_serving = 1'b0;
                     dut_if.mem_resp_write_valid_i = 1'b0;
                 end else if (!wr_rsp_serving && wr_fifo_cnt > 0) begin
@@ -473,7 +419,7 @@ module hw_top;
                     wr_fifo_rd_ptr = (wr_fifo_rd_ptr + 1) % WR_RSP_DEPTH;
                     wr_fifo_cnt--;
                     wr_rsp_serving = 1'b1;
-                    @(negedge clk);
+                    @(negedge clk_i);
                     dut_if.mem_resp_write_valid_i     = 1'b1;
                     dut_if.mem_resp_write_id_i        = cur_b.id;
                     dut_if.mem_resp_write_error_i     = hpdcache_pkg::hpdcache_mem_error_e'(0);
@@ -481,7 +427,7 @@ module hw_top;
                 end else if (wr_rsp_serving) begin
                     if (dut_if.mem_resp_write_valid_i && dut_if.mem_resp_write_ready_o) begin
                         $display("[MEM @%0t] WR RESP: id=%0d", $time, cur_b.id);
-                        @(negedge clk);
+                        @(negedge clk_i);
                         dut_if.mem_resp_write_valid_i = 1'b0;
                         wr_rsp_serving = 1'b0;
                     end

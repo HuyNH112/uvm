@@ -1,8 +1,6 @@
 // =============================================================================
 // hpdcache_sequencer.sv — UVM_HPDCACHE_* only, no CONF macro
 // =============================================================================
-`ifndef HPDCACHE_SEQUENCER_SV
-`define HPDCACHE_SEQUENCER_SV
 
 class hpdcache_sequencer extends uvm_sequencer #(hpdcache_seq_item);
 
@@ -33,5 +31,3 @@ class hpdcache_sequencer extends uvm_sequencer #(hpdcache_seq_item);
     endfunction
 
 endclass : hpdcache_sequencer
-
-`endif // HPDCACHE_SEQUENCER_SV

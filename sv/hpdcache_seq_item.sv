@@ -4,8 +4,6 @@
 // KHÔNG dùng `CONF_HPDCACHE_* macro (undefined khi compile trong package)
 // KHÔNG dùng rand/randomize (cần svverification license)
 // =============================================================================
-`ifndef HPDCACHE_SEQ_ITEM_SV
-`define HPDCACHE_SEQ_ITEM_SV
 
 class hpdcache_seq_item extends uvm_sequence_item;
 
@@ -56,7 +54,7 @@ class hpdcache_seq_item extends uvm_sequence_item;
         tid          = '0;
         sid          = '0;
         need_rsp     = 1'b1;
-        phys_indexed = 1'b1;   // cv32a6: PIPT
+        phys_indexed = 1'b1;   // Physically Indexed Physically Tagged
         size         = hpdcache_req_size_t'(3); // 8-byte
         pma          = '0;
         delay_cycles = 0;
@@ -187,5 +185,3 @@ class hpdcache_seq_item extends uvm_sequence_item;
     endfunction
 
 endclass : hpdcache_seq_item
-
-`endif // HPDCACHE_SEQ_ITEM_SV

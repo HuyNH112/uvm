@@ -1,0 +1,132 @@
+UVM_CV32E40P Project File Structure
+====================================
+Generated: 2026-07-30
+Total Files Copied: 52 files across 5 directories
+
+DIRECTORY STRUCTURE:
+===================
+
+D:\UVM\UVM_CV32E40P\
+├── doc/
+│   ├── README.md                           # Project overview
+│   └── SETUP_GUIDE.md                      # Setup instructions
+│
+├── sv/ (15 files - UVM Packages)
+│   ├── hpdcache_uvm_pkg.sv                # Main package container
+│   ├── hpdcache_driver.sv                 # HPDcache transaction driver
+│   ├── hpdcache_monitor.sv                # HPDcache transaction monitor
+│   ├── hpdcache_scoreboard.sv             # Cache behavior checker
+│   ├── hpdcache_seq_item.sv               # Cache transaction definition
+│   ├── hpdcache_sequencer.sv              # UVM sequencer
+│   ├── hpdcache_env.sv                    # UVM environment container
+│   ├── hpdcache_coverage.sv               # Coverage collector
+│   ├── isa_agent.sv                       # ISA verification agent
+│   ├── isa_driver.sv                      # ISA transaction driver
+│   ├── isa_sequencer.sv                   # ISA sequencer
+│   ├── isa_seq_item.sv                    # ISA transaction definition
+│   ├── isa_commit_monitor.sv              # Instruction commit monitor
+│   ├── isa_csr_monitor.sv                 # CPU CSR monitor
+│   └── isa_scoreboard.sv                  # ISA compliance checker
+│
+├── tb/ (10 files - Testbench Code)
+│   ├── tb_top.sv                          # Top-level testbench
+│   ├── hw_top.sv                          # Hardware instantiation wrapper
+│   ├── hpdcache_if.sv                     # HPDcache interface definitions
+│   ├── hpdcache_seq_lib.sv                # Cache test sequences
+│   ├── hpdcache_base_test.sv              # Base test class
+│   ├── hpdcache_test_lib.sv               # Functional test cases
+│   ├── hpdcache_test_isa_lib.sv           # ISA test cases
+│   ├── instr_memory.sv                    # Instruction memory model
+│   ├── mock_rvfi_generator.sv             # RVFI mock generator
+│   └── cva6_rvfi_if.sv                    # CVA6 RVFI interface
+│
+├── do/ (21 files - Simulation Scripts)
+│   ├── run_uvm.do                         # Master simulation script [CRITICAL]
+│   ├── run_uvm_test_template.do           # Test template
+│   ├── run_uvm_rand_test.do               # Random test runner
+│   ├── run_uvm_store_load.do              # Store/Load test runner
+│   ├── run_uvm_axi_stall_test.do          # AXI stall test
+│   ├── run_uvm_cross_cacheline_test.do    # Cross-cacheline test
+│   ├── run_uvm_domino_mht1_test.do        # Domino MHT1 test
+│   ├── run_uvm_domino_mht2_test.do        # Domino MHT2 test
+│   ├── run_uvm_hash_collision_test.do     # Hash collision test
+│   ├── run_uvm_hit_under_miss_test.do     # Hit-under-miss test
+│   ├── run_uvm_mshr_stress_test.do        # MSHR stress test
+│   ├── run_uvm_pref_store_hazard_test.do  # Prefetcher hazard test
+│   ├── run_uvm_wbuf_test.do               # Write buffer test
+│   ├── waveform.do                        # Waveform viewer setup
+│   ├── clean_cache.do                     # Cache/temp cleanup
+│   ├── run_rvfi_verify.do                 # RVFI verification
+│   ├── final_test.do                      # Final integration test
+│   ├── run_final.do                       # Run final test
+│   ├── create_full.do                     # Full project creation
+│   ├── create_dcache.do                   # Data cache configuration
+│   └── cva6.do                            # CVA6 integration
+│
+├── testplan/ (2 files - Documentation)
+│   ├── UVM_REUSABILITY_ASSESSMENT.md      # Reusability analysis
+│   └── testplan_UVM_CV32E40P_FINAL.csv    # Test coverage matrix
+│
+└── [Root Configuration Files]
+    ├── README.md                           # Project overview (from doc/)
+    ├── SETUP_GUIDE.md                      # Setup instructions (from doc/)
+    ├── FILE_TREE.txt                       # This file
+    └── COMPLETION_SUMMARY.md               # Copy completion report
+
+STATISTICS:
+===========
+Directory        Files    Size (KB)    Description
+─────────────────────────────────────────────────────
+sv/              15       54.4         UVM packages
+tb/              10       77.5         Testbench code
+do/              21       85.7         Simulation scripts
+testplan/        2        21.6         Documentation
+doc/             2        ~30          README & setup guide
+─────────────────────────────────────────────────────
+TOTAL            50       269.2 KB     
+
+REUSABILITY BREAKDOWN:
+======================
+HIGH Reusability (35 files):
+  - sv/hpdcache_*.sv (8 files)     - Generic cache agents
+  - sv/isa_*.sv (5 files)          - ISA verification agents
+  - tb/hpdcache_*.sv (6 files)     - Cache test infrastructure
+  - tb/tb_top.sv, hw_top.sv        - Testbench wrappers
+  - tb/instr_memory.sv             - Simple memory model
+  - testplan/*.csv, *.md (2 files) - Test documentation
+
+MEDIUM Reusability (15 files):
+  - do/run_uvm*.do (13 files)      - Simulation runners (requires path edits)
+  - tb/mock_rvfi_generator.sv      - RVFI mock (interface-specific)
+  - tb/cva6_rvfi_if.sv             - CVA6 binding (processor-specific)
+
+Path-Dependent Files (require editing):
+  - do/run_uvm.do                  - D:/UVM/* → relative paths
+  - do/run_uvm_*_test.do           - External RTL references
+  - do/create_*.do                 - Obsolete/external paths
+  - do/cva6.do                     - External CVA6 setup
+
+CRITICAL FILES:
+===============
+For standalone HPDcache verification:
+  ✓ sv/hpdcache_uvm_pkg.sv         - Main UVM environment
+  ✓ tb/tb_top.sv                   - Simulation entry point
+  ✓ do/run_uvm.do                  - Master simulation script (edit paths)
+
+EXTERNAL DEPENDENCIES (NOT INCLUDED):
+======================================
+These must be cloned separately:
+  ⚠ HPDcache RTL source           → D:/khoaluantotnghiep/cv-hpdcache-master
+  ⚠ CVA6 core RTL source          → D:/khoaluantotnghiep/cva6-master
+  ⚠ UVM 1.1d library              → Built into ModelSim/Questa
+
+NEXT STEPS:
+===========
+1. Review SETUP_GUIDE.md for detailed setup instructions
+2. Edit do/run_uvm.do paths:
+     OLD: D:/UVM/* and D:/khoaluantotnghiep/*
+     NEW: ../.. and paths relative to your RTL installation
+3. Ensure HPDcache and CVA6 RTL are cloned to the expected locations
+4. Run: vsim -do "do/run_uvm.do"
+
+Note: .uvm_systemverilog.txt reference file NOT copied (local tool documentation)

@@ -11,8 +11,6 @@
 // Dùng op_is_load/op_is_store helper functions từ pkg
 // UVM 1.1d: run_phase, fork process_req + process_rsp
 // =============================================================================
-`ifndef HPDCACHE_SCOREBOARD_SV
-`define HPDCACHE_SCOREBOARD_SV
 
 class hpdcache_scoreboard extends uvm_scoreboard;
 
@@ -178,5 +176,3 @@ class hpdcache_scoreboard extends uvm_scoreboard;
     endfunction
 
 endclass : hpdcache_scoreboard
-
-`endif // HPDCACHE_SCOREBOARD_SV

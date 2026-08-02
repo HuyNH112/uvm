@@ -1,12 +1,22 @@
-`ifndef HPDCACHE_COVERAGE_SV
-`define HPDCACHE_COVERAGE_SV
-
 // ============================================================================
 // hpdcache_coverage.sv
-// Functional coverage for HPDcache UVM testbench (cv32a6_imac_sv32)
+// Functional coverage for HPDcache UVM testbench (CV32E40P + HPDcache)
 // Dung UVM_HPDCACHE_* localparam tu hpdcache_uvm_pkg thay vi
 // HPDCACHE_* tu hpdcache_common_pkg (khong co trong project)
 // ============================================================================
+
+// NOTE: This file can be INCLUDED in hpdcache_uvm_pkg.sv OR compiled standalone
+// If included in package: inherits UVM imports/macros from package scope
+// If compiled standalone: needs its own imports/macros (via guards)
+
+`ifndef HPDCACHE_COVERAGE_SV_INCLUDED
+`define HPDCACHE_COVERAGE_SV_INCLUDED
+import uvm_pkg::*;
+`include "uvm_macros.svh"
+`endif
+
+// NOTE: When included in package, the above guards prevent re-execution
+// When compiled standalone, they ensure macros are loaded
 
 // ----------------------------------------------------------------------------
 // `uvm_analysis_imp_decl phai o ngoai class, trong package
@@ -181,4 +191,6 @@ class hpdcache_coverage extends uvm_component;
 
 endclass : hpdcache_coverage
 
-`endif // HPDCACHE_COVERAGE_SV
+// NOTE: No `endif` here - file is included in hpdcache_uvm_pkg.sv package scope
+// The `endif` for HPDCACHE_COVERAGE_SV_INCLUDED guard is only needed when compiled standalone
+// When included in package, the guard controls imports but not the closing endif

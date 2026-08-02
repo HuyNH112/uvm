@@ -1,0 +1,602 @@
+project compileall
+# Compile of registers.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of hpdcache_config.svh was successful.
+# Compile of cv32e40p_sim_clock_gate.sv was successful.
+# Compile of cv32e40p_aligner.sv was successful.
+# Compile of cv32e40p_alu.sv failed with 2 errors.
+# Compile of cv32e40p_alu_div.sv was successful.
+# Compile of cv32e40p_apu_disp.sv was successful with warnings.
+# Compile of cv32e40p_compressed_decoder.sv failed with 39 errors.
+# Compile of cv32e40p_controller.sv failed with 2 errors.
+# Compile of cv32e40p_core.sv failed with 15 errors.
+# Compile of cv32e40p_cs_registers.sv failed with 2 errors.
+# Compile of cv32e40p_decoder.sv failed with 137 errors.
+# Compile of cv32e40p_ex_stage.sv failed with 3 errors.
+# Compile of cv32e40p_ff_one.sv was successful.
+# Compile of cv32e40p_fifo.sv was successful.
+# Compile of cv32e40p_fp_wrapper.sv failed with 42 errors.
+# Compile of cv32e40p_hwloop_regs.sv was successful.
+# Compile of cv32e40p_id_stage.sv failed with 6 errors.
+# Compile of cv32e40p_if_stage.sv failed with 17 errors.
+# Compile of cv32e40p_int_controller.sv failed with 2 errors.
+# Compile of cv32e40p_load_store_unit.sv was successful.
+# Compile of cv32e40p_mult.sv failed with 2 errors.
+# Compile of cv32e40p_obi_interface.sv was successful with warnings.
+# Compile of cv32e40p_popcnt.sv was successful.
+# Compile of cv32e40p_prefetch_buffer.sv was successful.
+# Compile of cv32e40p_prefetch_controller.sv failed with 1 errors.
+# Compile of cv32e40p_register_file_ff.sv was successful.
+# Compile of cv32e40p_register_file_latch.sv was successful with warnings.
+# Compile of cv32e40p_sleep_unit.sv failed with 1 errors.
+# Compile of cv32e40p_top.sv failed with 5 errors.
+# Compile of cv32e40p_pkg.sv was successful.
+# Compile of cv32e40p_apu_core_pkg.sv was successful.
+# Compile of cv32e40p_fpu_pkg.sv was successful.
+# Compile of fpnew_pkg.sv was successful.
+# Compile of cv32e40p_apu_tracer.sv was successful.
+# Compile of cv32e40p_core_log.sv was successful.
+# Compile of cv32e40p_rvfi.sv failed with 425 errors.
+# Compile of cv32e40p_rvfi_trace.sv failed with 379 errors.
+# Compile of cv32e40p_tb_wrapper.sv was successful.
+# Compile of cv32e40p_tracer.sv was successful.
+# Compile of cv32e40p_rvfi_pkg.sv was successful.
+# Compile of cv32e40p_tracer_pkg.sv was successful.
+# Compile of amo_shim.sv was successful.
+# Compile of cv32e40p_random_interrupt_generator.sv failed with 8 errors.
+# Compile of cv32e40p_tb_subsystem.sv was successful.
+# Compile of dp_ram.sv was successful.
+# Compile of mm_ram.sv was successful.
+# Compile of riscv_gnt_stall.sv failed with 5 errors.
+# Compile of riscv_rvalid_stall.sv failed with 4 errors.
+# Compile of tb_top.sv was successful.
+# Compile of perturbation_pkg.sv was successful.
+# Compile of addr_decode.sv failed with 3 errors.
+# Compile of binary_to_gray.sv was successful.
+# Compile of cb_filter.sv failed with 3 errors.
+# Compile of cb_filter_pkg.sv was successful.
+# Compile of cdc_2phase.sv was successful.
+# Compile of cdc_fifo_2phase.sv was successful.
+# Compile of cdc_fifo_gray.sv was successful.
+# Compile of cf_math_pkg.sv was successful.
+# Compile of clk_div.sv was successful.
+# Compile of counter.sv was successful.
+# Compile of delta_counter.sv was successful with warnings.
+# Compile of ecc_decode.sv failed with 1 errors.
+# Compile of ecc_encode.sv failed with 1 errors.
+# Compile of ecc_pkg.sv was successful.
+# Compile of edge_detect.sv was successful.
+# Compile of edge_propagator.sv was successful.
+# Compile of edge_propagator_rx.sv was successful.
+# Compile of edge_propagator_tx.sv was successful.
+# Compile of exp_backoff.sv was successful.
+# Compile of fall_through_register.sv was successful.
+# Compile of fifo_v3.sv was successful.
+# Compile of gray_to_binary.sv was successful.
+# Compile of id_queue.sv was successful with warnings.
+# Compile of isochronous_spill_register.sv was successful with warnings.
+# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr_16bit.sv was successful.
+# Compile of lfsr_8bit.sv was successful.
+# Compile of lzc.sv was successful with warnings.
+# Compile of max_counter.sv was successful.
+# Compile of mv_filter.sv was successful.
+# Compile of onehot_to_bin.sv was successful.
+# Compile of plru_tree.sv was successful.
+# Compile of popcount.sv was successful.
+# Compile of rr_arb_tree.sv was successful.
+# Compile of rstgen.sv was successful.
+# Compile of rstgen_bypass.sv was successful.
+# Compile of serial_deglitch.sv was successful.
+# Compile of shift_reg.sv was successful.
+# Compile of spill_register.sv was successful.
+# Compile of stream_arbiter.sv was successful.
+# Compile of stream_arbiter_flushable.sv was successful.
+# Compile of stream_delay.sv was successful with warnings.
+# Compile of stream_demux.sv was successful.
+# Compile of stream_fifo.sv was successful.
+# Compile of stream_filter.sv was successful.
+# Compile of stream_fork.sv was successful with warnings.
+# Compile of stream_fork_dynamic.sv was successful with warnings.
+# Compile of stream_intf.sv was successful.
+# Compile of stream_join.sv was successful.
+# Compile of stream_mux.sv was successful.
+# Compile of stream_omega_net.sv was successful.
+# Compile of stream_register.sv was successful.
+# Compile of stream_to_mem.sv was successful with warnings.
+# Compile of stream_xbar.sv was successful.
+# Compile of sub_per_hash.sv was successful.
+# Compile of sync.sv was successful.
+# Compile of sync_wedge.sv was successful.
+# Compile of unread.sv was successful.
+# Compile of clock_divider.sv was successful.
+# Compile of clock_divider_counter.sv was successful.
+# Compile of fifo_v1.sv was successful.
+# Compile of fifo_v2.sv was successful.
+# Compile of find_first_one.sv was successful.
+# Compile of generic_LFSR_8bit.sv was successful.
+# Compile of generic_fifo.sv was successful.
+# Compile of generic_fifo_adv.sv was successful.
+# Compile of prioarbiter.sv was successful.
+# Compile of fpnew_cast_multi.sv was successful with warnings.
+# Compile of fpnew_classifier.sv was successful with warnings.
+# Compile of fpnew_divsqrt_multi.sv was successful with warnings.
+# Compile of fpnew_divsqrt_th_32.sv was successful with warnings.
+# Compile of fpnew_fma.sv was successful with warnings.
+# Compile of fpnew_fma_multi.sv was successful with warnings.
+# Compile of fpnew_noncomp.sv was successful with warnings.
+# Compile of fpnew_opgroup_block.sv was successful with warnings.
+# Compile of fpnew_opgroup_fmt_slice.sv was successful with warnings.
+# Compile of fpnew_opgroup_multifmt_slice.sv was successful with warnings.
+# Compile of fpnew_rounding.sv was successful.
+# Compile of fpnew_top.sv was successful with warnings.
+# Compile of plru.sv was successful.
+# Compile of cv32e40p_icache_pkg.sv was successful.
+# Compile of cv32e40p_icache_data_mem.sv was successful.
+# Compile of cv32e40p_icache_tag_mem.sv was successful.
+# Compile of cv32e40p_icache.sv was successful.
+# Compile of obi_to_axi4_adapter.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_mem_resp_demux.sv was successful with warnings.
+# Compile of prim_secded_36_29_dec.sv was successful.
+# Compile of prim_secded_36_29_enc.sv was successful.
+# Compile of prim_secded_39_32_dec.sv was successful.
+# Compile of prim_secded_39_32_enc.sv was successful.
+# Compile of prim_secded_55_48_dec.sv was successful.
+# Compile of prim_secded_55_48_enc.sv was successful.
+# Compile of prim_secded_72_64_dec.sv was successful.
+# Compile of prim_secded_72_64_enc.sv was successful.
+# Compile of prim_secded_pkg.sv was successful.
+# Compile of hpdcache_lfsr.sv was successful.
+# Compile of hpdcache_prio_1hot_encoder.sv was successful.
+# Compile of hpdcache_prio_bin_encoder.sv was successful.
+# Compile of hpdcache_fxarb.sv was successful.
+# Compile of hpdcache_sync_buffer.sv was successful.
+# Compile of hpdcache_data_downsize.sv was successful.
+# Compile of hpdcache_data_upsize.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hpdcache_sram_wbyteenable.sv was successful with warnings.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable_1rw.sv was successful with warnings.
+# Compile of hpdcache_victim_plru.sv was successful.
+# Compile of hpdcache_victim_random.sv was successful.
+# Compile of hpdcache_victim_sel.sv was successful.
+# Compile of hpdcache_rtab.sv was successful with warnings.
+# Compile of hpdcache_mshr.sv was successful with warnings.
+# Compile of hpdcache_cbuf.sv was successful.
+# Compile of hpdcache_amo.sv was successful with warnings.
+# Compile of hpdcache_core_arbiter.sv was successful with warnings.
+# Compile of hpdcache_ctrl_pe.sv was successful.
+# Compile of hpdcache_wbuf.sv was successful with warnings.
+# Compile of hpdcache_memctrl.sv was successful with warnings.
+# Compile of hpdcache_miss_handler.sv was successful with warnings.
+# Compile of hpdcache_uncached.sv was successful with warnings.
+# Compile of hpdcache_cmo.sv was successful with warnings.
+# Compile of hpdcache_flush.sv was successful.
+# Compile of hpdcache_ctrl.sv was successful with warnings.
+# Compile of hpdcache.sv was successful with warnings.
+# Compile of domino_pkg.sv was successful.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of hpdcache_wrapper.sv was successful with warnings.
+# Compile of int_full_integration.sv was successful with warnings.
+# 193 compiles, 24 failed with 1105 errors.
+project compileall
+# Compile of registers.svh was successful.
+# Compile of hpdcache_typedef.svh was successful.
+# Compile of hpdcache_config.svh was successful.
+# Compile of cv32e40p_sim_clock_gate.sv was successful.
+# Compile of cv32e40p_aligner.sv was successful.
+# Compile of cv32e40p_alu.sv was successful.
+# Compile of cv32e40p_alu_div.sv was successful.
+# Compile of cv32e40p_apu_disp.sv was successful with warnings.
+# Compile of cv32e40p_compressed_decoder.sv was successful.
+# Compile of cv32e40p_controller.sv was successful with warnings.
+# Compile of cv32e40p_core.sv was successful.
+# Compile of cv32e40p_cs_registers.sv was successful with warnings.
+# Compile of cv32e40p_decoder.sv was successful.
+# Compile of cv32e40p_ex_stage.sv was successful with warnings.
+# Compile of cv32e40p_ff_one.sv was successful.
+# Compile of cv32e40p_fifo.sv was successful.
+# Compile of cv32e40p_fp_wrapper.sv was successful.
+# Compile of cv32e40p_hwloop_regs.sv was successful.
+# Compile of cv32e40p_id_stage.sv was successful with warnings.
+# Compile of cv32e40p_if_stage.sv was successful.
+# Compile of cv32e40p_int_controller.sv was successful.
+# Compile of cv32e40p_load_store_unit.sv was successful.
+# Compile of cv32e40p_mult.sv was successful.
+# Compile of cv32e40p_obi_interface.sv was successful with warnings.
+# Compile of cv32e40p_popcnt.sv was successful.
+# Compile of cv32e40p_prefetch_buffer.sv was successful.
+# Compile of cv32e40p_prefetch_controller.sv was successful.
+# Compile of cv32e40p_register_file_ff.sv was successful.
+# Compile of cv32e40p_register_file_latch.sv was successful with warnings.
+# Compile of cv32e40p_sleep_unit.sv was successful.
+# Compile of cv32e40p_top.sv was successful.
+# Compile of cv32e40p_pkg.sv was successful.
+# Compile of cv32e40p_apu_core_pkg.sv was successful.
+# Compile of cv32e40p_fpu_pkg.sv was successful.
+# Compile of fpnew_pkg.sv was successful.
+# Compile of cv32e40p_apu_tracer.sv was successful.
+# Compile of cv32e40p_core_log.sv was successful.
+# Compile of cv32e40p_rvfi.sv was successful with warnings.
+# Compile of cv32e40p_rvfi_trace.sv was successful with warnings.
+# Compile of cv32e40p_tb_wrapper.sv was successful.
+# Compile of cv32e40p_tracer.sv was successful.
+# Compile of cv32e40p_rvfi_pkg.sv was successful.
+# Compile of cv32e40p_tracer_pkg.sv was successful.
+# Compile of amo_shim.sv was successful.
+# Compile of cv32e40p_random_interrupt_generator.sv was successful.
+# Compile of cv32e40p_tb_subsystem.sv was successful.
+# Compile of dp_ram.sv was successful.
+# Compile of mm_ram.sv was successful.
+# Compile of riscv_gnt_stall.sv was successful.
+# Compile of riscv_rvalid_stall.sv was successful.
+# Compile of tb_top.sv was successful.
+# Compile of perturbation_pkg.sv was successful.
+# Compile of addr_decode.sv was successful.
+# Compile of binary_to_gray.sv was successful.
+# Compile of cb_filter.sv was successful.
+# Compile of cb_filter_pkg.sv was successful.
+# Compile of cdc_2phase.sv was successful.
+# Compile of cdc_fifo_2phase.sv was successful.
+# Compile of cdc_fifo_gray.sv was successful.
+# Compile of cf_math_pkg.sv was successful.
+# Compile of clk_div.sv was successful.
+# Compile of counter.sv was successful.
+# Compile of delta_counter.sv was successful with warnings.
+# Compile of ecc_decode.sv was successful.
+# Compile of ecc_encode.sv was successful.
+# Compile of ecc_pkg.sv was successful.
+# Compile of edge_detect.sv was successful.
+# Compile of edge_propagator.sv was successful.
+# Compile of edge_propagator_rx.sv was successful.
+# Compile of edge_propagator_tx.sv was successful.
+# Compile of exp_backoff.sv was successful.
+# Compile of fall_through_register.sv was successful.
+# Compile of fifo_v3.sv was successful.
+# Compile of gray_to_binary.sv was successful.
+# Compile of id_queue.sv was successful with warnings.
+# Compile of isochronous_spill_register.sv was successful with warnings.
+# Compile of lfsr.sv was successful with warnings.
+# Compile of lfsr_16bit.sv was successful.
+# Compile of lfsr_8bit.sv was successful.
+# Compile of lzc.sv was successful with warnings.
+# Compile of max_counter.sv was successful.
+# Compile of mv_filter.sv was successful.
+# Compile of onehot_to_bin.sv was successful.
+# Compile of plru_tree.sv was successful.
+# Compile of popcount.sv was successful.
+# Compile of rr_arb_tree.sv was successful.
+# Compile of rstgen.sv was successful.
+# Compile of rstgen_bypass.sv was successful.
+# Compile of serial_deglitch.sv was successful.
+# Compile of shift_reg.sv was successful.
+# Compile of spill_register.sv was successful.
+# Compile of stream_arbiter.sv was successful.
+# Compile of stream_arbiter_flushable.sv was successful.
+# Compile of stream_delay.sv was successful with warnings.
+# Compile of stream_demux.sv was successful.
+# Compile of stream_fifo.sv was successful.
+# Compile of stream_filter.sv was successful.
+# Compile of stream_fork.sv was successful with warnings.
+# Compile of stream_fork_dynamic.sv was successful with warnings.
+# Compile of stream_intf.sv was successful.
+# Compile of stream_join.sv was successful.
+# Compile of stream_mux.sv was successful.
+# Compile of stream_omega_net.sv was successful.
+# Compile of stream_register.sv was successful.
+# Compile of stream_to_mem.sv was successful with warnings.
+# Compile of stream_xbar.sv was successful.
+# Compile of sub_per_hash.sv was successful.
+# Compile of sync.sv was successful.
+# Compile of sync_wedge.sv was successful.
+# Compile of unread.sv was successful.
+# Compile of clock_divider.sv was successful.
+# Compile of clock_divider_counter.sv was successful.
+# Compile of fifo_v1.sv was successful.
+# Compile of fifo_v2.sv was successful.
+# Compile of find_first_one.sv was successful.
+# Compile of generic_LFSR_8bit.sv was successful.
+# Compile of generic_fifo.sv was successful.
+# Compile of generic_fifo_adv.sv was successful.
+# Compile of prioarbiter.sv was successful.
+# Compile of fpnew_cast_multi.sv was successful with warnings.
+# Compile of fpnew_classifier.sv was successful with warnings.
+# Compile of fpnew_divsqrt_multi.sv was successful with warnings.
+# Compile of fpnew_divsqrt_th_32.sv was successful with warnings.
+# Compile of fpnew_fma.sv was successful with warnings.
+# Compile of fpnew_fma_multi.sv was successful with warnings.
+# Compile of fpnew_noncomp.sv was successful with warnings.
+# Compile of fpnew_opgroup_block.sv was successful with warnings.
+# Compile of fpnew_opgroup_fmt_slice.sv was successful with warnings.
+# Compile of fpnew_opgroup_multifmt_slice.sv was successful with warnings.
+# Compile of fpnew_rounding.sv was successful.
+# Compile of fpnew_top.sv was successful with warnings.
+# Compile of plru.sv was successful.
+# Compile of cv32e40p_icache_pkg.sv was successful.
+# Compile of cv32e40p_icache_data_mem.sv was successful.
+# Compile of cv32e40p_icache_tag_mem.sv was successful.
+# Compile of cv32e40p_icache.sv was successful.
+# Compile of obi_to_axi4_adapter.sv was successful.
+# Compile of hpdcache_pkg.sv was successful.
+# Compile of hpdcache_mem_req_read_arbiter.sv was successful.
+# Compile of hpdcache_mem_req_write_arbiter.sv was successful.
+# Compile of hpdcache_mem_resp_demux.sv was successful with warnings.
+# Compile of prim_secded_36_29_dec.sv was successful.
+# Compile of prim_secded_36_29_enc.sv was successful.
+# Compile of prim_secded_39_32_dec.sv was successful.
+# Compile of prim_secded_39_32_enc.sv was successful.
+# Compile of prim_secded_55_48_dec.sv was successful.
+# Compile of prim_secded_55_48_enc.sv was successful.
+# Compile of prim_secded_72_64_dec.sv was successful.
+# Compile of prim_secded_72_64_enc.sv was successful.
+# Compile of prim_secded_pkg.sv was successful.
+# Compile of hpdcache_lfsr.sv was successful.
+# Compile of hpdcache_prio_1hot_encoder.sv was successful.
+# Compile of hpdcache_prio_bin_encoder.sv was successful.
+# Compile of hpdcache_fxarb.sv was successful.
+# Compile of hpdcache_sync_buffer.sv was successful.
+# Compile of hpdcache_data_downsize.sv was successful.
+# Compile of hpdcache_data_upsize.sv was successful.
+# Compile of hpdcache_data_resize.sv was successful.
+# Compile of hpdcache_sram_wbyteenable.sv was successful with warnings.
+# Compile of hpdcache_1hot_to_binary.sv was successful.
+# Compile of hpdcache_decoder.sv was successful.
+# Compile of hpdcache_demux.sv was successful with warnings.
+# Compile of hpdcache_fifo_reg.sv was successful with warnings.
+# Compile of hpdcache_mux.sv was successful with warnings.
+# Compile of hpdcache_rrarb.sv was successful.
+# Compile of hpdcache_sram.sv was successful with warnings.
+# Compile of hpdcache_sram_1rw.sv was successful with warnings.
+# Compile of hpdcache_sram_wbyteenable_1rw.sv was successful with warnings.
+# Compile of hpdcache_victim_plru.sv was successful.
+# Compile of hpdcache_victim_random.sv was successful.
+# Compile of hpdcache_victim_sel.sv was successful.
+# Compile of hpdcache_rtab.sv was successful with warnings.
+# Compile of hpdcache_mshr.sv was successful with warnings.
+# Compile of hpdcache_cbuf.sv was successful.
+# Compile of hpdcache_amo.sv was successful with warnings.
+# Compile of hpdcache_core_arbiter.sv was successful with warnings.
+# Compile of hpdcache_ctrl_pe.sv was successful.
+# Compile of hpdcache_wbuf.sv was successful with warnings.
+# Compile of hpdcache_memctrl.sv was successful with warnings.
+# Compile of hpdcache_miss_handler.sv was successful with warnings.
+# Compile of hpdcache_uncached.sv was successful with warnings.
+# Compile of hpdcache_cmo.sv was successful with warnings.
+# Compile of hpdcache_flush.sv was successful.
+# Compile of hpdcache_ctrl.sv was successful with warnings.
+# Compile of hpdcache.sv was successful with warnings.
+# Compile of domino_pkg.sv was successful.
+# Compile of domino_trigger_detector.sv was successful.
+# Compile of domino_history_buffers.sv was successful.
+# Compile of domino_xor_hash.sv was successful.
+# Compile of domino_mht_ram.sv was successful.
+# Compile of domino_prefetcher_top.sv was successful.
+# Compile of hpdcache_wrapper.sv was successful with warnings.
+# Compile of int_full_integration.sv was successful with warnings.
+# 193 compiles, 0 failed with no errors.
+do D:/UVM_CV32E40P/do/run_uvm.do
+# D:/UVM_CV32E40P/project_uvm
+# D:/khoaluantotnghiep/cv32e40p-master
+# D:/khoaluantotnghiep/icache-master
+# D:/khoaluantotnghiep/cv-hpdcache-master
+# D:/khoaluantotnghiep/testbench
+# D:/khoaluantotnghiep/integration
+# D:/UVM_CV32E40P/sv
+# D:/UVM_CV32E40P/tb
+# 1
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:50 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" "+define+CONF_HPDCACHE_PA_WIDTH=56" "+define+CONF_HPDCACHE_WORD_WIDTH=64" "+define+CONF_HPDCACHE_SETS=64" "+define+CONF_HPDCACHE_WAYS=8" "+define+CONF_HPDCACHE_CL_WORDS=8" "+define+CONF_HPDCACHE_REQ_WORDS=2" "+define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6" "+define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3" "+define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56" "+define+CONF_HPDCACHE_MEM_ID_WIDTH=8" "+define+CONF_HPDCACHE_MEM_DATA_WIDTH=512" "+define+CONF_HPDCACHE_MSHR_SETS=4" "+define+CONF_HPDCACHE_MSHR_WAYS=4" "+define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4" "+define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_MSHR_USE_REGBANK=0" "+define+CONF_HPDCACHE_VICTIM_SEL=0" "+define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64" "+define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_ACCESS_WORDS=2" "+define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_WORDS=2" "+define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4" "+define+CONF_HPDCACHE_RTAB_ENTRIES=4" "+define+CONF_HPDCACHE_FLUSH_ENTRIES=2" "+define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_CBUF_ENTRIES=4" "+define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0" "+define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_WT_ENABLE=1" "+define+CONF_HPDCACHE_WB_ENABLE=1" "+define+CONF_HPDCACHE_LOW_LATENCY=0" "+define+CONF_HPDCACHE_ECC_ENABLE=0" "+define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0" "+define+HPDCACHE_ASSERT_OFF" D:/UVM_CV32E40P/tb/hpdcache_if.sv 
+# -- Compiling interface hpdcache_if
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 08:53:51 on Jul 31,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:51 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" "+define+CONF_HPDCACHE_PA_WIDTH=56" "+define+CONF_HPDCACHE_WORD_WIDTH=64" "+define+CONF_HPDCACHE_SETS=64" "+define+CONF_HPDCACHE_WAYS=8" "+define+CONF_HPDCACHE_CL_WORDS=8" "+define+CONF_HPDCACHE_REQ_WORDS=2" "+define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6" "+define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3" "+define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56" "+define+CONF_HPDCACHE_MEM_ID_WIDTH=8" "+define+CONF_HPDCACHE_MEM_DATA_WIDTH=512" "+define+CONF_HPDCACHE_MSHR_SETS=4" "+define+CONF_HPDCACHE_MSHR_WAYS=4" "+define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4" "+define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_MSHR_USE_REGBANK=0" "+define+CONF_HPDCACHE_VICTIM_SEL=0" "+define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64" "+define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_ACCESS_WORDS=2" "+define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_WORDS=2" "+define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4" "+define+CONF_HPDCACHE_RTAB_ENTRIES=4" "+define+CONF_HPDCACHE_FLUSH_ENTRIES=2" "+define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_CBUF_ENTRIES=4" "+define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0" "+define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_WT_ENABLE=1" "+define+CONF_HPDCACHE_WB_ENABLE=1" "+define+CONF_HPDCACHE_LOW_LATENCY=0" "+define+CONF_HPDCACHE_ECC_ENABLE=0" "+define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0" "+define+HPDCACHE_ASSERT_OFF" D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv 
+# -- Compiling module hpdcache
+# -- Importing package hpdcache_pkg
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(66): (vlog-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(70): (vlog-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(72): (vlog-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	hpdcache
+# End time: 08:53:51 on Jul 31,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 3
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:51 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" "+define+CONF_HPDCACHE_PA_WIDTH=56" "+define+CONF_HPDCACHE_WORD_WIDTH=64" "+define+CONF_HPDCACHE_SETS=64" "+define+CONF_HPDCACHE_WAYS=8" "+define+CONF_HPDCACHE_CL_WORDS=8" "+define+CONF_HPDCACHE_REQ_WORDS=2" "+define+CONF_HPDCACHE_REQ_TRANS_ID_WIDTH=6" "+define+CONF_HPDCACHE_REQ_SRC_ID_WIDTH=3" "+define+CONF_HPDCACHE_MEM_ADDR_WIDTH=56" "+define+CONF_HPDCACHE_MEM_ID_WIDTH=8" "+define+CONF_HPDCACHE_MEM_DATA_WIDTH=512" "+define+CONF_HPDCACHE_MSHR_SETS=4" "+define+CONF_HPDCACHE_MSHR_WAYS=4" "+define+CONF_HPDCACHE_MSHR_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_MSHR_SETS_PER_RAM=4" "+define+CONF_HPDCACHE_MSHR_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_MSHR_USE_REGBANK=0" "+define+CONF_HPDCACHE_VICTIM_SEL=0" "+define+CONF_HPDCACHE_DATA_WAYS_PER_RAM_WORD=1" "+define+CONF_HPDCACHE_DATA_SETS_PER_RAM=64" "+define+CONF_HPDCACHE_DATA_RAM_WBYTEENABLE=1" "+define+CONF_HPDCACHE_ACCESS_WORDS=2" "+define+CONF_HPDCACHE_WBUF_DIR_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_DATA_ENTRIES=4" "+define+CONF_HPDCACHE_WBUF_WORDS=2" "+define+CONF_HPDCACHE_WBUF_TIMECNT_WIDTH=4" "+define+CONF_HPDCACHE_RTAB_ENTRIES=4" "+define+CONF_HPDCACHE_FLUSH_ENTRIES=2" "+define+CONF_HPDCACHE_FLUSH_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_CBUF_ENTRIES=4" "+define+CONF_HPDCACHE_REFILL_CORE_RSP_FEEDTHROUGH=0" "+define+CONF_HPDCACHE_REFILL_FIFO_DEPTH=2" "+define+CONF_HPDCACHE_WT_ENABLE=1" "+define+CONF_HPDCACHE_WB_ENABLE=1" "+define+CONF_HPDCACHE_LOW_LATENCY=0" "+define+CONF_HPDCACHE_ECC_ENABLE=0" "+define+CONF_HPDCACHE_ECC_SCRUBBER_ENABLE=0" "+define+HPDCACHE_ASSERT_OFF" D:/khoaluantotnghiep/cv-hpdcache-master/hpdcache_wrapper.sv 
+# -- Compiling module hpdcache_wrapper
+# -- Importing package hpdcache_pkg
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/hpdcache_wrapper.sv(115): (vlog-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# 
+# Top level modules:
+# 	hpdcache_wrapper
+# End time: 08:53:51 on Jul 31,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# tc_i_01_test
+# D:/UVM_CV32E40P/sv/hpdcache_uvm_pkg.sv
+# D:/UVM_CV32E40P/tb/hw_top.sv
+# D:/UVM_CV32E40P/tb/tb_top.sv
+# D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:51 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" -L mtiUvm D:/UVM_CV32E40P/sv/hpdcache_uvm_pkg.sv 
+# -- Compiling package hpdcache_uvm_pkg
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# ** Note: (vlog-2286) D:/UVM_CV32E40P/sv/hpdcache_uvm_pkg.sv(28): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	--none--
+# End time: 08:53:51 on Jul 31,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:51 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" D:/UVM_CV32E40P/tb/hw_top.sv 
+# -- Compiling module hw_top
+# -- Importing package hpdcache_pkg
+# 
+# Top level modules:
+# 	hw_top
+# End time: 08:53:51 on Jul 31,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+# Start time: 08:53:51 on Jul 31,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+." "+incdir+D:/UVM_CV32E40P/sv" "+incdir+D:/UVM_CV32E40P/tb" "+incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include" -L mtiUvm D:/UVM_CV32E40P/tb/tb_top.sv 
+# ** Note: (vlog-2286) D:/UVM_CV32E40P/tb/tb_top.sv(14): Using implicit +incdir+C:/intelFPGA/23.1std/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+# -- Compiling package tb_top_sv_unit
+# -- Importing package mtiUvm.uvm_pkg (uvm-1.1d Built-in)
+# -- Importing package hpdcache_uvm_pkg
+# -- Importing package hpdcache_pkg
+# -- Compiling module tb_top
+# 
+# Top level modules:
+# 	tb_top
+# End time: 08:53:52 on Jul 31,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -voptargs=+acc work.tb_top
+# vsim -voptargs="+acc" work.tb_top 
+# Start time: 08:54:03 on Jul 31,2026
+# Loading C:/Users/ADM/AppData/Local/Temp\ADM@HNG_dpi_19540\win64_gcc-7.4.0\export_tramp.dll
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_amo.sv(34): (vopt-13314) Defaulting port 'op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(28): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(32): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(28): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram_wbyteenable.sv(32): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(27): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(31): (vopt-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(27): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_wbyteenable_1rw.sv(27): (vopt-13314) Defaulting port 'wbyteenable' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv(26): (vopt-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(65): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_rtab.sv(55): (vopt-13314) Defaulting port 'alloc_deps_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_rtab(fast)".
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(54): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_uncached(fast)".
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_miss_handler(fast)".
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(66): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(70): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(72): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_cmo.sv(66): (vopt-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_cmo(fast)".
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(48): (vopt-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(52): (vopt-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(54): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/hpdcache_wrapper.sv(115): (vopt-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+# ** Note: (vopt-143) Recognized 1 FSM in module "hpdcache_flush(fast)".
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=26.
+# Loading sv_std.std
+# Loading work.hpdcache_if(fast)
+# Loading work.hpdcache_pkg(fast)
+# Loading mtiUvm.uvm_pkg(fast)
+# Loading work.hpdcache_uvm_pkg(fast)
+# Loading work.tb_top_sv_unit(fast)
+# Loading mtiUvm.questa_uvm_pkg(fast)
+# Loading work.tb_top(fast)
+# Loading work.hw_top(fast)
+# Loading work.hpdcache_if(fast__2)
+# Loading work.hpdcache_wrapper(fast)
+# Loading work.hpdcache(fast)
+# Loading work.hpdcache_core_arbiter(fast)
+# Loading work.hpdcache_fxarb(fast)
+# Loading work.hpdcache_prio_1hot_encoder(fast)
+# Loading work.hpdcache_mux(fast)
+# Loading work.hpdcache_mux(fast__1)
+# Loading work.hpdcache_mux(fast__2)
+# Loading work.hpdcache_mux(fast__3)
+# Loading work.hpdcache_ctrl(fast)
+# Loading work.hpdcache_ctrl_pe(fast)
+# Loading work.hpdcache_1hot_to_binary(fast)
+# Loading work.hpdcache_rtab(fast)
+# Loading work.hpdcache_prio_1hot_encoder(fast__1)
+# Loading work.hpdcache_rrarb(fast)
+# Loading work.hpdcache_fxarb(fast__1)
+# Loading work.hpdcache_prio_1hot_encoder(fast__2)
+# Loading work.hpdcache_mux(fast__4)
+# Loading work.hpdcache_mux(fast__5)
+# Loading work.hpdcache_mux(fast__6)
+# Loading work.hpdcache_memctrl(fast)
+# Loading work.hpdcache_sram(fast)
+# Loading work.hpdcache_sram_1rw(fast)
+# Loading work.hpdcache_sram_wbyteenable(fast)
+# Loading work.hpdcache_sram_wbyteenable_1rw(fast)
+# Loading work.hpdcache_victim_sel(fast)
+# Loading work.hpdcache_victim_random(fast)
+# Loading work.hpdcache_lfsr(fast)
+# Loading work.hpdcache_decoder(fast)
+# Loading work.hpdcache_mux(fast__7)
+# Loading work.hpdcache_mux(fast__8)
+# Loading work.hpdcache_wbuf(fast)
+# Loading work.hpdcache_fxarb(fast__2)
+# Loading work.hpdcache_1hot_to_binary(fast__1)
+# Loading work.hpdcache_mux(fast__9)
+# Loading work.hpdcache_mux(fast__10)
+# Loading work.hpdcache_fifo_reg(fast)
+# Loading work.hpdcache_fifo_reg(fast__1)
+# Loading work.hpdcache_demux(fast)
+# Loading work.hpdcache_miss_handler(fast)
+# Loading work.hpdcache_fifo_reg(fast__2)
+# Loading work.hpdcache_sync_buffer(fast)
+# Loading work.hpdcache_fifo_reg(fast__3)
+# Loading work.hpdcache_data_resize(fast)
+# Loading work.hpdcache_data_downsize(fast)
+# Loading work.hpdcache_mshr(fast)
+# Loading work.hpdcache_sram_wbyteenable(fast__1)
+# Loading work.hpdcache_sram_wbyteenable_1rw(fast__1)
+# Loading work.hpdcache_cbuf(fast)
+# Loading work.hpdcache_prio_bin_encoder(fast)
+# Loading work.hpdcache_uncached(fast)
+# Loading work.hpdcache_mux(fast__11)
+# Loading work.hpdcache_amo(fast)
+# Loading work.hpdcache_demux(fast__1)
+# Loading work.hpdcache_mux(fast__12)
+# Loading work.hpdcache_cmo(fast)
+# Loading work.hpdcache_fifo_reg(fast__4)
+# Loading work.hpdcache_flush(fast)
+# Loading work.hpdcache_decoder(fast__1)
+# Loading work.hpdcache_1hot_to_binary(fast__2)
+# Loading work.hpdcache_fifo_reg(fast__5)
+# Loading work.hpdcache_data_resize(fast__1)
+# Loading work.hpdcache_data_upsize(fast)
+# Loading work.hpdcache_mem_req_read_arbiter(fast)
+# Loading work.hpdcache_mux(fast__13)
+# Loading work.hpdcache_mem_req_write_arbiter(fast)
+# Loading work.hpdcache_fxarb(fast__3)
+# Loading work.hpdcache_prio_1hot_encoder(fast__3)
+# Loading work.hpdcache_fifo_reg(fast__6)
+# Loading work.hpdcache_sync_buffer(fast__1)
+# Loading work.hpdcache_fifo_reg(fast__7)
+# Loading work.hpdcache_mux(fast__14)
+# Loading work.hpdcache_mux(fast__15)
+# Loading C:/intelFPGA/23.1std/questa_fse/uvm-1.1d\win64\uvm_dpi.dll
+# ** Error: Failure to checkout svverification license feature.
+# ** Error: (vsim-1) Unable to checkout verification license - required for testbench features (randomize, randcase, randsequence, covergroup).
+#    Time: 0 ps  Iteration: 0  Instance: /tb_top File: D:/UVM_CV32E40P/tb/tb_top.sv
+# Error loading design
+# End time: 08:54:05 on Jul 31,2026, Elapsed time: 0:00:02
+# Errors: 2, Warnings: 29

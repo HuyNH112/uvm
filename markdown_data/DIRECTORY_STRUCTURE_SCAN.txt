@@ -1,0 +1,249 @@
+================================================================================
+UVM_CV32E40P - COMPLETE DIRECTORY STRUCTURE AND FILE LOCATION SCAN
+================================================================================
+Generated: $(date)
+Total .sv files found: 314
+
+================================================================================
+1. PRIMARY UVM PACKAGE FILES LOCATION
+================================================================================
+
+UVM Package File:
+  * hpdcache_uvm_pkg.sv
+    Path: D:\UVM_CV32E40P\sv\hpdcache_uvm_pkg.sv
+    File size: 9,809 bytes
+    Description: Main UVM package containing all base classes
+
+================================================================================
+2. PRIMARY TESTBENCH FILES LOCATION
+================================================================================
+
+Testbench Top Modules:
+  * tb_top.sv
+    Path: D:\UVM_CV32E40P\tb\tb_top.sv
+    File size: 2,370 bytes
+    
+  * hw_top.sv
+    Path: D:\UVM_CV32E40P\tb\hw_top.sv
+    File size: 20,981 bytes
+    Primary testbench top module with DUT instantiation
+
+Also located (alternative location):
+  * tb_top.sv
+    Path: D:\UVM_CV32E40P\cv32e40p_logic\cv32e40p-master\example_tb\core\tb_top.sv
+    (Legacy/reference testbench from cv32e40p example)
+
+================================================================================
+3. UVM TESTBENCH COMPONENTS (sv/ directory)
+================================================================================
+
+Location: D:\UVM_CV32E40P\sv\
+
+Files:
+  * hpdcache_uvm_pkg.sv        (9,809 bytes)  - Main UVM package
+  * hpdcache_driver.sv          (11,143 bytes) - UVM driver
+  * hpdcache_env.sv             (7,240 bytes)  - UVM environment
+  * hpdcache_monitor.sv         (9,414 bytes)  - UVM monitor
+  * hpdcache_scoreboard.sv      (7,011 bytes)  - UVM scoreboard
+  * hpdcache_sequencer.sv       (1,105 bytes)  - UVM sequencer
+  * hpdcache_seq_item.sv        (9,045 bytes)  - Sequence item definition
+  * hpdcache_coverage.sv        (8,372 bytes)  - Coverage model
+  * hpdcache_performance_measurement.sv  (19,217 bytes) - Performance monitor
+  * hpdcache_prefetcher_monitor.sv       (15,777 bytes) - Prefetcher analysis
+  * instruction_decoder.sv      (13,261 bytes) - Instruction decoder
+  * instruction_decoder_seq.sv  (4,571 bytes)  - Decoder sequencer
+  
+Subdirectory:
+  * backup/  - Contains backup files
+
+================================================================================
+4. TESTBENCH TEST CASES AND UTILITIES (tb/ directory)
+================================================================================
+
+Location: D:\UVM_CV32E40P\tb\
+
+Support Files:
+  * hpdcache_if.sv              (13,511 bytes) - Interface definition
+  * hpdcache_base_test.sv       (2,691 bytes)  - Base test class
+  * hpdcache_test_lib.sv        (10,918 bytes) - Test library
+  * hpdcache_test_isa_lib.sv    (1,004 bytes)  - ISA test library
+  * hpdcache_seq_lib.sv         (19,784 bytes) - Sequence library
+  * cv32e40p_obi_adapter_if.sv  (9,706 bytes)  - OBI adapter interface
+  * cva6_rvfi_if.sv             (1,620 bytes)  - RVFI interface (legacy)
+  * instr_memory.sv             (1,228 bytes)  - Instruction memory
+  * mock_rvfi_generator.sv      (2,519 bytes)  - Mock RVFI generator
+
+Test Case Files (Individual Test Cases):
+  * tc_d_01_test.sv             (696 bytes)    - Data cache test 01
+  * tc_d_02_test.sv             (704 bytes)    - Data cache test 02
+  * tc_d_03_test.sv             (714 bytes)    - Data cache test 03
+  * tc_i_01_test.sv             (697 bytes)    - Instruction cache test 01
+  * tc_i_02_test.sv             (693 bytes)    - Instruction cache test 02
+  * tc_int_01_test.sv           (697 bytes)    - Integration test 01
+  * tc_int_02_test.sv           (719 bytes)    - Integration test 02
+  * tc_p_01_test.sv             (709 bytes)    - Performance test 01
+  * tc_p_02_test.sv             (709 bytes)    - Performance test 02
+  * tc_p_03_test.sv             (719 bytes)    - Performance test 03
+  * tc_sys_01_test.sv           (743 bytes)    - System test 01
+
+================================================================================
+5. RTL/HARDWARE DESIGN HIERARCHY
+================================================================================
+
+Location: D:\UVM_CV32E40P\cv32e40p_logic\
+
+Key Directories:
+  
+  cv-hpdcache-master/
+    - rtl/src/           - HPDCache RTL source files (cache implementation)
+    - prefetcher/        - Prefetcher implementation files
+    - rtl/include/       - Header/include files
+    
+  cv32e40p-master/
+    - example_tb/core/   - CV32E40P reference testbench
+    - rtl/               - CV32E40P core RTL
+    - bhv/               - Behavioral models
+    
+  testbench/
+    - Various test files and instruction decoders
+    
+  icache-master/
+    - tb_icache.sv       - Instruction cache testbench
+
+================================================================================
+6. PROJECT BUILD FILES
+================================================================================
+
+Location: D:\UVM_CV32E40P\project_uvm\
+
+Files:
+  * project_uvm.mpf      (222,918 bytes) - ModelSim project file
+  * project_uvm.cr.mti   (220,712 bytes) - ModelSim compile report
+  * modelsim.ini         (100,192 bytes) - ModelSim initialization
+  * transcript           (162,978 bytes) - Simulation transcript
+  * transcript.txt       (10,109 bytes)  - Text transcript
+  * errors.txt           (7,714 bytes)   - Error log
+  
+Subdirectory:
+  * work/  - ModelSim compiled design library
+
+================================================================================
+7. DOCUMENTATION AND BUILD SCRIPTS
+================================================================================
+
+Directories:
+  * doc/         - Documentation files
+  * do/          - Modelsim simulation scripts (.do files)
+  * testplan/    - Test planning documents
+  * tests/       - Test-related files
+
+Root Level Documentation:
+  * README.md           - Project overview
+  * Various ANALYSIS_*, COMPLETION_*, FIX_*, and REPORT_* markdown files
+    (see main directory listing)
+
+================================================================================
+8. KEY HIERARCHY SUMMARY
+================================================================================
+
+Project Root:
+  D:\UVM_CV32E40P/
+    ├── sv/                          [UVM Package & Components]
+    │   ├── hpdcache_uvm_pkg.sv      [Main Package]
+    │   ├── hpdcache_driver.sv
+    │   ├── hpdcache_env.sv
+    │   ├── hpdcache_monitor.sv
+    │   ├── hpdcache_scoreboard.sv
+    │   ├── hpdcache_sequencer.sv
+    │   ├── hpdcache_seq_item.sv
+    │   ├── hpdcache_coverage.sv
+    │   ├── hpdcache_performance_measurement.sv
+    │   ├── hpdcache_prefetcher_monitor.sv
+    │   ├── instruction_decoder.sv
+    │   ├── instruction_decoder_seq.sv
+    │   └── backup/
+    │
+    ├── tb/                          [Testbench Components]
+    │   ├── tb_top.sv                [TB Top Module]
+    │   ├── hw_top.sv                [HW Top Module - Primary]
+    │   ├── hpdcache_if.sv           [Interface]
+    │   ├── hpdcache_base_test.sv
+    │   ├── hpdcache_test_lib.sv
+    │   ├── hpdcache_test_isa_lib.sv
+    │   ├── hpdcache_seq_lib.sv
+    │   ├── cv32e40p_obi_adapter_if.sv
+    │   ├── cva6_rvfi_if.sv
+    │   ├── instr_memory.sv
+    │   ├── mock_rvfi_generator.sv
+    │   ├── tc_d_0[1-3]_test.sv
+    │   ├── tc_i_0[1-2]_test.sv
+    │   ├── tc_int_0[1-2]_test.sv
+    │   ├── tc_p_0[1-3]_test.sv
+    │   └── tc_sys_01_test.sv
+    │
+    ├── cv32e40p_logic/              [RTL Design & Reference]
+    │   ├── cv-hpdcache-master/
+    │   │   ├── rtl/src/             [HPDCache RTL]
+    │   │   ├── prefetcher/          [Prefetcher Logic]
+    │   │   └── rtl/include/         [Includes]
+    │   │
+    │   ├── cv32e40p-master/
+    │   │   ├── example_tb/core/tb_top.sv  [Reference TB]
+    │   │   ├── rtl/                 [Core RTL]
+    │   │   └── bhv/                 [Behavioral models]
+    │   │
+    │   ├── testbench/
+    │   │   └── [Various test files]
+    │   │
+    │   └── icache-master/
+    │       └── tb_icache.sv
+    │
+    ├── project_uvm/                 [ModelSim Build]
+    │   ├── project_uvm.mpf          [Project File]
+    │   ├── work/                    [Compiled Library]
+    │   └── [transcripts & logs]
+    │
+    ├── do/                          [Simulation Scripts]
+    ├── doc/                         [Documentation]
+    ├── testplan/                    [Test Planning]
+    ├── tests/                       [Test Files]
+    └── [Various analysis & report files]
+
+================================================================================
+9. COMPILATION ORDER (RECOMMENDED)
+================================================================================
+
+1. UVM Base Package:
+   D:\UVM_CV32E40P\sv\hpdcache_uvm_pkg.sv
+
+2. UVM Environment Components:
+   D:\UVM_CV32E40P\sv\hpdcache_driver.sv
+   D:\UVM_CV32E40P\sv\hpdcache_sequencer.sv
+   D:\UVM_CV32E40P\sv\hpdcache_seq_item.sv
+   D:\UVM_CV32E40P\sv\hpdcache_monitor.sv
+   D:\UVM_CV32E40P\sv\hpdcache_scoreboard.sv
+   D:\UVM_CV32E40P\sv\hpdcache_env.sv
+   D:\UVM_CV32E40P\sv\hpdcache_coverage.sv
+   D:\UVM_CV32E40P\sv\hpdcache_performance_measurement.sv
+   D:\UVM_CV32E40P\sv\hpdcache_prefetcher_monitor.sv
+   D:\UVM_CV32E40P\sv\instruction_decoder.sv
+
+3. Testbench Interface & Base:
+   D:\UVM_CV32E40P\tb\hpdcache_if.sv
+   D:\UVM_CV32E40P\tb\cv32e40p_obi_adapter_if.sv
+   D:\UVM_CV32E40P\tb\hpdcache_base_test.sv
+
+4. Testbench Sequences & Tests:
+   D:\UVM_CV32E40P\tb\hpdcache_seq_lib.sv
+   D:\UVM_CV32E40P\tb\hpdcache_test_lib.sv
+   D:\UVM_CV32E40P\tb\hpdcache_test_isa_lib.sv
+   D:\UVM_CV32E40P\tb\instruction_decoder_seq.sv
+
+5. Test Cases:
+   D:\UVM_CV32E40P\tb\tc_d_01_test.sv through tc_sys_01_test.sv
+
+6. Top Modules:
+   D:\UVM_CV32E40P\tb\hw_top.sv
+   D:\UVM_CV32E40P\tb\tb_top.sv
+
+================================================================================

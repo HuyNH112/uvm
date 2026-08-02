@@ -20,6 +20,8 @@
 `ifndef HPDCACHE_UVM_PKG_SV
 `define HPDCACHE_UVM_PKG_SV
 
+`timescale 1ns/1ps
+
 package hpdcache_uvm_pkg;
 
     import uvm_pkg::*;
@@ -33,10 +35,10 @@ package hpdcache_uvm_pkg;
     // Configuration localparams — hardcode từ hpdcache_config.svh
     // Cập nhật nếu cấu hình DUT thay đổi
     // =========================================================================
-    localparam int unsigned UVM_HPDCACHE_PA_WIDTH            = 56;
+    localparam int unsigned UVM_HPDCACHE_PA_WIDTH            = 56;      // HPDCache: 56-bit physical address (matches RTL config)
     localparam int unsigned UVM_HPDCACHE_WORD_WIDTH          = 64;
     localparam int unsigned UVM_HPDCACHE_SETS                = 64;
-    localparam int unsigned UVM_HPDCACHE_WAYS                = 8;
+    localparam int unsigned UVM_HPDCACHE_WAYS                = 4;       // CV32E40P I-Cache: 4-way set-associative
     localparam int unsigned UVM_HPDCACHE_CL_WORDS            = 8;
     localparam int unsigned UVM_HPDCACHE_REQ_WORDS           = 2;
     localparam int unsigned UVM_HPDCACHE_REQ_TRANS_ID_WIDTH  = 6;
@@ -80,6 +82,24 @@ package hpdcache_uvm_pkg;
     typedef logic [UVM_HPDCACHE_MEM_DATA_WIDTH/8-1:0]                          hpdcache_mem_be_t;
 
     // =========================================================================
+    // hpdcache_req_t
+    // Request struct for driver/interface
+    // Flattened representation of request transaction
+    // =========================================================================
+    typedef struct packed {
+        hpdcache_req_addr_t      addr;
+        hpdcache_req_offset_t    offset;
+        hpdcache_req_data_t      wdata;
+        hpdcache_req_be_t        be;
+        hpdcache_req_op_t        op;
+        hpdcache_req_size_t      size;
+        hpdcache_req_sid_t       sid;
+        hpdcache_req_tid_t       tid;
+        logic                    need_rsp;
+        hpdcache_pma_t           pma;
+    } hpdcache_req_t;
+
+    // =========================================================================
     // hpdcache_rsp_t
     // Field order khớp HPDCACHE_DECL_RSP_T macro
     // =========================================================================
@@ -121,29 +141,52 @@ package hpdcache_uvm_pkg;
     endfunction
 
     // =========================================================================
-    // UVM components — FIXED: ISA Agent classes FIRST (before hpdcache_env)
-    // Dependency order: ISA agents must be defined before env uses them
+    // UVM components — HPDcache cache coherency verification (Phase 1)
+    // ISA compliance testing (TC 1.1-1.3) removed — Phase 2+ scope
     // =========================================================================
     `include "hpdcache_seq_item.sv"
     `include "hpdcache_sequencer.sv"
+    `include "instruction_decoder_seq.sv"
     `include "hpdcache_driver.sv"
     `include "hpdcache_monitor.sv"
     `include "hpdcache_scoreboard.sv"
-    
+    `include "hpdcache_prefetcher_monitor.sv"
+    `include "hpdcache_performance_measurement.sv"
+    `include "hpdcache_coverage.sv"
+
     // =========================================================================
-    // ISA Agent classes — MOVED UP (TC 1.1 ALU, TC 1.2 Branch, TC 1.3 Exception)
-    // Must be defined BEFORE hpdcache_env.sv includes them
+    // Sequence classes
     // =========================================================================
-    `include "isa_seq_item.sv"
-    `include "isa_commit_monitor.sv"
-    `include "isa_csr_monitor.sv"
-    `include "isa_driver.sv"
-    `include "isa_sequencer.sv"
-    `include "isa_agent.sv"
-    `include "isa_scoreboard.sv"
-    
-    // hpdcache_env uses isa_agent and isa_scoreboard types (now defined)
+
+    class hpdcache_rand_seq extends uvm_sequence #(hpdcache_seq_item);
+        `uvm_object_utils(hpdcache_rand_seq)
+
+        rand int unsigned num_trans = 10;
+
+        function new(string name = "hpdcache_rand_seq");
+            super.new(name);
+        endfunction
+
+        task body();
+            hpdcache_seq_item item;
+            for (int i = 0; i < num_trans; i++) begin
+                `uvm_create(item)
+                `uvm_rand_send(item)
+            end
+        endtask
+    endclass
+
+    // =========================================================================
+    // Environment container
+    // Phase 1: HPDcache-only verification (I-Cache, D-Cache, Prefetcher)
+    // Phase 2+: Will integrate ISA compliance agents for full system testing
+    // =========================================================================
     `include "hpdcache_env.sv"
+
+    // =========================================================================
+    // Base test class — extended by all user tests
+    // =========================================================================
+    `include "../tb/hpdcache_base_test.sv"
     
 endpackage : hpdcache_uvm_pkg
 

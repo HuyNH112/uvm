@@ -17,8 +17,9 @@
 `ifndef HPDCACHE_IF_SV
 `define HPDCACHE_IF_SV
 
-`include "hpdcache_typedef.svh"
-`include "hpdcache_config.svh"
+// Direct includes for config macros (required before using CONF_* macros)
+`include "D:/UVM_CV32E40P/cv32e40p_logic/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh"
+`include "D:/UVM_CV32E40P/cv32e40p_logic/cv-hpdcache-master/rtl/include/hpdcache_config.svh"
 
 interface hpdcache_if
 import hpdcache_pkg::*;
@@ -38,7 +39,7 @@ import hpdcache_pkg::*;
     localparam int unsigned MEM_DW    = `CONF_HPDCACHE_MEM_DATA_WIDTH;       // 512
     localparam int unsigned MEM_AW    = `CONF_HPDCACHE_MEM_ADDR_WIDTH;       // 56
     localparam int unsigned MEM_IDW   = `CONF_HPDCACHE_MEM_ID_WIDTH;         // 8
-    localparam int unsigned WBUF_TCW  = `CONF_HPDCACHE_WBUF_TIMECNT_WIDTH;   // 4
+    localparam int unsigned WBUF_TCW  = `CONF_HPDCACHE_WBUF_TIMECNT_WIDTH;   // 8
 
     // Derived widths
     localparam int unsigned SET_W    = $clog2(SETS);

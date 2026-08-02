@@ -6,6 +6,8 @@
 `ifndef HPDCACHE_BASE_TEST_SV
 `define HPDCACHE_BASE_TEST_SV
 
+import uvm_pkg::*;
+
 class hpdcache_base_test extends uvm_test;
 
     `uvm_component_utils(hpdcache_base_test)

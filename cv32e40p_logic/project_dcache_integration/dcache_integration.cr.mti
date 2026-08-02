@@ -1,0 +1,388 @@
+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_uncached
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(54): (vlog-13314) Defaulting port 'req_op_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(618): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(618): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(619): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(619): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(620): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_uncached.sv(621): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_uncached
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_wbuf
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(283): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(283): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(286): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(288): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(295): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(295): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_wbuf.sv(296): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_wbuf
+
+} {} {}} D:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/icache-master/cv32e40p_icache_pkg.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling package cv32e40p_icache_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_ctrl
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(65): (vlog-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1263): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1264): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1266): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1267): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1268): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1269): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1270): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1272): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1273): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1274): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1275): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1276): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1277): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1279): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1280): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1282): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1283): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1287): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1291): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1292): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1297): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1299): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1300): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1301): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1303): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1305): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1313): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1315): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1320): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1321): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1323): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1324): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1328): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1330): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1331): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1336): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1337): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1338): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1342): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1343): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1345): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1346): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1350): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1352): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1353): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1436): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1438): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1439): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1440): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1441): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1442): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1445): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1446): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1447): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1448): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1449): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1450): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1452): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1455): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1456): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1457): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1459): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1464): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1465): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1466): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1470): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1473): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1475): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1478): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1480): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1484): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1487): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1488): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1489): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1491): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1494): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1495): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1500): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1502): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1504): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1507): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1508): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1509): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1511): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1514): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1461): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1464): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1465): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1466): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1470): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1473): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1475): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1478): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1480): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1484): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1487): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1488): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1489): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1491): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1494): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1495): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1500): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1502): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1504): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1507): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1508): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1509): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1511): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1514): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1558): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1560): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1563): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1564): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1569): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1571): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1574): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1575): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1578): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1579): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1555): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1558): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1560): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1563): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1564): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1569): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1571): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1574): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1575): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1578): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1579): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1581): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1582): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1591): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1593): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1595): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1587): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1591): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1593): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_ctrl.sv(1595): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_ctrl
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_sram_1rw
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/macros/behav/hpdcache_sram_1rw.sv(26): (vlog-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	hpdcache_sram_1rw
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_typedef.svh
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_write_arbiter.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_write_arbiter.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_mem_req_write_arbiter
+
+Top level modules:
+	hpdcache_mem_req_write_arbiter
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_miss_handler
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv(687): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_miss_handler.sv(689): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_miss_handler
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_core_arbiter
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(48): (vlog-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(52): (vlog-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_core_arbiter.sv(54): (vlog-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	hpdcache_core_arbiter
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_fifo_reg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(120): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(121): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(122): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(125): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(129): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(133): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_fifo_reg.sv(135): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_fifo_reg
+
+} {} {}} D:/khoaluantotnghiep/integration/obi_to_hpdcache_adapter.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/integration/obi_to_hpdcache_adapter.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module obi_to_hpdcache_adapter
+-- Importing package hpdcache_pkg
+
+Top level modules:
+	obi_to_hpdcache_adapter
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_pkg.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache_pkg.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling package hpdcache_pkg
+
+Top level modules:
+	--none--
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_sram
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(27): (vlog-13314) Defaulting port 'wdata' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_sram.sv(31): (vlog-13314) Defaulting port 'err_inj_msk_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	hpdcache_sram
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_demux
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(60): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(60): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(61): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(67): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(67): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_demux.sv(68): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_demux
+
+} {} {}} D:/khoaluantotnghiep/icache-master/plru.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/icache-master/plru.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module plru
+
+Top level modules:
+	plru
+
+} {} {}} D:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/icache-master/cv32e40p_icache.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module cv32e40p_icache
+-- Importing package cv32e40p_icache_pkg
+
+Top level modules:
+	cv32e40p_icache
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_data_resize.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_data_resize
+-- Importing package hpdcache_pkg
+
+Top level modules:
+	hpdcache_data_resize
+
+} {} {}} D:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/icache-master/cv32e40p_icache_tag_mem.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module cv32e40p_icache_tag_mem
+-- Importing package cv32e40p_icache_pkg
+
+Top level modules:
+	cv32e40p_icache_tag_mem
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_decoder.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_decoder.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_decoder
+
+Top level modules:
+	hpdcache_decoder
+
+} {} {}} D:/khoaluantotnghiep/testbench/tc_hpdcache_basic_v2.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/testbench/tc_hpdcache_basic_v2.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module tc_hpdcache_basic_v2
+-- Importing package hpdcache_pkg
+
+Top level modules:
+	tc_hpdcache_basic_v2
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv {2 {vlog -work work -vopt -sv +incdir+D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache
+-- Importing package hpdcache_pkg
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(66): (vlog-13314) Defaulting port 'core_req_valid_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(70): (vlog-13314) Defaulting port 'core_req_abort_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/hpdcache.sv(72): (vlog-13314) Defaulting port 'core_req_pma_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	hpdcache
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_read_arbiter.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_req_read_arbiter.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_mem_req_read_arbiter
+
+Top level modules:
+	hpdcache_mem_req_read_arbiter
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_rrarb.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_rrarb.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_rrarb
+
+Top level modules:
+	hpdcache_rrarb
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_resp_demux.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_resp_demux.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_mem_resp_demux
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/utils/hpdcache_mem_resp_demux.sv(50): (vlog-13314) Defaulting port 'mem_resp_ready_i' kind to 'var' rather than 'wire' due to default compile option setting of -svinputport=relaxed.
+
+Top level modules:
+	hpdcache_mem_resp_demux
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv {2 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_mux
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(67): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(68): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(68): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(69): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(77): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(78): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(78): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+** Warning: D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_mux.sv(79): (vlog-2583) [SVCHK] - Extra checking for conflicts with always_comb and always_latch variables is done at vopt time.
+
+Top level modules:
+	hpdcache_mux
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_config.svh {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/include/hpdcache_config.svh
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+
+} {} {}} D:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/icache-master/cv32e40p_icache_data_mem.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module cv32e40p_icache_data_mem
+-- Importing package cv32e40p_icache_pkg
+
+Top level modules:
+	cv32e40p_icache_data_mem
+
+} {} {}} D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv {1 {vlog -work work -vopt -sv -stats=none D:/khoaluantotnghiep/cv-hpdcache-master/rtl/src/common/hpdcache_1hot_to_binary.sv
+Questa Intel Starter FPGA Edition-64 vlog 2023.3 Compiler 2023.07 Jul 17 2023
+-- Compiling module hpdcache_1hot_to_binary
+
+Top level modules:
+	hpdcache_1hot_to_binary
+
+} {} {}}

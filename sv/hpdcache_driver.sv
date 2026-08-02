@@ -1,10 +1,9 @@
 // =============================================================================
-// hpdcache_driver.sv
+// hpdcache_driver.sv - Phase 2: Instruction Decoding & Dual Requester Support
 // Driver: negedge drive, 80-cycle post-reset delay, posedge ready poll
+// Added: instruction_decoder port mapping, OBI adapter signals, dual req support
 // Dùng UVM_HPDCACHE_* pkg localparam + hpdcache_pkg types — không dùng CONF macro
 // =============================================================================
-`ifndef HPDCACHE_DRIVER_SV
-`define HPDCACHE_DRIVER_SV
 
 class hpdcache_driver extends uvm_driver #(hpdcache_seq_item);
 
@@ -16,12 +15,37 @@ class hpdcache_driver extends uvm_driver #(hpdcache_seq_item);
     localparam int unsigned TID_W    = UVM_HPDCACHE_REQ_TRANS_ID_WIDTH;  // 6
     localparam int unsigned TAG_W    = UVM_TAG_WIDTH;                     // 44
     localparam int unsigned WBUF_TCW = 4; // CONF_HPDCACHE_WBUF_TIMECNT_WIDTH
+    localparam int unsigned ADDR_W   = 32; // CV32E40P address width
 
     localparam int unsigned DRIVE_TIMEOUT = 200; // cycles per transaction
     localparam int unsigned INIT_DELAY    = 80;  // post-reset: 64 sets + 16 margin
 
+    // Dual requester support: Req 0 for ICache, Req 1 for DCache
+    localparam int unsigned ICACHE_REQUESTER = 0;
+    localparam int unsigned DCACHE_REQUESTER = 1;
+
+    // Instruction type from decoder
+    typedef enum {
+        INSTR_LOAD,      // LW
+        INSTR_STORE,     // SW
+        INSTR_ADDI,      // ADDI
+        INSTR_JAL,       // JAL
+        INSTR_BEQ,       // BEQ
+        INSTR_BNE,       // BNE
+        INSTR_FENCE,     // FENCE.I
+        INSTR_OTHER
+    } instr_type_t;
+
+    // Phase 2: Instruction decoder instance & decoded instruction cache
+    instruction_decoder_seq decoder;
+    logic [31:0] decoded_instr;
+    logic [4:0]  decoded_rd, decoded_rs1, decoded_rs2;
+    logic [31:0] decoded_imm;
+    instr_type_t current_instr_type;
+
     function new(string name, uvm_component parent);
         super.new(name, parent);
+        decoder = instruction_decoder_seq::type_id::create("decoder");
     endfunction
 
     function void build_phase(uvm_phase phase);
@@ -124,6 +148,116 @@ class hpdcache_driver extends uvm_driver #(hpdcache_seq_item);
         vif.cfg_scrub_restart_i                 <= 1'b0;
     endtask
 
-endclass : hpdcache_driver
+    // -------------------------------------------------------------------------
+    // Phase 2: Helper Methods for Instruction Decoding & Dual Requester Support
+    // -------------------------------------------------------------------------
 
-`endif // HPDCACHE_DRIVER_SV
+    // Decode instruction and classify type
+    function instr_type_t decode_instruction(logic [31:0] instr);
+        logic [6:0] opcode = instr[6:0];
+        logic [2:0] funct3 = instr[14:12];
+
+        case (opcode)
+            7'b0000011: return INSTR_LOAD;       // LW, LH, LB
+            7'b0100011: return INSTR_STORE;      // SW, SH, SB
+            7'b0010011: return INSTR_ADDI;       // ADDI, SLTI, ANDI, etc.
+            7'b1101111: return INSTR_JAL;        // JAL
+            7'b1100011: begin                    // Branch instructions
+                case (funct3)
+                    3'b000: return INSTR_BEQ;    // BEQ
+                    3'b001: return INSTR_BNE;    // BNE
+                    default: return INSTR_OTHER;
+                endcase
+            end
+            7'b0001111: return INSTR_FENCE;      // FENCE.I (funct3=1)
+            default: return INSTR_OTHER;
+        endcase
+    endfunction
+
+    // Send instruction fetch request via Requester 0 (ICache)
+    task send_instr_request(input logic [31:0] instr, input logic [31:0] fetch_addr);
+        hpdcache_seq_item instr_req;
+
+        instr_req = hpdcache_seq_item::type_id::create("instr_req");
+        instr_req.op          = HPDCACHE_REQ_LOAD;  // Instruction fetch is a LOAD
+        instr_req.addr_offset = fetch_addr[UVM_REQ_OFFSET_WIDTH-1:0];
+        instr_req.addr_tag    = fetch_addr[ADDR_W-1:UVM_REQ_OFFSET_WIDTH];
+        instr_req.size        = 3'b010;             // 32-bit instruction
+        instr_req.be          = 4'hF;               // All bytes valid
+        instr_req.need_rsp    = 1'b1;               // Expect response
+        instr_req.sid         = ICACHE_REQUESTER;   // Requester 0 = ICache
+        instr_req.tid         = 6'h00;              // Transaction ID for instruction
+        instr_req.phys_indexed= 1'b1;
+        instr_req.pma.uncacheable = 1'b0;
+        instr_req.pma.io      = 1'b0;
+
+        `uvm_info("DRV", $sformatf("INSTR_FETCH: addr=0x%08h instr=0x%08h",
+                                    fetch_addr, instr), UVM_MEDIUM)
+
+        // Drive request through sequencer
+        seq_item_port.get_next_item(instr_req);
+        drive_item(instr_req);
+        seq_item_port.item_done();
+    endtask
+
+    // Send data read/write request via Requester 1 (DCache)
+    task send_data_request(input logic is_write,
+                           input logic [31:0] addr,
+                           input logic [63:0] wdata,
+                           input logic [7:0]  be);
+        hpdcache_seq_item data_req;
+        logic [2:0] size_bits;
+
+        data_req = hpdcache_seq_item::type_id::create("data_req");
+
+        // Calculate size from byte enable
+        if (be == 8'h01 || be == 8'h02 || be == 8'h04 || be == 8'h08)
+            size_bits = 3'b000;  // 1 byte
+        else if (be == 8'h03 || be == 8'h0C)
+            size_bits = 3'b001;  // 2 bytes
+        else if (be == 8'h0F)
+            size_bits = 3'b010;  // 4 bytes
+        else
+            size_bits = 3'b011;  // 8 bytes
+
+        data_req.op           = is_write ? HPDCACHE_REQ_STORE : HPDCACHE_REQ_LOAD;
+        data_req.addr_offset  = addr[UVM_REQ_OFFSET_WIDTH-1:0];
+        data_req.addr_tag     = addr[ADDR_W-1:UVM_REQ_OFFSET_WIDTH];
+        data_req.wdata        = wdata;
+        data_req.be           = be;
+        data_req.size         = size_bits;
+        data_req.need_rsp     = 1'b1;
+        data_req.sid          = DCACHE_REQUESTER;  // Requester 1 = DCache
+        data_req.tid          = 6'h01;             // Transaction ID for data
+        data_req.phys_indexed = 1'b1;
+        data_req.pma.uncacheable = 1'b0;
+        data_req.pma.io       = 1'b0;
+
+        `uvm_info("DRV", $sformatf("DATA_%s: addr=0x%08h data=0x%016h be=0x%02h",
+                                    is_write ? "WRITE" : "READ", addr, wdata, be),
+                  UVM_MEDIUM)
+
+        seq_item_port.get_next_item(data_req);
+        drive_item(data_req);
+        seq_item_port.item_done();
+    endtask
+
+    // Wait for grant signal from OBI interface (ready handshake)
+    task wait_for_grant(input int unsigned max_cycles = DRIVE_TIMEOUT);
+        int unsigned timeout_cnt = 0;
+
+        forever begin
+            @(posedge vif.clk_i);
+            if (vif.core_req_ready_o) begin
+                `uvm_info("DRV", "Grant received from cache", UVM_HIGH)
+                break;
+            end
+            timeout_cnt++;
+            if (timeout_cnt >= max_cycles) begin
+                `uvm_error("DRV_TMO", $sformatf("Grant timeout after %0d cycles", max_cycles))
+                break;
+            end
+        end
+    endtask
+
+endclass : hpdcache_driver
